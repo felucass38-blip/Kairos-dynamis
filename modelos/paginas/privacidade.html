@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Privacidade', 'Política de privacidade.', 'Atualizada em 15 de novembro de 2026.') %}{% endcall %}
+<section class="secao curta">
+  <div class="caixa">
+    <div class="artigo corpo">
+      <h2>Quem cuida dos seus dados</h2>
+      <p>A Káiros Dynamis. Fale com a gente pelo WhatsApp {{ site.whatsapp_texto }} ou pelo e-mail {{ site.email }}.</p>
+
+      <h2>O que fica só no seu navegador</h2>
+      <p>No Káiros Studio, você pode digitar dados do seu negócio (nome, ramo, cidade, descrição, serviços e preços, WhatsApp, horário, endereço e Instagram) e enviar o logo e fotos. Tudo isso fica salvo só no seu navegador, para você não perder a prévia ao voltar, e não é enviado para a Káiros Dynamis. Para apagar, limpe os dados do site nas configurações do navegador.</p>
+      <p>O diagnóstico do Instagram e a montagem do sistema também acontecem só no seu navegador, até você decidir mandar pelo WhatsApp ou pagar.</p>
+
+      <h2>O que chega até a Káiros Dynamis</h2>
+      <ul>
+        <li>Quando você usa o formulário de contato: nome, WhatsApp ou e-mail, interesse e a mensagem. O formulário é recebido pela Netlify, a empresa que hospeda o site.</li>
+        <li>Quando você paga pelo site: o que você escolheu, o valor, o seu nome, e-mail, telefone e o nome do negócio, que você informa na página da Stripe.</li>
+        <li>Quando você manda uma mensagem no WhatsApp: o que você escrever ou enviar.</li>
+      </ul>
+      <p>Usamos esses dados para identificar o pagamento, preparar o seu pedido e falar com você.</p>
+
+      <h2>Pagamentos</h2>
+      <p>Os pagamentos com cartão e Pix são feitos na página da Stripe. A Káiros Dynamis não vê nem guarda o número do seu cartão ou os dados da sua conta no banco.</p>
+
+      <h2>Conteúdo de outras empresas</h2>
+      <p>As letras do site e as fontes de cada estilo do Studio vêm do Google Fonts. A página do comercial Káiros em Movimento usa uma biblioteca de animação entregue pelo jsDelivr. Os botões de WhatsApp, Instagram, Spotify e YouTube levam para os sites dessas empresas, que têm as próprias regras de privacidade.</p>
+
+      <h2>Medição de visitas</h2>
+      <p>Hoje o site não usa cookies de medição. Se um dia usarmos, eles só vão funcionar depois que você aceitar o aviso.</p>
+
+      <h2>Por quanto tempo guardamos</h2>
+      <p>Pelo tempo necessário para atender o seu pedido e cumprir obrigações legais, como as fiscais.</p>
+
+      <h2>Seus direitos</h2>
+      <p>Pela Lei Geral de Proteção de Dados (LGPD), você pode pedir acesso, correção ou exclusão dos seus dados. Basta chamar no WhatsApp ou escrever para o e-mail acima.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}{% endblock %}

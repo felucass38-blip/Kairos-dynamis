@@ -1,0 +1,29 @@
+{% macro seta() %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg>{% endmacro %}
+{% macro seta_diag() %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 12l8-8M5 4h7v7"/></svg>{% endmacro %}
+{% macro mudo() %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 6h2.5l3.5-3v10l-3.5-3H2.5z"/><path d="M11 6l3.5 4M14.5 6L11 10"/></svg>{% endmacro %}
+
+{% macro logo_k(classe='') %}<svg class="{{ classe }}" viewBox="60 0 1240 729" aria-hidden="true" focusable="false"><path fill="currentColor" d="M717 729L395 314L686 0H509L224 320V0H74V729H224V485L299 407L538 729Z"/><rect x="780" y="599" width="520" height="130" fill="#C6FF3D"/></svg>{% endmacro %}
+
+{# régua do tempo: 33 marcas crescendo até o instante (a 22ª, em limão) #}
+{% macro regua(animar=true) %}<div class="regua"{% if animar %} data-animar{% endif %} aria-hidden="true">{% for i in range(33) %}{% if i == 21 %}<i class="instante" style="--i:{{ i }}"></i>{% elif i < 21 %}<i class="{{ 'maior' if i % 4 == 0 else '' }}" style="--i:{{ i }};--h:{{ (i * 3.4)|round(1) }}"></i>{% else %}<i style="--i:{{ i }};--h:0"></i>{% endif %}{% endfor %}</div>{% endmacro %}
+
+{% macro assinatura(animar=true, rotulo='Káiros Dynamis') %}
+<div class="assinatura" role="img" aria-label="{{ rotulo }}">
+  <div class="palavra" aria-hidden="true">KÁIROS</div>
+  {{ regua(animar) }}
+  <div class="dynamis" aria-hidden="true">{% for l in 'DYNAMIS' %}<span>{{ l }}</span>{% endfor %}</div>
+</div>
+{% endmacro %}
+
+{% macro botao(texto, href, classe='', attrs='') %}<a class="botao {{ classe }}" href="{{ href }}" {{ attrs|safe }}><span>{{ texto }}</span>{{ seta() }}</a>{% endmacro %}
+
+{% macro topo(rotulo, titulo, lead='', migalhas=None) %}
+<header class="topo-pagina">
+  <div class="caixa">
+    {% if migalhas %}<nav class="migalhas" aria-label="Você está em">{% for nome, href in migalhas %}<a href="{{ href }}">{{ nome }}</a><span aria-hidden="true">/</span>{% endfor %}<span aria-current="page">{{ rotulo }}</span></nav>{% else %}<p class="rotulo"><span class="ponto"></span>{{ rotulo }}</p>{% endif %}
+    <h1 class="display">{{ titulo|safe }}</h1>
+    {% if lead %}<p class="lead">{{ lead|safe }}</p>{% endif %}
+    {{ caller() if caller else '' }}
+  </div>
+</header>
+{% endmacro %}

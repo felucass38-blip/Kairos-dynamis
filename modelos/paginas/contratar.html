@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Contratar', 'Vamos começar?', 'Escolha o que você precisa e pague a entrada pelo site, ou fale com a equipe antes. A gente responde pelo WhatsApp.') %}{% endcall %}
+
+<section class="secao curta" aria-labelledby="titulo-caminhos">
+  <div class="caixa">
+    <h2 class="sr-only" id="titulo-caminhos">O que você quer contratar</h2>
+    <div class="cartoes c3">
+      <article class="cartao">
+        <p class="rotulo">01 · Sites</p>
+        <h3>Um site</h3>
+        <p class="resumo">Vitrine, Conexão ou Operação. Veja a prévia grátis e pague 50% de entrada.</p>
+        <p class="preco"><span class="valor">a partir de <strong>{{ C.sites.vitrine.preco|reais }}</strong></span></p>
+        {{ m.botao('Ver os planos de site', '/sites/', 'papel largo') }}
+      </article>
+      <article class="cartao destaque">
+        <span class="selo">Novo</span>
+        <p class="rotulo">02 · Sistemas</p>
+        <h3>Um sistema</h3>
+        <p class="resumo">Mercado, barbearia, salão, oficina ou restaurante. Você escolhe os módulos e o preço soma.</p>
+        <p class="preco"><span class="valor">a partir de <strong>{{ C.sistemas.base.preco|reais }}</strong></span></p>
+        {{ m.botao('Montar meu sistema', '/sistemas/#montar', 'limao largo') }}
+      </article>
+      <article class="cartao">
+        <p class="rotulo">03 · Instagram</p>
+        <h3>Gestão de Instagram</h3>
+        <p class="resumo">Posts, Reels, stories e anúncios. Assinatura mensal pelo site.</p>
+        <p class="preco"><span class="valor"><strong>{{ C.instagram.planos.essencial.mensal|reais }}</strong> por mês</span></p>
+        {{ m.botao('Ver os planos de Instagram', '/instagram/#planos', 'papel largo') }}
+      </article>
+    </div>
+    <p class="texto mt-3">Já combinou um valor com a equipe? <a href="/pagar/">Pague uma cobrança aqui</a>. Quer cartões ou placas com NFC? <a href="/nfc/#orcamento">Peça um orçamento</a>.</p>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-contato">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Fale com a gente</p>
+      <h2 class="titulo mt-2" id="titulo-contato">Prefere conversar antes?</h2>
+      <ul class="contatos mt-4" role="list">
+        <li><a href="{{ 'Olá! Vim pelo site da Káiros Dynamis e quero conversar.'|wa }}" target="_blank" rel="noopener"><span class="rotulo">WhatsApp</span><span class="valor">{{ site.whatsapp_texto }}</span>{{ m.seta_diag() }}</a><button class="botao-copiar" type="button" data-copiar="{{ site.whatsapp }}" data-copiado="Copiado">Copiar</button></li>
+        <li><a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank" rel="noopener"><span class="rotulo">Instagram</span><span class="valor">@{{ site.instagram }}</span>{{ m.seta_diag() }}</a></li>
+        <li><a href="mailto:{{ site.email }}?subject=Contato%20pelo%20site"><span class="rotulo">E-mail</span><span class="valor">{{ site.email }}</span>{{ m.seta_diag() }}</a></li>
+      </ul>
+    </div>
+    <form class="formulario" name="contato" method="POST" data-netlify="true" netlify-honeypot="empresa-site" data-ajax data-ok="Recebemos sua mensagem. A equipe responde pelo WhatsApp ou pelo e-mail que você deixou.">
+      <input type="hidden" name="form-name" value="contato">
+      <p class="isca"><label>Não preencha: <input name="empresa-site" tabindex="-1" autocomplete="off"></label></p>
+      <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" autocomplete="name" maxlength="80" required></div>
+      <div class="campo"><label for="c-contato">WhatsApp ou e-mail</label><input id="c-contato" name="contato" autocomplete="email" maxlength="120" required><span class="dica">É por aqui que a gente responde.</span></div>
+      <div class="campo"><label for="c-interesse">Interesse</label><select id="c-interesse" name="interesse"><option>Ainda não sei</option><option>Site</option><option>Sistema</option><option>Gestão de Instagram</option><option>Cartões e placas NFC</option><option>Outro</option></select></div>
+      <div class="campo"><label for="c-msg">Conte sobre o seu negócio</label><textarea id="c-msg" name="mensagem" maxlength="3000"></textarea></div>
+      <div class="botoes"><button class="botao limao" type="submit"><span>Enviar mensagem</span>{{ m.seta() }}</button></div>
+      <p class="mensagem-form" role="status" aria-live="polite"></p>
+      <p class="dica" style="font-size:13.5px;color:var(--nevoa)">Seus dados servem só para a Káiros Dynamis responder você. <a href="/privacidade/">Privacidade</a>.</p>
+    </form>
+  </div>
+</section>
+{% endblock %}

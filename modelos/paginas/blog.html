@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Blog', 'Dicas curtas para vender mais no digital.', 'Site, Google, Instagram e sistemas, explicados para quem toca um negócio e não tem tempo a perder.') %}{% endcall %}
+<section class="secao curta">
+  <div class="caixa">
+    <ul class="artigos" role="list">
+      {% for a in artigos %}
+      <li><a href="{{ a.rota }}"><span class="rotulo">{{ a.data|data_br }} · {{ a.minutos }} min de leitura</span><div><h2>{{ a.titulo }}</h2><p>{{ a.descricao }}</p></div>{{ m.seta() }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

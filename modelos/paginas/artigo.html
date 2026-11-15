@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block cabeca %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": artigo.titulo,
+  "description": artigo.descricao,
+  "datePublished": artigo.data,
+  "dateModified": artigo.data,
+  "inLanguage": "pt-BR",
+  "mainEntityOfPage": pagina.canonica,
+  "image": site.url + "/img/og.png",
+  "author": {"@type": "Organization", "name": "Káiros Dynamis", "url": site.url + "/"},
+  "publisher": {"@type": "Organization", "name": "Káiros Dynamis", "logo": {"@type": "ImageObject", "url": site.url + "/img/icone-512.png"}}
+}|tojson }}</script>
+{% endblock %}
+{% block conteudo %}
+<article>
+  <header class="topo-pagina">
+    <div class="caixa">
+      <div class="artigo">
+        <nav class="migalhas" aria-label="Você está em"><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span>{{ artigo.data|data_br }} · {{ artigo.minutos }} min</span></nav>
+        <h1 class="titulo mt-2">{{ artigo.titulo }}</h1>
+        <p class="lead mt-2">{{ artigo.descricao }}</p>
+      </div>
+    </div>
+  </header>
+  <div class="secao curta">
+    <div class="caixa">
+      <div class="artigo corpo">{{ artigo.html|safe }}</div>
+      <div class="artigo mt-4">
+        <hr class="separador">
+        <p class="rotulo mt-3"><span class="ponto"></span>{{ artigo.cta_rotulo or 'Próximo passo' }}</p>
+        <p class="subtitulo mt-2">{{ artigo.cta_titulo or 'Quer ver como fica o seu?' }}</p>
+        <div class="botoes mt-3">
+          {{ m.botao(artigo.cta_botao or 'Ver o meu site grátis', artigo.cta_link or '/criar/', 'limao') }}
+          {{ m.botao('Mais artigos', '/blog/', 'contorno') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% block cabeca %}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Káiros Dynamis",
+  "alternateName": "Káiros",
+  "url": site.url + "/",
+  "image": site.url + "/img/og.png",
+  "logo": site.url + "/img/icone-512.png",
+  "description": "Criação de sites, sistemas sob medida, gestão de Instagram e cartões NFC para negócios locais.",
+  "telephone": "+55-11-96243-1350",
+  "email": site.email,
+  "areaServed": {"@type": "Country", "name": "Brasil"},
+  "address": {"@type": "PostalAddress", "addressLocality": "Guarulhos", "addressRegion": "SP", "addressCountry": "BR"},
+  "sameAs": ["https://www.instagram.com/" + site.instagram + "/"],
+  "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Serviços", "itemListElement": [
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Criação de sites"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistemas para pequenos negócios"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gestão de Instagram"}},
+    {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Cartões e placas NFC"}}
+  ]}
+}|tojson }}</script>
+{% endblock %}
+{% block conteudo %}
+<section class="heroi" aria-labelledby="titulo-heroi">
+  <div class="eclipse" aria-hidden="true"></div>
+  <div class="caixa">
+    <div class="chamada">
+      <div>
+        <p class="rotulo" data-revelar><span class="ponto"></span>Sites · Sistemas · Instagram</p>
+        <h1 class="display mt-2" id="titulo-heroi" data-revelar style="--atraso:80ms">Sites, sistemas e Instagram que trabalham pelo seu negócio.</h1>
+      </div>
+      <div data-revelar style="--atraso:160ms">
+        <p class="lead">A Káiros Dynamis cria o seu site, organiza o dia a dia com um sistema feito para o seu ramo e cuida do seu Instagram. Você vê o site antes de contratar e acompanha tudo pelo WhatsApp.</p>
+        <form class="formulario mt-3" action="/criar/" method="get" role="search" aria-label="Ver a prévia do meu site">
+          <div class="campo">
+            <label for="heroi-nome">Nome do seu negócio</label>
+            <input id="heroi-nome" name="nome" type="text" maxlength="60" autocomplete="organization" placeholder="Ex.: Barbearia do Centro" required>
+          </div>
+          <div class="botoes">
+            <button class="botao limao" type="submit"><span>Ver o meu site grátis</span>{{ m.seta() }}</button>
+            <a class="botao contorno" href="/sistemas/#montar"><span>Montar meu sistema</span>{{ m.seta() }}</a>
+          </div>
+        </form>
+      </div>
+    </div>
+    {{ m.assinatura(true) }}
+    <ul class="heroi-meta" role="list">
+      <li>Prévia do site grátis, sem cadastro</li>
+      <li>Pagamento seguro pelo site</li>
+      <li>Atendimento pelo WhatsApp</li>
+    </ul>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-servicos">
+  <div class="caixa">
+    <div class="grade">
+      <p class="rotulo col-1-6" data-revelar><span class="ponto"></span>O que a gente faz</p>
+      <h2 class="titulo col-1-8 mt-2" id="titulo-servicos" data-revelar>Tudo o que o seu negócio precisa para ser encontrado e bem atendido.</h2>
+    </div>
+    <ul class="lista-editorial mt-4" role="list">
+      {% for n, href, nome, desc in [
+        ('01', '/sites/', 'Sites', 'Página do negócio, agendamento pelo site ou loja online com carrinho. Pronto para o Google e para o celular.'),
+        ('02', '/sistemas/', 'Sistemas', 'Caixa, estoque, agenda, ordens de serviço e comandas. Você escolhe os módulos e o preço soma na hora.'),
+        ('03', '/instagram/', 'Gestão de Instagram', 'Posts, Reels, stories e anúncios com a cara do seu negócio. Você aprova tudo antes de publicar.'),
+        ('04', '/nfc/', 'Cartões e placas NFC', 'O cliente encosta o celular e abre o seu WhatsApp, o Instagram ou a avaliação no Google.')] %}
+      <li data-revelar style="--atraso:{{ loop.index0 * 70 }}ms"><a href="{{ href }}"><span class="n">{{ n }}</span><span class="nome">{{ nome }}</span><span class="desc">{{ desc }}</span>{{ m.seta() }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-nome">
+  <div class="caixa">
+    <p class="rotulo" data-revelar><span class="ponto"></span>O nome</p>
+    <h2 class="titulo mt-2" id="titulo-nome" data-revelar>Duas palavras gregas. Um jeito de trabalhar.</h2>
+    <div class="manifesto mt-5">
+      <article class="palavra-grega" data-revelar>
+        <p class="grego">καιρός · káiros</p>
+        <h3>Káiros<span class="limao">_</span></h3>
+        <p>O momento certo. Hoje, o cliente pesquisa antes de chamar. Se ele não encontra o seu negócio naquela hora, o momento passa. A gente faz o seu negócio estar lá quando ele procura.</p>
+      </article>
+      <article class="palavra-grega" data-revelar style="--atraso:120ms">
+        <p class="grego">δύναμις · dýnamis</p>
+        <h3>Dynamis</h3>
+        <p>A força para agir. Site, sistema e Instagram trabalhando juntos, para você atender melhor, vender mais e parar de perder tempo com caderno e planilha.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-sistemas">
+  <div class="caixa">
+    <div class="lado-a-lado">
+      <div>
+        <p class="rotulo" data-revelar><span class="ponto"></span>Novo · Sistemas por ramo</p>
+        <h2 class="titulo mt-2" id="titulo-sistemas" data-revelar>Um sistema do jeito do seu negócio. O preço aparece na hora.</h2>
+        <p class="lead mt-3" data-revelar>Escolha o ramo, marque os módulos que fazem sentido e veja o total somando. Dá para pagar a entrada pelo site ou conversar antes no WhatsApp.</p>
+        <ul class="chips-ramos mt-3" role="list" data-revelar>
+          {% for id, r in C.sistemas.ramos.items() %}<li><a href="/sistemas/?ramo={{ id }}#montar" style="text-decoration:none">{{ r.nome }}</a></li>{% endfor %}
+        </ul>
+        <div class="botoes mt-3" data-revelar>
+          {{ m.botao('Montar meu sistema', '/sistemas/#montar', 'limao') }}
+          {{ m.botao('Ver a demonstração', '/sistemas/demo/', 'contorno', 'target="_blank" rel="noopener"') }}
+        </div>
+      </div>
+      <div data-revelar style="--atraso:120ms">
+        <div class="aparelho"><iframe src="/sistemas/demo/" title="Demonstração dos sistemas da Káiros Dynamis" loading="lazy"></iframe></div>
+        <p class="rotulo mt-2" style="text-align:center">Toque e mexa: é a demonstração de verdade</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-passos">
+  <div class="caixa">
+    <p class="rotulo" data-revelar><span class="ponto"></span>Como a gente trabalha</p>
+    <h2 class="titulo mt-2" id="titulo-passos" data-revelar>Sem surpresa do começo ao fim.</h2>
+    <ol class="passos mt-5" role="list">
+      <li data-revelar><h3>Você vê antes de contratar.</h3><p>A prévia do seu site sai na hora no Káiros Studio, sem cadastro e sem custo.</p></li>
+      <li data-revelar style="--atraso:80ms"><h3>Tudo pelo WhatsApp.</h3><p>Textos, fotos e ajustes são combinados na conversa, no seu tempo.</p></li>
+      <li data-revelar style="--atraso:160ms"><h3>Pagamento seguro pelo site.</h3><p>Cartão ou Pix, com confirmação automática. A entrada reserva a sua vaga.</p></li>
+      <li data-revelar style="--atraso:240ms"><h3>Nada vai ao ar sem o seu ok.</h3><p>Antes de publicar, você vê tudo pronto e pede os ajustes.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-portfolio">
+  <div class="caixa">
+    <div class="grade">
+      <p class="rotulo col-1-6" data-revelar><span class="ponto"></span>Portfólio</p>
+    </div>
+    <a class="caso mt-3" href="/portfolio/soma/" data-revelar>
+      <div class="moldura marcas-corte"><img src="/portfolio/soma/site/media/og.jpg" alt="Capa do site da SÔMA Collective, com o logo pintado à mão sobre fotos de um show." width="1200" height="630" loading="lazy" decoding="async"></div>
+      <div>
+        <ul class="etiquetas" role="list"><li>Site</li><li>Loja</li><li>Música</li></ul>
+        <h2 class="titulo mt-2" id="titulo-portfolio">SÔMA Collective</h2>
+        <p class="lead mt-2">Comunidade, música e roupa num site só: as camisas 001 e 002, as músicas de Victor Lucass e os encontros da comunidade.</p>
+        <span class="link-seta mt-2">Ver o caso{{ m.seta() }}</span>
+      </div>
+    </a>
+    <div class="reels mt-5">
+      {% for v, legenda in [('hero-victor', 'No palco'), ('voz-1', 'Ao vivo'), ('rua', 'Na rua'), ('pacote', 'Embalando os pedidos')] %}
+      <figure class="reel" data-revelar style="--atraso:{{ loop.index0 * 70 }}ms">
+        <div class="tela">
+          <video muted loop playsinline preload="none" poster="/portfolio/soma/site/media/{{ v }}-poster.jpg" aria-label="Reel: {{ legenda }}"><source src="/portfolio/soma/site/media/{{ v }}.mp4" type="video/mp4"></video>
+          <button class="tocar" type="button" aria-label="Pausar vídeo"></button>
+        </div>
+        <figcaption><span>{{ legenda }}</span><span>SÔMA</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+    <div class="botoes mt-3">{{ m.botao('Ver o portfólio inteiro', '/portfolio/', 'contorno') }}</div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-blog">
+  <div class="caixa">
+    <div class="grade">
+      <p class="rotulo col-1-6" data-revelar><span class="ponto"></span>Blog</p>
+      <h2 class="titulo col-1-8 mt-2" id="titulo-blog" data-revelar>Dicas curtas para vender mais no digital.</h2>
+    </div>
+    <ul class="artigos mt-4" role="list">
+      {% for a in artigos[:3] %}
+      <li data-revelar><a href="{{ a.rota }}"><span class="rotulo">{{ a.data|data_br }} · {{ a.minutos }} min</span><div><h3 class="subtitulo" style="font-size:clamp(24px,2.6vw,36px)">{{ a.titulo }}</h3><p>{{ a.descricao }}</p></div>{{ m.seta() }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-duvidas">
+  <div class="caixa">
+    <div class="grade">
+      <div class="col-1-6">
+        <p class="rotulo" data-revelar><span class="ponto"></span>Dúvidas</p>
+        <h2 class="titulo mt-2" id="titulo-duvidas" data-revelar>Perguntas que todo mundo faz.</h2>
+        <p class="lead mt-2">Não achou a sua? <a href="{{ 'Olá! Tenho uma dúvida sobre a Káiros Dynamis.'|wa }}" target="_blank" rel="noopener">Chame no WhatsApp</a>.</p>
+      </div>
+      <div class="col-7-12 faq mt-3">
+        <details><summary>Posso ver o site antes de contratar?</summary><div class="resposta"><p>Pode. Monte a prévia grátis no <a href="/criar/">Káiros Studio</a> com o nome do seu negócio. Só depois você decide.</p></div></details>
+        <details><summary>Como funciona o pagamento?</summary><div class="resposta"><p>Pelo próprio site, com cartão ou Pix e confirmação automática. Nos sites e sistemas, você paga 50% de entrada e o restante na entrega. A gestão de Instagram é uma assinatura mensal.</p></div></details>
+        <details><summary>Vocês atendem negócios de outras cidades?</summary><div class="resposta"><p>Sim. A equipe fica em Guarulhos (SP), mas o atendimento é pelo WhatsApp, então dá para atender qualquer cidade.</p></div></details>
+        <details><summary>Preciso ter site para contratar o sistema ou o Instagram?</summary><div class="resposta"><p>Não. Cada serviço pode ser contratado sozinho. Juntos, eles usam as mesmas cores e conversam entre si.</p></div></details>
+        <p class="mt-2"><a class="link-seta" href="/duvidas/">Ver todas as dúvidas{{ m.seta() }}</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="chamada-final" aria-labelledby="titulo-final">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Próxima parada</p>
+    <h2 class="display mt-2" id="titulo-final">O seu negócio no momento certo.</h2>
+    <div class="botoes">
+      {{ m.botao('Contratar', '/contratar/', 'limao') }}
+      <a class="botao contorno" href="{{ 'Olá! Quero saber mais sobre os serviços da Káiros Dynamis.'|wa }}" target="_blank" rel="noopener"><span>Falar no WhatsApp</span>{{ m.seta_diag() }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

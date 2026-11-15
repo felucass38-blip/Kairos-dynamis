@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Portfólio', 'Trabalhos que já estão rodando.', 'Sites, Reels e vídeos curtos, e as demonstrações dos nossos sistemas.') %}
+<div class="botoes">
+  {{ m.botao('Ver os Reels', '#reels', 'contorno') }}
+</div>
+{% endcall %}
+
+<section class="secao" aria-labelledby="titulo-soma">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Site</p>
+    <a class="caso mt-3" href="/portfolio/soma/">
+      <div class="moldura marcas-corte"><img src="/portfolio/soma/site/media/og.jpg" alt="Capa do site da SÔMA Collective, com o logo pintado à mão sobre fotos de um show." width="1200" height="630" decoding="async"></div>
+      <div>
+        <ul class="etiquetas" role="list"><li>Site</li><li>Loja</li><li>Música</li><li>Vídeo</li></ul>
+        <h2 class="titulo mt-2" id="titulo-soma">SÔMA Collective</h2>
+        <p class="lead mt-2">Marca de roupa, música e comunidade num site só: a loja das camisas 001 e 002, as músicas de Victor Lucass, os clipes e os encontros da comunidade.</p>
+        <span class="link-seta mt-2">Ver o caso{{ m.seta() }}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="secao com-linha" id="reels" aria-labelledby="titulo-reels">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Reels e vídeos curtos</p>
+    <h2 class="titulo mt-2" id="titulo-reels">Vídeos verticais, do jeito que o Instagram gosta.</h2>
+    <p class="lead mt-2">Os vídeos tocam sem som quando aparecem na tela. Toque no vídeo para pausar e no botão do canto para ligar o som.</p>
+    <div class="reels mt-4">
+      <figure class="reel largo">
+        <div class="tela">
+          <video muted loop playsinline preload="none" poster="/portfolio/soma/site/media/reel-002-poster.jpg" aria-label="Filme da camisa 002 da SÔMA"><source src="/portfolio/soma/site/media/reel-002.mp4" type="video/mp4"></video>
+          <button class="tocar" type="button" aria-label="Pausar vídeo"></button>
+          <button class="som" type="button" aria-label="Ligar o som" aria-pressed="false">{{ m.mudo() }}</button>
+        </div>
+        <figcaption><span>Filme da camisa 002</span><span>SÔMA · com som</span></figcaption>
+      </figure>
+      {% for v, legenda in [('hero-victor', 'No palco'), ('voz-1', 'Ao vivo'), ('rua', 'Na rua'), ('pacote', 'Embalando os pedidos'), ('popup', 'Pop-up da marca'), ('assinatura', 'Camisa assinada'), ('voz-2', 'Encontro da comunidade'), ('hero-telao', 'Telão do evento'), ('hero-louvor', 'Louvor')] %}
+      <figure class="reel">
+        <div class="tela">
+          <video muted loop playsinline preload="none" poster="/portfolio/soma/site/media/{{ v }}-poster.jpg" aria-label="Reel: {{ legenda }}"><source src="/portfolio/soma/site/media/{{ v }}.mp4" type="video/mp4"></video>
+          <button class="tocar" type="button" aria-label="Pausar vídeo"></button>
+        </div>
+        <figcaption><span>{{ legenda }}</span><span>SÔMA</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-movimento">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Comercial</p>
+    <a class="caso mt-3" href="/portfolio/reels/kairos-em-movimento/">
+      <div class="moldura marcas-corte"><img src="/portfolio/reels/kairos-em-movimento/quadros/q02.jpg" alt="Quadro do comercial Káiros em Movimento: a palavra Káiros com o traço verde-limão." width="640" height="360" loading="lazy" decoding="async"></div>
+      <div>
+        <ul class="etiquetas" role="list"><li>Vídeo</li><li>Animação</li><li>34 segundos</li></ul>
+        <h2 class="titulo mt-2" id="titulo-movimento">Káiros em Movimento</h2>
+        <p class="lead mt-2">O comercial da própria Káiros, feito em código: o traço do logo vira personagem e mostra o caminho do cliente, da pesquisa no Google ao site no ar.</p>
+        <span class="link-seta mt-2">Assistir{{ m.seta() }}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-demos">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Demonstrações</p>
+    <h2 class="titulo mt-2" id="titulo-demos">Mexa antes de contratar.</h2>
+    <div class="cartoes c2 mt-4">
+      <article class="cartao">
+        <h3>Sistemas por ramo</h3>
+        <p class="resumo">Mercado, barbearia, salão, oficina e restaurante, com dados de exemplo. Funciona no celular.</p>
+        {{ m.botao('Abrir a demonstração', '/sistemas/demo/', 'papel', 'target="_blank" rel="noopener"') }}
+      </article>
+      <article class="cartao">
+        <h3>Káiros Studio</h3>
+        <p class="resumo">Digite o nome do seu negócio e veja três propostas de site em 20 estilos.</p>
+        {{ m.botao('Criar meu site grátis', '/criar/', 'limao') }}
+      </article>
+    </div>
+  </div>
+</section>
+{% endblock %}

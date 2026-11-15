@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block cabeca %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=League+Spartan:wght@500..900&display=swap">
+<link rel="stylesheet" href="video.css">
+<style>
+  .filme { --ink:#0B0B0C; --paper:#F2F2EE; --lime:#C6FF3D; --g1:#121213; --g2:#19191A; --g3:#242425; --g4:#393939; --g6:#9F9F9C;
+    --display:'League Spartan','Futura','Century Gothic',sans-serif; --text:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace; --r:10px; }
+  .filme #video { width: 100%; }
+  .filme .tip { color: var(--nevoa); }
+</style>
+{% endblock %}
+{% block conteudo %}
+{% call m.topo('Káiros em Movimento', 'Káiros em Movimento.', 'O comercial da Káiros: 34 segundos, seis cenas, feito todo em código. O traço do logo vira personagem e leva o cliente da pesquisa no Google ao site no ar.', [('Portfólio', '/portfolio/')]) %}{% endcall %}
+<section class="secao curta filme" aria-label="Vídeo">
+  <div class="caixa">
+    <div id="video"><img src="quadros/q02.jpg" alt="Quadro do comercial: a palavra Káiros com o traço verde-limão." width="640" height="360"></div>
+    <p class="rotulo mt-2">Use os controles do vídeo para tocar, pausar e ligar o som.</p>
+  </div>
+</section>
+<section class="secao com-linha" aria-labelledby="titulo-ideia">
+  <div class="caixa lado-a-lado">
+    <div><p class="rotulo"><span class="ponto"></span>A ideia</p><h2 class="titulo mt-2" id="titulo-ideia">O “_” do logo é o personagem.</h2></div>
+    <div class="texto"><p>O traço verde-limão do logo é o instante certo. No vídeo, ele vira o cursor que digita a pesquisa do cliente, desenha o site, passeia pelos planos e termina como a assinatura da marca.</p><p>Por ser feito em código, o vídeo pode ser ajustado e exportado em qualquer formato: vertical para Reels, quadrado para o feed ou horizontal para o site.</p></div>
+  </div>
+</section>
+<section class="chamada-final" aria-labelledby="titulo-final-mov">
+  <div class="caixa">
+    <h2 class="display" id="titulo-final-mov">Quer um vídeo assim para o seu negócio?</h2>
+    <div class="botoes">
+      {{ m.botao('Conhecer a gestão de Instagram', '/instagram/', 'limao') }}
+      <a class="botao contorno" href="{{ 'Olá! Quero um vídeo para o meu negócio.'|wa }}" target="_blank" rel="noopener"><span>Pedir no WhatsApp</span>{{ m.seta_diag() }}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="audio.js" defer></script>
+<script src="video.js" defer></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    var host = document.getElementById('video');
+    if (!window.gsap || !window.KairosVideo) return;
+    host.innerHTML = '';
+    window.KairosVideo.create(host, { controls: true });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('SÔMA Collective', 'SÔMA Collective: comunidade, música e roupa.', 'O site da marca e da música de Victor Lucass. Um lugar só para vender as camisas, tocar as músicas e chamar a comunidade para os encontros.', [('Portfólio', '/portfolio/')]) %}
+<div class="botoes">
+  {{ m.botao('Ver o site funcionando', '/portfolio/soma/site/', 'limao', 'target="_blank" rel="noopener"') }}
+  <a class="botao contorno" href="https://www.instagram.com/soma____collective/" target="_blank" rel="noopener"><span>Instagram da SÔMA</span>{{ m.seta_diag() }}</a>
+</div>
+{% endcall %}
+
+<section class="secao curta" aria-label="Capa do site">
+  <div class="caixa">
+    <div class="moldura marcas-corte"><img src="/portfolio/soma/site/media/og.jpg" alt="Capa do site da SÔMA Collective." width="1200" height="630" decoding="async"></div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-desafio">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>O que precisava</p>
+      <h2 class="titulo mt-2" id="titulo-desafio">Uma marca que é três coisas ao mesmo tempo.</h2>
+    </div>
+    <div class="texto">
+      <p>A SÔMA é marca de roupa, é a música de Victor Lucass e é uma comunidade que se encontra ao vivo. O site precisava mostrar as três sem virar bagunça, com a mesma cara do Instagram e dos eventos.</p>
+      <p>A resposta foi um site em preto e branco, com o logo pintado à mão, vídeos em tela cheia e cada parte da marca na sua seção: loja, música e comunidade.</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-entregue">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>O que entregamos</p>
+    <h2 class="titulo mt-2" id="titulo-entregue">Cinco partes, uma identidade.</h2>
+    <ol class="passos mt-5" role="list">
+      <li><h3>Abertura em vídeo</h3><p>Vídeos verticais do palco e dos encontros, com o logo da marca.</p></li>
+      <li><h3>Loja</h3><p>As camisas 001 e 002 com fotos do ensaio e sacola de compras.</p></li>
+      <li><h3>Música</h3><p>As mais ouvidas de Victor Lucass e os clipes, com links para Spotify e YouTube.</p></li>
+      <li><h3>Comunidade</h3><p>Os encontros, os shows e as parcerias, com convite para participar.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-galeria">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Imagens do site</p>
+    <h2 class="sr-only" id="titulo-galeria">Galeria</h2>
+    <div class="galeria mt-3">
+      {% for img, alt in [('prod-001-vermelha.webp', 'Ensaio da camisa 001'), ('victor-palco.webp', 'Victor Lucass no palco com o logo da SÔMA'), ('costas.webp', 'Camisa SÔMA número 1 vista de costas, durante um ensaio de banda'), ('ensaio-1.webp', 'Ensaio de moda com a camisa 001'), ('louvor-2.webp', 'Encontro da comunidade'), ('plateia.webp', 'Plateia em um encontro da SÔMA'), ('prod-001-preta.webp', 'Bastidores do ensaio da camisa 001'), ('neon.webp', 'Logo da SÔMA no escuro')] %}
+      <img src="/portfolio/soma/site/media/{{ img }}" alt="{{ alt }}" loading="lazy" decoding="async">
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-reels-soma">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Vídeos</p>
+    <h2 class="titulo mt-2" id="titulo-reels-soma">Os vídeos do site.</h2>
+    <div class="reels mt-4">
+      {% for v, legenda in [('hero-victor', 'No palco'), ('voz-1', 'Ao vivo'), ('rua', 'Na rua'), ('pacote', 'Embalando os pedidos')] %}
+      <figure class="reel">
+        <div class="tela">
+          <video muted loop playsinline preload="none" poster="/portfolio/soma/site/media/{{ v }}-poster.jpg" aria-label="Vídeo: {{ legenda }}"><source src="/portfolio/soma/site/media/{{ v }}.mp4" type="video/mp4"></video>
+          <button class="tocar" type="button" aria-label="Pausar vídeo"></button>
+        </div>
+        <figcaption><span>{{ legenda }}</span><span>SÔMA</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="chamada-final" aria-labelledby="titulo-final-soma">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>O seu é o próximo</p>
+    <h2 class="display mt-2" id="titulo-final-soma">Quer um site com a cara da sua marca?</h2>
+    <div class="botoes">
+      {{ m.botao('Ver o meu site grátis', '/criar/', 'limao') }}
+      {{ m.botao('Ver os planos', '/sites/', 'contorno') }}
+    </div>
+  </div>
+</section>
+{% endblock %}

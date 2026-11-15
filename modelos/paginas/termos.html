@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Termos', 'Termos de contratação.', 'Atualizados em 15 de novembro de 2026.') %}{% endcall %}
+<section class="secao curta">
+  <div class="caixa">
+    <div class="artigo corpo">
+      <h2>Quem somos</h2>
+      <p>A Káiros Dynamis cria sites e sistemas para negócios locais, faz a gestão de Instagram e produz cartões e placas NFC. O atendimento é pelo WhatsApp {{ site.whatsapp_texto }} e pelo e-mail {{ site.email }}.</p>
+
+      <h2>Sites: planos e valores</h2>
+      <ul>
+        {% for id, p in C.sites.items() %}<li><strong>{{ p.nome }}</strong>, a partir de {{ p.preco|reais }}: {{ p.resumo|lower }}</li>{% endfor %}
+      </ul>
+      <p>O valor final é combinado com você por escrito, no WhatsApp, de acordo com o que o seu negócio precisa, antes do pagamento do restante.</p>
+
+      <h2>Sistemas: valores</h2>
+      <p>Todo sistema tem a base ({{ C.sistemas.base.preco|reais }}) e os módulos que você escolhe na página de sistemas, com o valor de cada um mostrado na hora. Hospedagem, suporte e atualizações têm mensalidade, combinada por escrito na entrega.</p>
+
+      <h2>Entrada e restante (sites e sistemas)</h2>
+      <p>Para reservar a vaga na agenda, você paga {{ C.entrada_percentual }}% do valor: no caso dos sites, {% for id, p in C.sites.items() %}{{ (p.preco * C.entrada_percentual / 100)|reais }} no {{ p.nome }}{{ ', ' if not loop.last and loop.revindex > 2 else (' ou ' if not loop.last else '') }}{% endfor %}; no caso dos sistemas, metade do total montado. O restante é pago na entrega, sobre o valor final combinado.</p>
+      <p>Os pagamentos são feitos pelo site, com cartão ou Pix, numa página segura da Stripe, e a confirmação é automática. Quando o pagamento pelo site não estiver disponível, a equipe envia um Pix, e a vaga é confirmada quando o comprovante chega.</p>
+
+      <h2 id="instagram">Gestão de Instagram</h2>
+      <ul>
+        {% for id, p in C.instagram.planos.items() %}<li><strong>{{ p.nome }}</strong>, {{ p.mensal|reais }} por mês: {{ p.itens|join('; ')|lower }}.</li>{% endfor %}
+      </ul>
+      <p>A gestão é uma assinatura mensal, cobrada no cartão pela Stripe, sempre antes de o mês começar. O contrato mínimo é de {{ C.instagram.minimo_meses }} meses. Depois disso, você pode cancelar quando quiser pelo WhatsApp ou pelo e-mail, e a gestão segue até o fim do mês já pago, sem multa.</p>
+      <p>Nada é publicado sem a sua aprovação. A verba dos anúncios no Meta não está incluída: ela é paga por você direto à plataforma, no valor que escolher.</p>
+
+      <h2>Prazo</h2>
+      <p>O prazo é combinado por escrito no WhatsApp, antes do pagamento, e conta a partir da confirmação da entrada e do recebimento do material completo: textos, fotos, logo e informações do negócio.</p>
+
+      <h2>O material que você envia</h2>
+      <p>Você é responsável pelos textos, fotos, logos e informações que manda e garante que pode usá-los.</p>
+
+      <h2>Ajustes e publicação</h2>
+      <p>Antes de publicar, você vê o site ou o sistema e pede os ajustes combinados na conversa. Depois de publicado, novas alterações seguem a manutenção contratada.</p>
+
+      <h2>Domínio, hospedagem e manutenção</h2>
+      <p>Dependem do plano e são combinados por escrito, no WhatsApp, antes do pagamento.</p>
+
+      <h2>Desistência e cancelamento</h2>
+      <p>Se você contratou como consumidor pela internet, pode desistir em até 7 dias depois do pagamento e receber o valor de volta, como prevê o artigo 49 do Código de Defesa do Consumidor. Depois desse prazo, o cancelamento de sites e sistemas é tratado na conversa, considerando o trabalho já feito.</p>
+
+      <h2>Cartões e placas NFC</h2>
+      <p>Valores e prazos são combinados por orçamento, no WhatsApp, antes do pagamento.</p>
+
+      <h2>Seus dados</h2>
+      <p>Os dados que você informa são usados para atender o seu pedido. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}{% endblock %}

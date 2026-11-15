@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Sobre', 'O momento certo. A força para agir.', 'A Káiros Dynamis é uma equipe pequena de Guarulhos que coloca negócios locais na internet e organiza o dia a dia deles: site, sistema, Instagram e NFC, tudo conversando.') %}{% endcall %}
+
+<section class="secao" aria-labelledby="titulo-nome-sobre">
+  <div class="caixa">
+    <h2 class="sr-only" id="titulo-nome-sobre">O nome</h2>
+    <div class="manifesto">
+      <article class="palavra-grega" data-revelar>
+        <p class="grego">καιρός · káiros</p>
+        <h3>Káiros<span class="limao">_</span></h3>
+        <p>Os gregos tinham duas palavras para o tempo. Chronos era o tempo do relógio. Káiros era o instante certo de agir, aquele que não volta. O traço verde do nosso logo é esse instante.</p>
+      </article>
+      <article class="palavra-grega" data-revelar style="--atraso:120ms">
+        <p class="grego">δύναμις · dýnamis</p>
+        <h3>Dynamis</h3>
+        <p>Dynamis é força, capacidade, o poder de fazer acontecer. Juntas, as duas palavras dizem o que a gente faz: deixar o seu negócio pronto para o momento certo, e com força para aproveitar.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-quem">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Quem somos</p>
+      <h2 class="titulo mt-2" id="titulo-quem">Uma equipe só, do primeiro contato à entrega.</h2>
+    </div>
+    <div class="texto">
+      <p>A Káiros Dynamis nasceu em 2026, em Guarulhos (SP), com uma ideia simples: dono de negócio pequeno não tem tempo para correr atrás de cinco fornecedores. Ele precisa de alguém que entenda o negócio e resolva.</p>
+      <p>Por isso a mesma equipe cria o site, monta o sistema, cuida do Instagram e faz os cartões NFC. Tudo com as mesmas cores, conversando entre si, e com o atendimento pelo WhatsApp.</p>
+      <p>A gente começou fazendo sites e, ouvindo os clientes, percebeu que o problema quase nunca era só aparecer na internet. Era o caderno do fiado, a agenda bagunçada, o orçamento que se perdia no WhatsApp. Daí vieram os sistemas por ramo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-principios">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Como a gente trabalha</p>
+    <h2 class="titulo mt-2" id="titulo-principios">Quatro combinados que valem para todo cliente.</h2>
+    <ol class="passos mt-5" role="list">
+      <li><h3>Você vê antes de pagar.</h3><p>Prévia grátis do site e demonstração dos sistemas, sem cadastro.</p></li>
+      <li><h3>Preço claro.</h3><p>Os valores estão no site e o sistema soma na hora o que você escolhe.</p></li>
+      <li><h3>Pagamento seguro.</h3><p>Cartão ou Pix pela Stripe, com recibo e confirmação automática.</p></li>
+      <li><h3>Nada no ar sem o seu ok.</h3><p>Você aprova cada entrega antes de ela ir ao ar.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="chamada-final" aria-labelledby="titulo-final-sobre">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Vamos conversar</p>
+    <h2 class="display mt-2" id="titulo-final-sobre">O próximo momento certo é o seu.</h2>
+    <div class="botoes">
+      {{ m.botao('Contratar', '/contratar/', 'limao') }}
+      {{ m.botao('Ver o portfólio', '/portfolio/', 'contorno') }}
+    </div>
+  </div>
+</section>
+{% endblock %}

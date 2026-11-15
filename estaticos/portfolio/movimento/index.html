@@ -1,0 +1,484 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Káiros em Movimento</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=League+Spartan:wght@500..900&display=swap">
+<link rel="stylesheet" href="video.css">
+<style>
+  /* Layout: uma coluna de leitura (até 1120 px); o vídeo ocupa a coluna inteira;
+     o roteiro usa linhas de duas colunas (quadros | descrição) que viram uma no celular. */
+  :root {
+    color-scheme: dark;
+    --ink: #0B0B0C;
+    --paper: #F2F2EE;
+    --lime: #C6FF3D;
+    --g1: #121213;
+    --g2: #19191A;
+    --g3: #242425;
+    --g4: #393939;
+    --g6: #9F9F9C;
+    --display: 'League Spartan', 'Futura', 'Century Gothic', sans-serif;
+    --text: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+    --mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+    --r: 10px;
+  }
+  html { background: var(--ink); }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font: 400 17px/1.6 var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 40px 96px;
+  }
+  a { color: var(--paper); text-underline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+
+  /* cabeçalho */
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .logo { display: inline-flex; align-items: flex-end; gap: 4px; font: 800 44px/0.8 var(--display); letter-spacing: -0.02em; }
+  .logo .u { display: inline-block; width: 22px; height: 4px; margin-bottom: -2px; background: var(--lime); border-radius: 1px; }
+  .meta { font: 500 13px/1.4 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--g6); }
+  h1 {
+    margin: 56px 0 0;
+    font: 800 clamp(44px, 8vw, 104px)/0.92 var(--display);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .lede { max-width: 62ch; margin: 22px 0 36px; font-size: 19px; color: var(--g6); }
+  .lede strong { color: var(--paper); font-weight: 600; }
+  .tip { margin: 14px 0 0; font-size: 14px; color: var(--g6); }
+
+  /* seções */
+  section { margin-top: 112px; }
+  .eyebrow { margin: 0 0 12px; font: 600 13px/1.4 var(--text); letter-spacing: .14em; text-transform: uppercase; color: var(--g6); }
+  h2 { margin: 0 0 20px; font: 800 clamp(30px, 4.2vw, 46px)/1 var(--display); letter-spacing: -0.02em; text-wrap: balance; }
+  h3 { margin: 0 0 8px; font: 700 22px/1.15 var(--display); letter-spacing: -0.01em; text-wrap: balance; }
+  p { margin: 0 0 14px; }
+  .intro { max-width: 65ch; color: var(--g6); }
+
+  /* a ideia */
+  .ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 36px; }
+  .ideas p { color: var(--g6); margin: 0; }
+  .ideas .n { display: block; margin-bottom: 14px; padding-top: 14px; border-top: 2px solid var(--g3); font: 600 13px/1 var(--text); color: var(--g6); letter-spacing: .08em; }
+
+  /* roteiro */
+  .scenes { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 0; }
+  .scene {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 32px;
+    padding: 36px 0;
+    border-top: 2px solid var(--g3);
+  }
+  .scene:last-child { border-bottom: 2px solid var(--g3); }
+  .scene-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+  .tc {
+    appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+    font: 600 14px/1 var(--text); color: var(--g6); font-variant-numeric: tabular-nums; letter-spacing: .02em;
+  }
+  .tc:hover { color: var(--paper); }
+  .scene-name { font: 800 30px/1 var(--display); letter-spacing: -0.02em; }
+  .scene-name::after {
+    content: ''; display: inline-block; width: 15px; height: 4px; margin-left: 5px;
+    background: var(--lime); border-radius: 1px; opacity: 0;
+  }
+  .scene.is-on .scene-name::after { opacity: 1; }
+  .scene.is-on .tc { color: var(--paper); }
+  .frames { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .frame {
+    appearance: none; display: block; width: 100%; padding: 0; margin: 0;
+    border: 2px solid var(--g3); border-radius: 6px; overflow: hidden;
+    background: var(--g1); cursor: pointer; position: relative;
+  }
+  .frame:hover { border-color: var(--g4); }
+  .frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .frame span {
+    position: absolute; left: 6px; bottom: 6px; padding: 3px 6px; border-radius: 4px;
+    background: var(--ink); color: var(--g6); font: 600 11px/1 var(--text); font-variant-numeric: tabular-nums;
+  }
+  dl.spec { margin: 0; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 10px 20px; }
+  dl.spec dt { font: 600 13px/1.6 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--g6); padding-top: 2px; }
+  dl.spec dd { margin: 0; }
+  dl.spec dd q { quotes: '“' '”'; font-weight: 600; }
+
+  /* tabelas */
+  .table-wrap { overflow-x: auto; margin-top: 28px; border-top: 2px solid var(--g3); }
+  table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  th, td { text-align: left; vertical-align: top; padding: 14px 18px 14px 0; border-bottom: 1px solid var(--g3); }
+  th { font: 600 13px/1.4 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--g6); }
+  td:first-child { font-weight: 600; min-width: 190px; }
+  td code, li code, p code { font: 500 14px/1.4 var(--mono); color: var(--paper); background: var(--g2); padding: 2px 6px; border-radius: 4px; white-space: nowrap; }
+  .avoid { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; padding: 0; list-style: none; color: var(--g6); }
+  .avoid li { padding-left: 20px; position: relative; }
+  .avoid li::before { content: '×'; position: absolute; left: 0; color: var(--g6); font-weight: 600; }
+
+  /* produção */
+  .tracks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; margin-top: 36px; }
+  .tracks > div { min-width: 0; }
+  ol.steps { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+  ol.steps li::marker { color: var(--g6); font-weight: 600; }
+  pre {
+    margin: 14px 0 22px; padding: 16px 18px; overflow-x: auto;
+    background: var(--g1); border: 2px solid var(--g3); border-radius: var(--r);
+    font: 400 13.5px/1.6 var(--mono); color: var(--paper); tab-size: 2;
+  }
+  pre .c { color: var(--g6); }
+  .label { display: block; margin-top: 22px; font: 600 13px/1.4 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--g6); }
+
+  /* pendências */
+  .todo { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 0; }
+  .todo li { display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 24px; padding: 18px 0; border-top: 1px solid var(--g3); }
+  .todo li:last-child { border-bottom: 1px solid var(--g3); }
+  .todo b { font-weight: 600; }
+  .todo span { color: var(--g6); }
+  footer { margin-top: 96px; color: var(--g6); font-size: 14px; }
+
+  @media (max-width: 600px) {
+    table.stack, table.stack tbody, table.stack tr, table.stack td { display: block; width: auto; }
+    table.stack thead { display: none; }
+    table.stack tr { padding: 14px 0; border-bottom: 1px solid var(--g3); }
+    table.stack td { border: 0; padding: 0; min-width: 0; }
+    table.stack td:first-child { margin-bottom: 4px; }
+  }
+  @media (max-width: 860px) {
+    .ideas, .tracks { grid-template-columns: minmax(0, 1fr); }
+    .scene { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .avoid { grid-template-columns: minmax(0, 1fr); }
+    .todo li { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 16px; }
+    dl.spec { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+    dl.spec dd { margin-bottom: 10px; }
+    section { margin-top: 80px; }
+  }
+</style>
+
+<main class="wrap">
+  <header class="head">
+    <div class="logo" aria-label="Káiros"><span>K</span><span class="u"></span></div>
+    <span class="meta">Vídeo institucional · 16:9 · 34 s · 60 fps · com som</span>
+  </header>
+
+  <h1>Káiros em Movimento</h1>
+  <p class="lede">O traço verde do logo vira um <strong>cursor vivo</strong>: cai, quica, digita a marca, faz a busca do cliente, desenha um site, escolhe um plano e volta a ser logo. Uma ideia só, do primeiro ao último quadro.</p>
+
+  <div id="video"></div>
+  <p class="tip">Clique no vídeo para tocar, com som. Em 0,5× ou 0,25× o som desliga e dá para estudar cada curva; com o vídeo selecionado, as setas avançam quadro a quadro.</p>
+
+  <section id="ideia" aria-labelledby="t-ideia">
+    <p class="eyebrow">Conceito</p>
+    <h2 id="t-ideia">O “_” do logo é o personagem</h2>
+    <p class="intro">O vídeo de referência tem tipografia cinética, transições contínuas, squash &amp; stretch e cartões de interface. Aqui tudo isso acontece com um único elemento da marca, para que o vídeo pareça da Káiros e não de um banco de modelos.</p>
+    <div class="ideas">
+      <div><span class="n">Linguagem do serviço</span><p>Quem faz site trabalha com cursor. Ele digita, seleciona, desenha e clica: cada gesto do vídeo é um gesto real de quem constrói sites.</p></div>
+      <div><span class="n">Um único verde</span><p>Só o cursor é verde. Ele ocupa cerca de 1% da tela e o olho sempre sabe para onde ir, como pede a regra do destaque único.</p></div>
+      <div><span class="n">Começa e termina no logo</span><p>Abre com o traço caindo e digitando “Káiros_”; fecha com o mesmo traço sob um K de 720 px. O mesmo gesto, em outra escala, amarra o vídeo.</p></div>
+    </div>
+  </section>
+
+  <section id="roteiro" aria-labelledby="t-roteiro">
+    <p class="eyebrow">Roteiro e storyboard</p>
+    <h2 id="t-roteiro">Seis cenas em 34 segundos</h2>
+    <p class="intro">O vídeo inteiro está numa grade de 120 BPM, e a trilha é gerada a partir dos mesmos tempos da animação: cada som cai no quadro exato do gesto. Clique num quadro para levar o vídeo até ele.</p>
+
+    <ol class="scenes">
+      <li class="scene" data-cena="abertura">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="0">0:00 – 0:04,0</button><span class="scene-name">Abertura</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="1.0"><img src="quadros/q01.jpg" alt="O traço verde amassado no chão, no primeiro impacto" loading="lazy" width="640" height="360"><span>0:01,0</span></button>
+            <button class="frame" type="button" data-t="2.9"><img src="quadros/q02.jpg" alt="A palavra Káiros com o traço verde depois do s" loading="lazy" width="640" height="360"><span>0:02,9</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>Tela preta. O traço verde cai do alto, quica três vezes e para. O K nasce da linha de base e empurra o traço; “áiros” é digitado em semicolcheias. O cursor pisca uma vez.</dd>
+          <dt>Texto</dt><dd><q>Káiros_</q></dd>
+          <dt>Técnica</dt><dd>Squash &amp; stretch clássico: estica 80/135 % na queda, amassa 155/45 % no impacto, volta com elástico. Gravidade com <code>power2.in</code>. Câmera aproxima 3,5 %.</dd>
+          <dt>Transição</dt><dd>As letras despencam girando; o traço encolhe e vira o cursor do campo de busca.</dd>
+          <dt>Som</dt><dd>Pad em Lá menor entrando devagar, três impactos graves nos quiques (1,0 · 1,5 · 1,75 s) e o nome tocando uma escala que sobe, uma nota por letra.</dd>
+        </dl>
+      </li>
+
+      <li class="scene" data-cena="gancho">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="4.0">0:04,0 – 0:09,5</button><span class="scene-name">Gancho</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="6.0"><img src="quadros/q03.jpg" alt="Campo de busca com dentista perto de mim digitado" loading="lazy" width="640" height="360"><span>0:06,0</span></button>
+            <button class="frame" type="button" data-t="8.6"><img src="quadros/q04.jpg" alt="A pergunta O que ele encontra em letras gigantes" loading="lazy" width="640" height="360"><span>0:08,6</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>A legenda sobe de uma fresta, um campo de busca se abre e o cursor digita com ritmo humano. No Enter o campo amassa e volta. Aparecem três resultados em esqueleto, os concorrentes. Tudo recua e a pergunta cai letra por letra.</dd>
+          <dt>Texto</dt><dd><q>Antes de chamar, seu cliente pesquisa.</q> · <q>dentista perto de mim</q> · <q>O que ele encontra?</q></dd>
+          <dt>Técnica</dt><dd>Revelação por máscara, digitação com intervalos irregulares, letras que caem esticadas e amassam ao pousar, profundidade por recuo (escala 93 % e opacidade 8 %).</dd>
+          <dt>Transição</dt><dd>“Selecionar tudo” num bloco cinza e apagar no tempo forte (9,5 s), um corte seco de editor de texto.</dd>
+          <dt>Som</dt><dd>Entra o groove em meio-tempo (bumbo, chimbal e palmas). Teclado na busca, Enter grave, três bolhas nos resultados, uma batida por letra que cai e rufo até o corte seco em 9,5 s.</dd>
+        </dl>
+      </li>
+
+      <li class="scene" data-cena="construcao">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="9.5">0:09,5 – 0:17,2</button><span class="scene-name">Construção</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="10.5"><img src="quadros/q05.jpg" alt="O cursor desenhando o contorno de uma janela de navegador" loading="lazy" width="640" height="360"><span>0:10,5</span></button>
+            <button class="frame" type="button" data-t="15.4"><img src="quadros/q06.jpg" alt="Site em esqueleto com o botão Agendar verde sendo clicado" loading="lazy" width="640" height="360"><span>0:15,4</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>O cursor contorna uma janela de navegador como uma caneta e gira nos cantos. Digita o endereço, depois pousa ao lado de cada bloco (menu, título, texto, imagem) e o bloco nasce dele. No fim, o traço cresce e vira o botão; a seta clica.</dd>
+          <dt>Texto</dt><dd><q>A Káiros cria o seu site.</q> · <q>seunegocio.com.br</q> · <q>Agendar</q></dd>
+          <dt>Técnica</dt><dd>Traçado com <code>stroke-dashoffset</code> sincronizado ao cursor, saltos em arco com antecipação, blocos com <code>expo.out</code>, botão com squash no clique e onda.</dd>
+          <dt>Transição</dt><dd>O cursor se solta do botão, que perde o verde, e o site inteiro encolhe para dentro do primeiro cartão (match cut).</dd>
+          <dt>Som</dt><dd>Meio segundo de silêncio e a volta no tempo forte (10 s) com bateria, baixo e acordes. Risco de caneta no contorno, digitação do endereço, uma nota a cada pouso do cursor e clique de mouse com um sininho de confirmação.</dd>
+        </dl>
+      </li>
+
+      <li class="scene" data-cena="planos">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="17.25">0:17,2 – 0:23,7</button><span class="scene-name">Planos</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="17.5"><img src="quadros/q07.jpg" alt="Três cartões entrando em 3D" loading="lazy" width="640" height="360"><span>0:17,5</span></button>
+            <button class="frame" type="button" data-t="22.0"><img src="quadros/q08.jpg" alt="Cartão Operação em destaque com o cursor depois do nome" loading="lazy" width="640" height="360"><span>0:22,0</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>O site vira a miniatura do cartão Vitrine; Conexão e Operação giram em 3D. O cursor digita “Vitrine” e depois salta de cartão em cartão como indicador de seleção. O cartão sob a seta sobe e a miniatura ganha vida: rolagem, linhas de conexão, painel.</dd>
+          <dt>Texto</dt><dd><q>Planos</q> · <q>Vitrine</q> · <q>Conexão</q> · <q>Operação</q></dd>
+          <dt>Técnica</dt><dd>Rotação Y com perspectiva e <code>back.out</code>, hover com elevação de 20 px e escala 104 %, linhas desenhadas, barras que crescem com sobra.</dd>
+          <dt>Transição</dt><dd>O cursor salta para cima e os cartões despencam girando.</dd>
+          <dt>Som</dt><dd>Entra um arpejo em semicolcheias. Whoosh nos giros, toque curto no hover, “zip” nas linhas, bolhas nos nós e sete notas subindo junto com as barras.</dd>
+        </dl>
+      </li>
+
+      <li class="scene" data-cena="no-ar">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="23.75">0:23,7 – 0:27,7</button><span class="scene-name">No ar</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="25.7"><img src="quadros/q09.jpg" alt="Frase Seu site no Google" loading="lazy" width="640" height="360"><span>0:25,7</span></button>
+            <button class="frame" type="button" data-t="26.95"><img src="quadros/q10.jpg" alt="Frase Seu site no ar" loading="lazy" width="640" height="360"><span>0:26,9</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>“Seu site” fica parado; a segunda linha gira como um letreiro. O cursor desliza, esticando, até o fim de cada palavra. Em “no ar.” a frase inteira amassa no pouso.</dd>
+          <dt>Texto</dt><dd><q>Seu site</q> + <q>no celular.</q> → <q>no Google.</q> → <q>no ar.</q></dd>
+          <dt>Técnica</dt><dd>Rolagem por máscara com stretch vertical nas letras (escala Y 130 % → 100 %), <code>back.out(1.4)</code> e cursor com deslize elástico.</dd>
+          <dt>Transição</dt><dd>As letras são sugadas pelo cursor, que salta para o lugar do logo.</dd>
+          <dt>Som</dt><dd>Subida em Sol com rufo acelerando e riser, um swipe a cada troca de palavra; “no ar.” resolve em Dó com prato e bumbo, e um som reverso puxa o próximo golpe.</dd>
+        </dl>
+      </li>
+
+      <li class="scene" data-cena="assinatura">
+        <div>
+          <div class="scene-head"><button class="tc" type="button" data-t="27.75">0:27,7 – 0:34,0</button><span class="scene-name">Assinatura</span></div>
+          <div class="frames">
+            <button class="frame" type="button" data-t="28.45"><img src="quadros/q11.jpg" alt="O K gigante nascendo com o traço verde esticado" loading="lazy" width="640" height="360"><span>0:28,4</span></button>
+            <button class="frame" type="button" data-t="34.0"><img src="quadros/q12.jpg" alt="Quadro final com o logo K gigante e a coluna com a chamada e os planos" loading="lazy" width="640" height="360"><span>0:34,0</span></button>
+          </div>
+        </div>
+        <dl class="spec">
+          <dt>Na tela</dt><dd>O cursor cai pesado e amassa. O K gigante brota da linha de base. À direita sobem a assinatura, a chamada e os três planos, alinhados ao topo e à base do K. O cursor pisca no tempo até o fim.</dd>
+          <dt>Texto</dt><dd><q>Káiros · criação de sites</q> · <q>Escolha seu plano.</q> · Vitrine, Conexão, Operação · contato (quando definido)</dd>
+          <dt>Técnica</dt><dd>Contraste extremo de escala (K de 720 px contra texto de 30 px), composição assimétrica, câmera que respira 2 %.</dd>
+          <dt>Som</dt><dd>Impacto grave e acorde de Dó com nona no pouso do cursor, notas suaves em cada linha que aparece, um tique discreto por piscada e fade no fim.</dd>
+        </dl>
+      </li>
+    </ol>
+  </section>
+
+  <section id="marca" aria-labelledby="t-marca">
+    <p class="eyebrow">Tradução da marca</p>
+    <h2 id="t-marca">Da identidade da Káiros para o movimento</h2>
+    <p class="intro">Cada regra da sua skill de marca virou uma decisão de animação.</p>
+    <div class="table-wrap">
+      <table class="stack">
+        <thead><tr><th scope="col">Na marca</th><th scope="col">No vídeo</th></tr></thead>
+        <tbody>
+          <tr><td>Logo “K_” com traço verde</td><td>O traço é o personagem: cursor, caneta, botão e indicador de seleção. O K aparece no começo e no fim.</td></tr>
+          <tr><td>Quase preto domina</td><td>Fundo <code>#0B0B0C</code> do primeiro ao último quadro, sem degradê nem brilho.</td></tr>
+          <tr><td>Claro carrega o texto</td><td>Toda a tipografia em <code>#F2F2EE</code>; os cinzas da hierarquia são misturas do preto com o claro.</td></tr>
+          <tr><td>Verde é destaque, nunca fundo</td><td>Só o cursor é <code>#C6FF3D</code>: um elemento por quadro, cerca de 1 % da tela. Quando vira botão, perde o verde ao se soltar.</td></tr>
+          <tr><td>Planos Vitrine, Conexão e Operação</td><td>Três cartões cujas miniaturas crescem em complexidade: site, site com canais, site com painel.</td></tr>
+          <tr><td>Nível 3: texto como imagem</td><td>Palavras de 300 px que caem, amassam, giram e são sugadas pelo cursor; informação pequena e alinhada nas bordas.</td></tr>
+          <tr><td>Assimetria e contraste de escala</td><td>As frases gigantes ficam presas à margem esquerda de 144 px, com o vazio do lado direito; o quadro final opõe um K de 720 px a uma coluna de texto de 30 px.</td></tr>
+          <tr><td>Textura discreta</td><td>Grão de filme trocando a 8 quadros por segundo, em luz suave.</td></tr>
+          <tr><td>Som com a mesma contenção</td><td>Eletrônica limpa em Lá menor que termina em Dó maior. Um efeito por gesto do cursor, e as notas dos efeitos saem da mesma escala da trilha.</td></tr>
+          <tr><td>Duas famílias, mesmo raio, mesmo traço</td><td>League Spartan nos títulos, Instrument Sans no texto. Raio de 10 px em campos, cartões e botão; linhas de 2 px.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="avoid" aria-label="O que ficou de fora">
+      <li>Degradê roxo e azul, neon, vidro fosco</li>
+      <li>Ícones genéricos de foguete, lâmpada ou alvo</li>
+      <li>Frases vazias como “transforme seu negócio”</li>
+      <li>Números inventados, como prazos e percentuais</li>
+      <li>Logos de WhatsApp, Instagram ou Google desenhados</li>
+      <li>Mais de um elemento verde no mesmo quadro</li>
+    </ul>
+  </section>
+
+  <section id="producao" aria-labelledby="t-producao">
+    <p class="eyebrow">Como produzir</p>
+    <h2 id="t-producao">Em código, ou no After Effects</h2>
+    <p class="intro">O vídeo desta página roda em HTML, CSS e GSAP e já foi exportado em MP4 pelo mesmo código. O som também: <code>audio.js</code> sintetiza bateria, baixo, acordes e efeitos a partir das pistas que cada cena registra. Se a sua equipe prefere o After Effects, a coluna da direita mostra como chegar ao mesmo resultado.</p>
+
+    <div class="tracks">
+      <div>
+        <h3>Código (pronto)</h3>
+        <p>Cada cena é uma função com tempos absolutos numa única timeline do GSAP. Como a timeline pode ir para qualquer instante, a exportação tira um print por quadro: o MP4 sai igual em qualquer máquina.</p>
+        <span class="label">Pasta do projeto</span>
+<pre>kairos-video/
+  video.js     <span class="c">CONFIG (textos, cores, contato) + 6 cenas</span>
+  audio.js     <span class="c">trilha e efeitos sintetizados</span>
+  video.css    <span class="c">palco 1920×1080 e player</span>
+  index.html   <span class="c">prévia local</span>
+  render.js    <span class="c">Playwright + ffmpeg → MP4</span>
+  fonts/       <span class="c">League Spartan e Instrument Sans</span>
+  out/         <span class="c">MP4 com som + trilha.wav</span></pre>
+        <span class="label">Comandos</span>
+<pre>npm install
+npx playwright install chromium
+npm run preview    <span class="c"># abre em http://127.0.0.1:5173</span>
+npm run render     <span class="c"># MP4 1080p 60 fps</span>
+npm run render:30  <span class="c"># MP4 1080p 30 fps</span>
+npm run audio      <span class="c"># refaz só o som (segundos)</span></pre>
+        <span class="label">O salto do cursor (trecho de video.js)</span>
+<pre><span class="c">// antecipação → estica → amassa → assenta</span>
+tl.to(c, { scaleX: 1.22, scaleY: 0.72, duration: 0.08 }, t)
+  .to(c, { x, duration: d, ease: 'power1.inOut' }, t + 0.08)
+  .to(c, { y: topo, duration: d / 2, ease: 'power2.out' }, t + 0.08)
+  .to(c, { y, duration: d / 2, ease: 'power2.in' }, t + 0.08 + d / 2)
+  .to(c, { scaleX: 0.86, scaleY: 1.22, duration: d / 2,
+           ease: 'power2.in' }, t + 0.08 + d / 2)
+  .to(c, { scaleX: 1.45, scaleY: 0.55, duration: 0.06 }, t + 0.08 + d)
+  .to(c, { scaleX: 1, scaleY: 1, duration: 0.5,
+           ease: 'elastic.out(1.1, 0.35)' });</pre>
+        <p>Na tipografia cinética, cada letra vira um elemento separado, mas a posição dela é medida no texto inteiro. Assim o kerning da fonte continua certo mesmo animando letra por letra.</p>
+      </div>
+
+      <div>
+        <h3>After Effects</h3>
+        <ol class="steps">
+          <li>Composição 1920×1080, 60 fps (ou 30), 34 s, fundo <code>#0B0B0C</code>. Guias na margem de 144 px e nas linhas de base.</li>
+          <li>Cursor: camada de forma 184×34 px, raio 6. Leve o ponto de âncora para a base (Pan Behind) para o squash acontecer no chão.</li>
+          <li>Quique: separe X e Y. X linear; Y com Easy Ease na subida e aceleração na queda. Escala 80/135 % na queda e 155/45 % no impacto, por 2 quadros a 60 fps.</li>
+          <li>Sobra automática depois do pouso, com a expression “inertial bounce” na Escala.</li>
+          <li>Digitação com expression no Source Text e o cursor preso ao fim do texto com <code>sourceRectAtTime()</code>.</li>
+          <li>Letras que sobem da fresta: Animator de Posição com Range Selector por caractere e Track Matte num retângulo.</li>
+          <li>Contorno do navegador: Trim Paths (End de 0 a 100 %) e o cursor com Auto-Orient ao longo do caminho.</li>
+          <li>Cartões: camadas 3D, câmera de 50 mm, rotação Y de −75° a 0° e Motion Blur ligado (180°). Sem sombra projetada.</li>
+          <li>Grão: Fractal Noise em Soft Light a 40 % com Posterize Time em 8.</li>
+          <li>Som: importe <code>out/trilha.wav</code> no início da composição. Ela já está no tempo do vídeo e em −14 LUFS; as partes separadas são <code>trilha-musica.wav</code> e <code>trilha-efeitos.wav</code>.</li>
+        </ol>
+        <span class="label">Sobra (inertial bounce) — na Escala</span>
+<pre>amp = .06; freq = 2.5; decay = 6;
+n = 0;
+if (numKeys > 0) {
+  n = nearestKey(time).index;
+  if (key(n).time > time) n--;
+}
+t = (n == 0) ? 0 : time - key(n).time;
+if (n > 0 &amp;&amp; t &lt; 1) {
+  v = velocityAtTime(key(n).time - thisComp.frameDuration / 10);
+  value + v * amp * Math.sin(freq * t * 2 * Math.PI) / Math.exp(decay * t);
+} else value;</pre>
+        <span class="label">Digitação — no Source Text da camada “Busca”</span>
+<pre>txt = "dentista perto de mim";
+n = Math.floor((time - inPoint) * 18);  <span class="c">// 18 letras/s</span>
+txt.substr(0, Math.max(0, n));</pre>
+        <span class="label">Cursor no fim do texto — na Posição do cursor</span>
+<pre>L = thisComp.layer("Busca");
+r = L.sourceRectAtTime(time, false);
+p = L.toComp([r.left + r.width, 0]);
+[p[0] + 8, value[1]];</pre>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 56px">As mesmas curvas em três ferramentas</h3>
+    <p class="intro">No After Effects, cole o cubic-bezier num plugin como Flow ou ajuste a influência no Graph Editor (saída do primeiro keyframe, entrada do segundo).</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Uso no vídeo</th><th scope="col">GSAP</th><th scope="col">CSS cubic-bezier</th><th scope="col">AE · influência</th></tr></thead>
+        <tbody>
+          <tr><td>Entrada de texto e blocos</td><td><code>expo.out</code></td><td><code>0.16, 1, 0.3, 1</code></td><td>saída 16 % · entrada 70 %, velocidade 0</td></tr>
+          <tr><td>Queda (gravidade)</td><td><code>power2.in</code></td><td><code>0.32, 0, 0.67, 0</code></td><td>saída 32 %, velocidade 0 · entrada 33 %</td></tr>
+          <tr><td>Subida do quique</td><td><code>power2.out</code></td><td><code>0.33, 1, 0.68, 1</code></td><td>saída 33 % · entrada 32 %, velocidade 0</td></tr>
+          <tr><td>Câmera e respiração</td><td><code>sine.inOut</code></td><td><code>0.37, 0, 0.63, 1</code></td><td>37 % · 37 %, velocidades 0</td></tr>
+          <tr><td>Troca de cena</td><td><code>expo.inOut</code></td><td><code>0.87, 0, 0.13, 1</code></td><td>87 % · 87 %, velocidades 0</td></tr>
+          <tr><td>Pouso com sobra</td><td><code>back.out(1.7)</code></td><td><code>0.34, 1.56, 0.64, 1</code></td><td>use a expression de sobra</td></tr>
+          <tr><td>Assentamento elástico</td><td><code>elastic.out(1, 0.35)</code></td><td>sem equivalente</td><td>use a expression de sobra</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top: 56px">Exportação</h3>
+    <div class="table-wrap">
+      <table class="stack">
+        <thead><tr><th scope="col">Destino</th><th scope="col">Formato</th><th scope="col">Configuração</th></tr></thead>
+        <tbody>
+          <tr><td>Site, YouTube, apresentação</td><td>1920×1080 · 60 fps</td><td>H.264 a cerca de 10 Mbps e som AAC 256 kbps em −14 LUFS (é o MP4 pronto)</td></tr>
+          <tr><td>LinkedIn, WhatsApp</td><td>1920×1080 · 30 fps</td><td>H.264 a 10–12 Mbps, mesmo som (<code>npm run render:30</code>)</td></tr>
+          <tr><td>Reels e Stories</td><td>1080×1920 · 30 fps</td><td>Pede uma versão vertical recomposta, com texto e logo longe do topo e da base</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pendencias" aria-labelledby="t-pend">
+    <p class="eyebrow">Antes de publicar</p>
+    <h2 id="t-pend">O que ainda depende de você</h2>
+    <ul class="todo">
+      <li><b>Cores</b><span>Usei os valores aproximados da skill (#0B0B0C, #F2F2EE, #C6FF3D). Com o arquivo do logo, troco pelos exatos.</span></li>
+      <li><b>Logo</b><span>O “K_” foi recriado em tipo. Com o SVG oficial, ele entra no lugar.</span></li>
+      <li><b>Fontes</b><span>League Spartan e Instrument Sans são sugestão minha, já que a marca ainda não tem fontes oficiais.</span></li>
+      <li><b>Contato no encerramento</b><span>Ficou vazio: a skill só traz o @ pessoal. Com o @ ou site da Káiros, ele aparece embaixo dos planos.</span></li>
+      <li><b>Textos</b><span>Todas as frases são sugestão. Confirme principalmente “no Google.” e o que cada miniatura sugere sobre os planos (site, canais, painel).</span></li>
+      <li><b>Trilha</b><span>É original e gerada em código, sem custo de licença. Se preferir uma música licenciada, escolha uma em 120 BPM e mantenha por cima a parte de efeitos (<code>trilha-efeitos.wav</code>).</span></li>
+    </ul>
+  </section>
+
+  <footer>Feito em HTML, CSS e GSAP 3.13 · som sintetizado em código · palco de 1920×1080 · exportado quadro a quadro com Playwright e ffmpeg.</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="audio.js"></script>
+<script src="video.js"></script>
+<script>
+  (function () {
+    const host = document.getElementById('video');
+    const rows = Array.from(document.querySelectorAll('.scene'));
+    if (!window.gsap || !window.KairosVideo) {
+      host.innerHTML = '<p class="tip">O vídeo não carregou porque a biblioteca de animação não respondeu. Recarregue a página.</p>';
+      return;
+    }
+    KairosVideo.create(host, { controls: true }).then(function (v) {
+      const go = function (t) {
+        v.pause();
+        v.seek(t);
+        host.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+      document.querySelectorAll('[data-t]').forEach(function (b) {
+        b.addEventListener('click', function () { go(parseFloat(b.dataset.t)); });
+      });
+      const ranges = rows.map(function (row) {
+        return v.scenes.find(function (s) { return s.id === row.dataset.cena; });
+      });
+      v.onTime(function (t) {
+        rows.forEach(function (row, i) {
+          const s = ranges[i];
+          const last = i === rows.length - 1;
+          row.classList.toggle('is-on', !!s && t >= s.inicio && (t < s.fim || (last && t >= s.fim)));
+        });
+      });
+    });
+  })();
+</script>
+
+</body></html>

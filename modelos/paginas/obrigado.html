@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<section class="topo-pagina" data-obrigado>
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span><span data-estado>Pagamento recebido</span></p>
+    <h1 class="display" data-titulo>Pronto, recebemos.</h1>
+    <p class="lead" data-detalhe>O recibo vai para o seu e-mail e a equipe já recebeu o aviso.</p>
+    <div class="botoes">
+      <a class="botao limao" data-whats-obrigado href="{{ 'Olá! Acabei de pagar pelo site da Káiros Dynamis.'|wa }}" target="_blank" rel="noopener"><span>Avisar no WhatsApp e combinar os próximos passos</span>{{ m.seta_diag() }}</a>
+      {{ m.botao('Voltar para o início', '/', 'contorno') }}
+    </div>
+  </div>
+</section>
+<section class="secao curta">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>O que acontece agora</p>
+    <ol class="passos mt-3" role="list">
+      <li><h3>Confirmação</h3><p>O recibo da Stripe chega no seu e-mail. No Pix, a confirmação vem assim que o banco compensa.</p></li>
+      <li><h3>Conversa</h3><p>A equipe chama você no WhatsApp para pegar textos, fotos e o que mais precisar.</p></li>
+      <li><h3>Produção</h3><p>Você acompanha cada passo e aprova antes de qualquer coisa ir ao ar.</p></li>
+      <li><h3>Entrega</h3><p>Tudo no ar, com o restante combinado pago na entrega.</p></li>
+    </ol>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}{% endblock %}
+{% block scripts %}
+<script src="{{ asset('assets/js/catalogo.js') }}" defer></script>
+<script src="{{ asset('assets/js/pagamento.js') }}" defer></script>
+{% endblock %}

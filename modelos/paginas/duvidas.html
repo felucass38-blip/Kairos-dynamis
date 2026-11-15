@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block conteudo %}
+{% set grupos = [
+  ('Geral', [
+    ('O que a Káiros Dynamis faz?', 'Cria sites, sistemas sob medida para pequenos negócios, cuida do Instagram e faz cartões e placas com NFC. Tudo com uma equipe só, que atende pelo WhatsApp.'),
+    ('Onde vocês ficam? Atendem outras cidades?', 'A equipe fica em Guarulhos (SP). Como o atendimento é pelo WhatsApp, dá para atender negócios de qualquer cidade do Brasil.'),
+    ('Como é o atendimento?', 'Pelo WhatsApp, do primeiro contato à entrega. Textos, fotos e ajustes são combinados na conversa, no seu tempo.'),
+  ]),
+  ('Sites', [
+    ('Posso ver o site antes de contratar?', 'Pode. No Káiros Studio você digita o nome do seu negócio e vê três propostas na hora, sem cadastro. Só depois decide.'),
+    ('Qual a diferença entre os planos?', 'O Vitrine é um site de uma página. O Conexão acrescenta reservas, agendamentos ou orçamentos pelo site e um painel para a equipe. O Operação acrescenta loja online com carrinho e painel de vendas.'),
+    ('Em quanto tempo o site fica pronto?', 'Depende do plano e de quando o material chega completo. O prazo é combinado na conversa, antes do pagamento.'),
+    ('Preciso ter domínio e hospedagem?', 'Depende do plano. A equipe explica o que está incluído e o que é contratado à parte, sempre antes de você pagar.'),
+  ]),
+  ('Sistemas', [
+    ('Como funciona o preço do sistema?', 'Todo sistema tem a base e você escolhe os módulos. O preço soma na hora na página de sistemas. Você paga 50% de entrada pelo site e o restante na entrega.'),
+    ('Tem mensalidade?', 'Sim, para hospedagem, suporte e atualizações. O valor é combinado na entrega, de acordo com os módulos e o tamanho da equipe.'),
+    ('Funciona no celular?', 'Funciona no celular, no tablet e no computador, pelo navegador, sem instalar nada.'),
+  ]),
+  ('Gestão de Instagram', [
+    ('Quanto custa a gestão?', 'Os planos vão de ' ~ (C.instagram.planos.essencial.mensal|reais) ~ ' a ' ~ (C.instagram.planos.crescimento.mensal|reais) ~ ' por mês, com assinatura pelo site.'),
+    ('Tem contrato mínimo?', 'Sim, de ' ~ C.instagram.minimo_meses ~ ' meses. Depois disso, você cancela quando quiser e a gestão vai até o fim do mês já pago.'),
+    ('Quem aprova o que vai ser publicado?', 'Você. Nada é publicado sem o seu ok.'),
+  ]),
+  ('Pagamento', [
+    ('Quais formas de pagamento vocês aceitam?', 'Cartão e Pix, pelo próprio site, numa página segura da Stripe. A assinatura do Instagram é cobrada no cartão, todo mês.'),
+    ('O pagamento é confirmado na hora?', 'No cartão, sim. No Pix, assim que o banco compensa, o que costuma levar poucos segundos. O recibo vai para o seu e-mail.'),
+    ('Vocês guardam os dados do meu cartão?', 'Não. Os dados do cartão ficam com a Stripe, que processa o pagamento. A Káiros Dynamis não vê nem guarda esses dados.'),
+    ('Já combinei um valor com a equipe. Como pago?', 'Pela página Pagar uma cobrança: digite o valor e, se tiver, o número da cobrança.'),
+  ]),
+  ('NFC', [
+    ('O que é um cartão NFC?', 'É um cartão ou placa com um chip, igual ao do pagamento por aproximação. O cliente encosta o celular e abre o link que você escolheu.'),
+    ('Quanto custa?', 'É sob orçamento, pelo modelo e pela quantidade. Peça pela página de NFC e a equipe responde no WhatsApp.'),
+  ]),
+] %}
+{% call m.topo('Dúvidas', 'Perguntas frequentes.', 'Sobre sites, sistemas, Instagram, NFC e pagamento. Não achou a sua? <a href="' ~ ('Olá! Tenho uma dúvida sobre a Káiros Dynamis.'|wa) ~ '" target="_blank" rel="noopener">Chame no WhatsApp</a>.') %}{% endcall %}
+<section class="secao curta">
+  <div class="caixa">
+    {% for nome, perguntas in grupos %}
+    <div class="faq-grupo grade">
+      <h2 class="subtitulo col-1-6" style="grid-column-end:span 4">{{ nome }}</h2>
+      <div class="faq col-6-12">
+        {% for p, r in perguntas %}<details><summary>{{ p }}</summary><div class="resposta"><p>{{ r }}</p></div></details>{% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{% for nome, perguntas in grupos %}{% set ultimo_grupo = loop.last %}{% for p, r in perguntas %}{"@type":"Question","name":{{ p|tojson }},"acceptedAnswer":{"@type":"Answer","text":{{ r|tojson }}}}{% if not (loop.last and ultimo_grupo) %},{% endif %}{% endfor %}{% endfor %}]}</script>
+{% endblock %}

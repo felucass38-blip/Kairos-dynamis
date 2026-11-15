@@ -1,0 +1,132 @@
+{% import 'parciais/macros.html' as m %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ pagina.titulo }}</title>
+<meta name="description" content="{{ pagina.descricao }}">
+<link rel="canonical" href="{{ pagina.canonica }}">
+{% if pagina.noindex %}<meta name="robots" content="noindex">{% endif %}
+{% if site.google_verificacao %}<meta name="google-site-verification" content="{{ site.google_verificacao }}">{% endif %}
+<meta name="theme-color" content="#0B0B0C">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="{{ pagina.tipo_og or 'website' }}">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Káiros Dynamis">
+<meta property="og:title" content="{{ pagina.titulo }}">
+<meta property="og:description" content="{{ pagina.descricao }}">
+<meta property="og:url" content="{{ pagina.canonica }}">
+<meta property="og:image" content="{{ site.url }}/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Káiros Dynamis: sites, sistemas e Instagram para negócios locais.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="{{ asset('assets/css/site.css') }}">
+<script>document.documentElement.classList.add('js')</script>
+{% block cabeca %}{% endblock %}
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="cabecalho">
+  <div class="caixa">
+    <a class="marca" href="/" aria-label="Káiros Dynamis, página inicial">
+      {{ m.logo_k() }}
+      <span class="marca-nome">Káiros<small>DYNAMIS</small></span>
+    </a>
+    <nav class="nav-principal" aria-label="Principal">
+      {% for chave, href, nome in nav %}<a href="{{ href }}"{% if pagina.nav == chave %} aria-current="page"{% endif %}>{{ nome }}</a>{% endfor %}
+    </nav>
+    <div class="cabecalho-acoes">
+      <a class="botao limao contratar-topo" href="/contratar/"><span>Contratar</span>{{ m.seta() }}</a>
+      <button class="botao-menu" type="button" data-abrir-menu aria-haspopup="dialog" aria-expanded="false" aria-controls="menu-celular">Menu<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 5.5h12M2 10.5h12"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<dialog class="menu-celular" id="menu-celular" aria-label="Menu">
+  <div class="caixa">
+    <div class="menu-topo">
+      <a class="marca" href="/" aria-label="Káiros Dynamis, página inicial">{{ m.logo_k() }}<span class="marca-nome">Káiros<small>DYNAMIS</small></span></a>
+      <button class="botao-menu" type="button" data-fechar-menu autofocus>Fechar<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg></button>
+    </div>
+    <nav aria-label="Todas as páginas">
+      <ol>
+        <li><a href="/">Início</a></li>
+        {% for chave, href, nome in nav %}<li><a href="{{ href }}">{{ nome }}{% if chave == 'sistemas' %}<small>novo</small>{% endif %}</a></li>{% endfor %}
+        <li><a href="/criar/">Criar meu site<small>grátis</small></a></li>
+        <li><a href="/duvidas/">Dúvidas</a></li>
+      </ol>
+    </nav>
+    <div class="menu-rodape">
+      <a class="botao limao" href="/contratar/"><span>Contratar</span>{{ m.seta() }}</a>
+      <a class="botao contorno" href="{{ 'Olá! Vim pelo site da Káiros Dynamis.'|wa }}" target="_blank" rel="noopener"><span>Falar no WhatsApp</span>{{ m.seta_diag() }}</a>
+      <p class="rotulo">WhatsApp {{ site.whatsapp_texto }} · @{{ site.instagram }}</p>
+    </div>
+  </div>
+</dialog>
+
+<main id="conteudo">
+{% block conteudo %}{% endblock %}
+</main>
+
+<footer class="rodape">
+  <div class="caixa">
+    <div class="colunas">
+      <p class="sobre-curto">Sites, sistemas e Instagram para negócios locais. Uma equipe só, em {{ site.cidade }}, atendendo pelo WhatsApp o Brasil inteiro.</p>
+      <nav aria-label="Serviços">
+        <h2>Serviços</h2>
+        <ul>
+          <li><a href="/sites/">Sites e planos</a></li>
+          <li><a href="/sistemas/">Sistemas por ramo</a></li>
+          <li><a href="/instagram/">Gestão de Instagram</a></li>
+          <li><a href="/nfc/">Cartões e placas NFC</a></li>
+          <li><a href="/criar/">Criar meu site grátis</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Káiros Dynamis">
+        <h2>Káiros Dynamis</h2>
+        <ul>
+          <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="/portfolio/">Portfólio</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/duvidas/">Dúvidas</a></li>
+          <li><a href="/pagar/">Pagar uma cobrança</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href="{{ 'Olá! Vim pelo site da Káiros Dynamis.'|wa }}" target="_blank" rel="noopener">WhatsApp {{ site.whatsapp_texto }}</a></li>
+          <li><a href="https://www.instagram.com/{{ site.instagram }}/" target="_blank" rel="noopener">Instagram @{{ site.instagram }}</a></li>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li><a href="/contratar/">Formulário de contato</a></li>
+        </ul>
+      </div>
+    </div>
+    {{ m.assinatura(true) }}
+    <div class="legal">
+      <span>© {{ site.ano }} Káiros Dynamis · {{ site.cidade }}</span>
+      <span><a href="/termos/">Termos de contratação</a> · <a href="/privacidade/">Privacidade</a></span>
+    </div>
+  </div>
+</footer>
+
+{% block barra %}
+<div class="barra-celular">
+  <a class="botao limao" href="/criar/"><span>Ver o meu site grátis</span>{{ m.seta() }}</a>
+</div>
+{% endblock %}
+
+<script src="{{ asset('assets/js/site.js') }}" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

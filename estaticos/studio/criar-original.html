@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Criar meu site grátis · Káiros Studio</title>
+<meta name="description" content="Monte grátis a prévia do site do seu negócio. O Káiros Studio cria três propostas na hora, com cores, fontes e textos para o seu ramo.">
+<link rel="canonical" href="https://kairos-sites.netlify.app/criar">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Káiros">
+<meta property="og:title" content="Káiros Studio: veja o site do seu negócio pronto agora">
+<meta property="og:description" content="Conte sobre o seu negócio e veja três propostas de site na hora. Grátis e sem compromisso.">
+<meta property="og:url" content="https://kairos-sites.netlify.app/criar">
+<meta property="og:image" content="https://kairos-sites.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Káiros: o site do seu negócio no ar em até 5 dias">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Káiros Studio: veja o site do seu negócio pronto agora">
+<meta name="twitter:description" content="Conte sobre o seu negócio e veja três propostas de site na hora. Grátis e sem compromisso.">
+<meta name="twitter:image" content="https://kairos-sites.netlify.app/og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=c188b620">
+<link rel="stylesheet" href="assets/css/studio.css?v=c188b620">
+
+</head>
+<body class="studio">
+
+<div class="app" id="app" data-m="painel">
+  <header class="abar">
+    <a class="logo" href="index.html" aria-label="Káiros, página inicial"><svg class="logo-k" viewBox="60 0 1240 729" aria-hidden="true" focusable="false"><path fill="currentColor" d="M717 729L395 314L686 0H509L224 320V0H74V729H224V485L299 407L538 729Z"/><rect x="780" y="599" width="520" height="130" fill="#C6FF3D"/></svg><span class="logo-nome">Káiros</span></a>
+    <span class="abar-t">Studio</span>
+    <div class="abar-r">
+      <div class="seg dev" id="devSeg" role="group" aria-label="Tamanho da prévia">
+        <button type="button" data-dev="desk" aria-pressed="true">Computador</button>
+        <button type="button" data-dev="phone" aria-pressed="false">Celular</button>
+      </div>
+      <a class="btn sm zap-studio" id="wantBtn" data-wa="studio" href="https://wa.me/5511962431350" target="_blank" rel="noopener" aria-label="Mandar a prévia no WhatsApp"><svg class="ic" aria-hidden="true" focusable="false"><use href="assets/img/icones.svg?v=c188b620#i-whatsapp"></use></svg><span class="so-largo">Mandar no WhatsApp</span></a>
+      <a class="btn go sm" id="contratarBtn" href="contratar.html?origem=studio">Quero esse site</a>
+    </div>
+  </header>
+
+  <div class="mtabs" role="tablist" aria-label="Alternar entre montar e ver o site">
+    <button type="button" role="tab" data-m="painel" aria-selected="true">Montar</button>
+    <button type="button" role="tab" data-m="palco" aria-selected="false">Ver site</button>
+  </div>
+
+  <aside class="painel" id="painel" aria-label="Montar o site">
+    <section id="vMontar">
+      <div class="voltar" id="voltarEd" hidden><button type="button" class="btn sm" id="voltarBtn"><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="assets/img/icones.svg?v=c188b620#i-volta"></use></svg>Voltar para a edição</button></div>
+      <div class="pn-head">
+        <h1>Monte o site do seu negócio</h1>
+        <p>Preencha o que souber. O Studio monta o design e os textos na hora, e você ajusta depois. Tudo fica só no seu navegador (<a href="privacidade.html" target="_blank">privacidade</a>).</p>
+      </div>
+
+      <div class="blk">
+        <h2 class="blk-t"><span>1</span>Seu negócio</h2>
+        <div class="field">
+          <label for="f-livre">Conte do seu jeito <small>(opcional)</small></label>
+          <textarea id="f-livre" rows="3" maxlength="1500" placeholder="Ex.: Sou a Cida, faço bolos e doces sob encomenda em Guarulhos. Atendo de terça a sábado pelo WhatsApp 11 99999-0000."></textarea>
+          <div class="livre-acts"><button type="button" class="btn sm" id="orgBtn">Preencher automaticamente</button><span class="status" id="orgStatus" role="status"></span></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-nome">Nome do negócio</label><input type="text" id="f-nome" maxlength="60" autocomplete="organization"></div>
+          <div class="field"><label for="f-ramo">Ramo</label><select id="f-ramo"></select></div>
+        </div>
+        <div class="two">
+          <div class="field"><label for="f-cidade">Cidade ou bairro</label><input type="text" id="f-cidade" maxlength="60"></div>
+          <div class="field"><label for="f-zap">WhatsApp</label><input type="text" id="f-zap" maxlength="20" inputmode="tel" placeholder="11 99999-0000"></div>
+        </div>
+        <div class="field"><label for="f-desc">O que o negócio faz</label><textarea id="f-desc" rows="3" maxlength="700" placeholder="Em uma ou duas frases."></textarea></div>
+        <div class="field"><label for="f-serv">Serviços ou produtos</label><textarea id="f-serv" rows="4" maxlength="900" placeholder="Um por linha. Com preço: Corte - R$ 40"></textarea></div>
+        <details class="mais">
+          <summary>Horário, endereço e Instagram</summary>
+          <div class="field"><label for="f-hora">Horário</label><input type="text" id="f-hora" maxlength="80" placeholder="Seg a sex, 9h às 18h"></div>
+          <div class="field"><label for="f-endereco">Endereço <small>(aparece com o botão Como chegar)</small></label><input type="text" id="f-endereco" maxlength="120"></div>
+          <div class="field"><label for="f-insta">Instagram</label><input type="text" id="f-insta" maxlength="60" placeholder="@seunegocio"></div>
+        </details>
+      </div>
+
+      <div class="blk">
+        <h2 class="blk-t"><span>2</span>Logo e fotos</h2>
+        <div class="up-row">
+          <div class="logo-box" id="logoBox">Sem logo</div>
+          <div>
+            <span class="btn sm file-btn">Enviar logo<input type="file" id="f-logo" accept="image/*" aria-label="Enviar logo"></span>
+            <button type="button" class="btn sm" id="rmLogo" hidden>Tirar</button>
+            <p class="hint" style="margin-top:8px">As cores do logo entram na paleta do site.</p>
+            <div class="cores-logo" id="coresLogo"></div>
+          </div>
+        </div>
+        <div class="fotos" id="fotos"></div>
+        <div class="livre-acts"><span class="btn sm file-btn">Adicionar fotos<input type="file" id="f-fotos" accept="image/*" multiple aria-label="Adicionar fotos"></span><span class="hint" id="fotosHint">Até 8 fotos. Elas ficam só no seu navegador.</span></div>
+      </div>
+
+      <div class="blk">
+        <h2 class="blk-t"><span>3</span>Estilo e cores</h2>
+        <p class="hint">Escolha um estilo ou deixe o Studio escolher pelo seu ramo.</p>
+        <div class="dirs" id="dirs"></div>
+        <div class="field"><span class="lbl">Cor da marca</span><div class="cor-op" id="corOp"></div></div>
+      </div>
+
+      <div class="blk blk-go">
+        <button type="button" class="btn go big" id="genBtn">Criar 3 propostas</button>
+        <p class="status" id="status" role="status"></p>
+      </div>
+    </section>
+
+    <section id="vEditar" hidden>
+      <div class="pn-head">
+        <h1>Ajuste o seu site</h1>
+        <p class="prop-nome" id="propNome">Proposta</p>
+        <p>Use os ajustes de um clique, mude cores e fontes, ou clique nos textos do site para editar direto.</p>
+      </div>
+      <div class="tabs" role="tablist" id="edTabs" style="margin-top:18px">
+        <button type="button" role="tab" data-t="ajustes" aria-selected="true">Ajustes</button>
+        <button type="button" role="tab" data-t="visual" aria-selected="false">Visual</button>
+        <button type="button" role="tab" data-t="secoes" aria-selected="false">Seções</button>
+        <button type="button" role="tab" data-t="dados" aria-selected="false">Dados e fotos</button>
+      </div>
+
+      <div class="tab" id="t-ajustes" style="margin-top:18px">
+        <p class="status" id="ajStatus" role="status"></p>
+        <div class="ajustes" id="ajustes"></div>
+      </div>
+
+      <div class="tab" id="t-visual" hidden style="margin-top:18px">
+        <div class="field"><span class="lbl">Paleta</span><div class="pal" id="pal"></div><p class="hint" id="palHint">Clique numa cor para trocar. Ajustamos o texto para continuar legível.</p></div>
+        <div class="field"><span class="lbl">Outras combinações a partir da cor dos botões</span><div class="vars" id="vars"></div></div>
+        <div class="field"><label for="v-fontes">Fontes</label><select id="v-fontes"></select></div>
+        <div class="field"><label for="v-dir">Estilo base</label><select id="v-dir"></select>
+          <button type="button" class="btn sm" id="usarEstilo" style="align-self:flex-start">Usar cores e fontes deste estilo</button></div>
+        <div class="opts" id="opts"></div>
+      </div>
+
+      <div class="tab" id="t-secoes" hidden style="margin-top:18px">
+        <p class="hint">Mude a ordem, troque o layout de cada parte ou tire o que não precisar. A abertura fica sempre no topo.</p>
+        <ul class="secs" id="secs"></ul>
+        <div class="add-sec"><label for="addSec" class="sr">Seção para adicionar</label><select id="addSec"></select><button type="button" class="btn sm" id="addSecBtn">Adicionar</button></div>
+      </div>
+    </section>
+  </aside>
+
+  <main class="palco" id="palco" aria-label="Prévia do site">
+    <div class="pbar">
+      <span class="tag" id="badge">Exemplo</span>
+      <span class="pdica" id="pdica"></span>
+      <div class="pbar-r">
+        <button type="button" class="btn sm" id="undoBtn" hidden>Desfazer</button>
+        <button type="button" class="btn sm go" id="outrasBtn" hidden>Gerar outras 3</button>
+        <button type="button" class="btn sm" id="verPropBtn" hidden>Ver as 3 propostas</button>
+        <button type="button" class="btn sm" id="voltarSiteBtn" hidden>Voltar para o meu site</button>
+      </div>
+    </div>
+    <div class="props" id="props" hidden></div>
+    <div class="browser" id="browser">
+      <div class="chrome"><div class="dots"><i></i><i></i><i></i></div><div class="url" id="url">Seu negócio</div></div>
+      <div class="viewport" id="vp"><div id="host"></div></div>
+    </div>
+  </main>
+</div>
+
+
+
+<script src="assets/js/config.js?v=c188b620"></script>
+<script src="assets/js/site.js?v=c188b620"></script>
+<script src="assets/js/kc.js?v=c188b620"></script>
+<script src="assets/js/ke.js?v=c188b620"></script>
+<script src="assets/js/studio.js?v=c188b620"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Pagar uma cobrança', 'Pague o valor combinado.', 'Digite o valor que a equipe passou e, se tiver, o número da cobrança. O pagamento é com cartão ou Pix e a confirmação é automática.') %}{% endcall %}
+
+<section class="secao curta" aria-labelledby="titulo-pagar">
+  <div class="caixa lado-a-lado">
+    <form class="formulario" data-form-avulso novalidate>
+      <h2 class="sr-only" id="titulo-pagar">Dados do pagamento</h2>
+      <p class="aviso" data-aviso-cancelado hidden>O pagamento foi cancelado e nada foi cobrado.</p>
+      <div class="campo com-prefixo">
+        <label for="p-valor">Valor</label>
+        <span class="prefixo" aria-hidden="true">R$</span>
+        <input id="p-valor" name="valor" inputmode="decimal" autocomplete="off" placeholder="0,00" required aria-describedby="p-valor-dica">
+        <span class="dica" id="p-valor-dica">De {{ C.avulso.minimo|reais }} a {{ C.avulso.maximo|reais }}. <span data-avulso-total></span></span>
+      </div>
+      <div class="campo"><label for="p-ref">Do que é o pagamento (opcional)</label><input id="p-ref" name="referencia" maxlength="120" placeholder="Ex.: cobrança 0123, cartões NFC, manutenção de novembro"></div>
+      <div class="botoes"><button class="botao limao" type="submit"><span>Pagar agora</span>{{ m.seta() }}</button></div>
+      <p class="dica" style="font-size:13.5px;color:var(--nevoa)">O pagamento é processado pela Stripe. A Káiros Dynamis não vê nem guarda os dados do seu cartão.</p>
+    </form>
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Como funciona</p>
+      <ol class="passos mt-2" role="list" style="grid-template-columns:1fr">
+        <li><h3>Você digita o valor.</h3><p>O mesmo que a equipe combinou com você no WhatsApp.</p></li>
+        <li><h3>Paga com cartão ou Pix.</h3><p>Numa página segura da Stripe, com o recibo no seu e-mail.</p></li>
+        <li><h3>A gente recebe o aviso na hora.</h3><p>Não precisa mandar comprovante.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}{% endblock %}
+{% block scripts %}
+<script src="{{ asset('assets/js/catalogo.js') }}" defer></script>
+<script src="{{ asset('assets/js/pix.js') }}" defer></script>
+<script src="{{ asset('assets/js/pagamento.js') }}" defer></script>
+{% endblock %}

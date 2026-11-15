@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Sites', 'Sites que levam o cliente até você.', 'Três planos, do site de uma página à loja online. Todos começam com a prévia grátis e você paga 50% de entrada pelo site. O restante, na entrega.') %}
+<div class="botoes">
+  {{ m.botao('Ver o meu site grátis', '/criar/', 'limao') }}
+  {{ m.botao('Comparar os planos', '#comparar', 'contorno') }}
+</div>
+{% endcall %}
+
+<section class="secao curta" aria-labelledby="titulo-planos">
+  <div class="caixa">
+    <p class="aviso" data-aviso-cancelado hidden>O pagamento foi cancelado e nada foi cobrado. Quando quiser, é só tentar de novo.</p>
+    <h2 class="sr-only" id="titulo-planos">Planos</h2>
+    <div class="cartoes c3 mt-2">
+      {% for id, p in C.sites.items() %}
+      <article class="cartao{% if id == 'conexao' %} destaque{% endif %}" id="plano-{{ id }}" data-plano="{{ id }}" data-revelar style="--atraso:{{ loop.index0 * 80 }}ms">
+        {% if id == 'conexao' %}<span class="selo">Mais pedido</span>{% endif %}
+        <p class="rotulo">Plano {{ loop.index }}</p>
+        <h3>{{ p.nome }}</h3>
+        <p class="resumo">{{ p.resumo }}</p>
+        <div class="preco">
+          <span class="valor">a partir de <strong>{{ p.preco|reais }}</strong></span>
+          <span class="nota">Entrada de {{ C.entrada_percentual }}%: {{ (p.preco * C.entrada_percentual / 100)|reais }}</span>
+        </div>
+        <ul class="itens" role="list">{% for i in p.itens %}<li>{{ i }}</li>{% endfor %}</ul>
+        <div class="pilha">
+          <button class="botao {{ 'limao' if id == 'conexao' else 'papel' }} largo" type="button" data-pagar="site:{{ id }}"><span>Pagar a entrada · {{ (p.preco * C.entrada_percentual / 100)|reais }}</span>{{ m.seta() }}</button>
+          <a class="link-seta" href="{{ ('Olá! Tenho interesse no site ' ~ p.nome ~ '. Podemos conversar?')|wa }}" target="_blank" rel="noopener">Conversar antes no WhatsApp{{ m.seta_diag() }}</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="texto mt-3">O valor final é confirmado na conversa, de acordo com o que o seu negócio precisa. Domínio, hospedagem e manutenção dependem do plano. A entrada reserva a sua vaga e entra no valor final.</p>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-quiz">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Na dúvida</p>
+      <h2 class="titulo mt-2" id="titulo-quiz">Qual plano é o meu?</h2>
+      <p class="lead mt-2">Três perguntas e a gente aponta o plano. Se ainda ficar em dúvida, a conversa no WhatsApp resolve.</p>
+    </div>
+    <form class="quiz" data-quiz onsubmit="return false">
+      {% for nome, pergunta in [('agenda', 'O cliente precisa marcar horário, reservar ou pedir orçamento pelo site?'), ('loja', 'Você quer vender produtos com carrinho no site?'), ('painel', 'Alguém da equipe vai acompanhar pedidos ou agendamentos num painel?')] %}
+      <fieldset>
+        <legend>{{ pergunta }}</legend>
+        <div class="opcoes">
+          <label class="opcao-chip"><input type="radio" name="{{ nome }}" value="sim"><span>Sim</span></label>
+          <label class="opcao-chip"><input type="radio" name="{{ nome }}" value="nao"><span>Não</span></label>
+        </div>
+      </fieldset>
+      {% endfor %}
+      <div class="resultado" hidden aria-live="polite">
+        <p><span class="rotulo">O seu plano é</span><br><strong data-plano-nome>Vitrine</strong></p>
+        <a class="botao limao" href="#plano-vitrine" data-plano-link><span>Ver o Vitrine</span>{{ m.seta() }}</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="secao com-linha" id="comparar" aria-labelledby="titulo-comparar">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Lado a lado</p>
+    <h2 class="titulo mt-2" id="titulo-comparar">O que cada plano inclui.</h2>
+    <div class="tabela-rolagem mt-4">
+      <table class="comparar">
+        <thead><tr><th scope="col">O que inclui</th>{% for id, p in C.sites.items() %}<th scope="col">{{ p.nome }}</th>{% endfor %}</tr></thead>
+        <tbody>
+          {% for linha, marcas in [
+            ('Site adaptado para celular e computador', [1,1,1]),
+            ('Botão de WhatsApp e formulário de contato', [1,1,1]),
+            ('Pronto para aparecer no Google', [1,1,1]),
+            ('Reservas, agendamentos ou orçamentos pelo site', [0,1,1]),
+            ('Painel para a equipe acompanhar', [0,1,1]),
+            ('Loja online com carrinho', [0,0,1]),
+            ('Painel de vendas e pedidos', [0,0,1]),
+            ('Pagamento online no próprio site', [0,0,1])] %}
+          <tr><th scope="row">{{ linha }}</th>{% for x in marcas %}<td>{% if x %}<span class="sim" aria-label="Sim">✓</span>{% else %}<span class="nao" aria-label="Não">—</span>{% endif %}</td>{% endfor %}</tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr><th scope="row">A partir de</th>{% for id, p in C.sites.items() %}<td>{{ p.preco|reais }}</td>{% endfor %}</tr>
+          <tr><th scope="row">Entrada de {{ C.entrada_percentual }}%</th>{% for id, p in C.sites.items() %}<td>{{ (p.preco * C.entrada_percentual / 100)|reais }}</td>{% endfor %}</tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-studio">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Káiros Studio</p>
+      <h2 class="titulo mt-2" id="titulo-studio">Veja o seu site antes de pagar qualquer coisa.</h2>
+    </div>
+    <div>
+      <p class="lead">O Studio monta três propostas com o nome, as cores e os serviços do seu negócio, em 20 estilos. Escolheu uma? A equipe finaliza e coloca no ar.</p>
+      <form class="formulario mt-3" action="/criar/" method="get">
+        <div class="campo"><label for="studio-nome">Nome do seu negócio</label><input id="studio-nome" name="nome" maxlength="60" autocomplete="organization" required></div>
+        <div class="botoes"><button class="botao limao" type="submit"><span>Montar a prévia</span>{{ m.seta() }}</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-faq-sites">
+  <div class="caixa grade">
+    <div class="col-1-6"><p class="rotulo"><span class="ponto"></span>Dúvidas sobre sites</p><h2 class="titulo mt-2" id="titulo-faq-sites">Antes de contratar.</h2></div>
+    <div class="col-7-12 faq mt-3">
+      <details><summary>Em quanto tempo o site fica pronto?</summary><div class="resposta"><p>Depende do plano e de quando o material (textos, fotos e logo) chega completo. O prazo é combinado na conversa, antes de você pagar.</p></div></details>
+      <details><summary>Preciso ter domínio e hospedagem?</summary><div class="resposta"><p>Depende do plano. A equipe explica o que já está incluído e o que é contratado à parte, sempre antes do pagamento.</p></div></details>
+      <details><summary>Dá para mudar o site depois?</summary><div class="resposta"><p>Dá. As manutenções seguem o plano contratado e são combinadas pelo WhatsApp.</p></div></details>
+      <details><summary>Como pago a entrada?</summary><div class="resposta"><p>Pelo botão do plano, com cartão ou Pix. A confirmação chega na hora no seu e-mail e a equipe já recebe o aviso.</p></div></details>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="{{ asset('assets/js/catalogo.js') }}" defer></script>
+<script src="{{ asset('assets/js/pix.js') }}" defer></script>
+<script src="{{ asset('assets/js/pagamento.js') }}" defer></script>
+{% endblock %}

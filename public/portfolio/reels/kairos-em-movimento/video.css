@@ -1,0 +1,112 @@
+/* Káiros em Movimento — palco 1920×1080 e player
+   As cores chegam do CONFIG (video.js) como variáveis CSS na raiz .kv */
+
+.kv {
+  --ink: #0B0B0C;
+  --paper: #F2F2EE;
+  --lime: #C6FF3D;
+  --g1: #121213;
+  --g2: #19191A;
+  --g3: #242425;
+  --g4: #393939;
+  --g5: #6C6C6B;
+  --g6: #9F9F9C;
+  --r: 10px;      /* raio único de cartões, campos e botões */
+  --r-bar: 3px;   /* raio das barras de esqueleto */
+  --display: 'League Spartan', 'Futura', 'Century Gothic', sans-serif;
+  --text: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--paper);
+  font-family: var(--text);
+}
+
+/* ---------- palco ---------- */
+.kv-player { display: grid; gap: 14px; outline: none; }
+.kv-player:focus-visible { outline: 2px solid var(--g5); outline-offset: 6px; border-radius: 8px; }
+.kv-frame {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.kv.is-render .kv-frame { width: 1920px; height: 1080px; aspect-ratio: auto; border-radius: 0; cursor: default; }
+.kv-stage {
+  position: absolute; left: 0; top: 0;
+  width: 1920px; height: 1080px;
+  transform-origin: 0 0;
+  overflow: hidden;
+  background: var(--ink);
+  contain: strict;
+}
+.kv-stage * { pointer-events: none; }
+.kv-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 50%; }
+.kv-layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.kv-box { position: absolute; left: 0; top: 0; box-sizing: border-box; }
+.kv-txt { position: absolute; white-space: pre; line-height: 1; font-kerning: normal; }
+.kv-ch { position: absolute; top: 0; display: block; white-space: pre; line-height: 1; }
+.kv-mask { position: absolute; overflow: hidden; }
+.kv-svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.kv-card { border: 2px solid var(--g3); background: var(--g1); border-radius: var(--r); }
+.kv-cursor { position: absolute; left: 0; top: 0; background: var(--lime); z-index: 50; }
+.kv-pointer { position: absolute; left: 0; top: 0; width: 44px; height: 60px; z-index: 70; }
+.kv-pointer svg { position: absolute; left: -3px; top: -3px; overflow: visible; }
+.kv-grain {
+  position: absolute; inset: 0;
+  z-index: 100;
+  opacity: .4;
+  mix-blend-mode: soft-light;
+  background-size: 200px 200px;
+}
+.kv-measure { position: absolute; left: -20000px; top: 0; visibility: hidden; pointer-events: none; }
+
+/* ---------- controles ---------- */
+.kv-ui { display: grid; gap: 6px; }
+.kv-track { position: relative; height: 28px; cursor: pointer; touch-action: none; outline: none; }
+.kv-rail, .kv-fill { position: absolute; left: 0; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; }
+.kv-rail { right: 0; background: var(--g3); }
+.kv-fill { width: 0; background: var(--paper); }
+.kv-cut { position: absolute; top: 50%; width: 3px; height: 8px; margin: -4px 0 0 -1.5px; background: var(--ink); }
+.kv-head {
+  position: absolute; left: 0; top: 50%;
+  width: 14px; height: 14px; margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+.kv-track:focus-visible .kv-head { box-shadow: 0 0 0 3px var(--ink), 0 0 0 5px var(--paper); }
+.kv-chips { display: flex; gap: 3px; }
+.kv-chip {
+  flex: 1 1 0; min-width: 0;
+  appearance: none; border: 0; background: none;
+  padding: 2px 0 0; text-align: left;
+  font: 500 12px/1.3 var(--text); letter-spacing: .02em;
+  color: var(--g6);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  cursor: pointer;
+}
+.kv-chip:hover, .kv-chip.is-on { color: var(--paper); }
+.kv-chip:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; border-radius: 2px; }
+.kv-row { display: flex; align-items: center; gap: 12px; }
+.kv-spacer { flex: 1; }
+.kv-btn {
+  flex: none;
+  display: inline-grid; place-items: center;
+  height: 40px; min-width: 40px; padding: 0 12px;
+  border: 2px solid var(--g4); border-radius: var(--r);
+  background: transparent; color: var(--paper);
+  font: 600 13px/1 var(--text); letter-spacing: .02em;
+  cursor: pointer;
+}
+.kv-btn:hover { border-color: var(--g5); }
+.kv-btn:focus-visible { outline: 2px solid var(--paper); outline-offset: 2px; }
+.kv-play { width: 40px; padding: 0; }
+.kv-time { font: 500 14px/1 var(--text); color: var(--g6); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kv-time b { color: var(--paper); font-weight: 600; }
+.kv-hint { font: 500 13px/1.3 var(--text); color: var(--g6); }
+.kv-hint.is-wait { color: var(--paper); }
+
+@media (max-width: 560px) {
+  .kv-chips, .kv-hint:not(.is-wait) { display: none; }
+}

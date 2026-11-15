@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Cartões e placas NFC', 'Encostou, abriu.', 'Cartões e placas com NFC: o cliente encosta o celular e abre o seu WhatsApp, o Instagram, o site ou a avaliação no Google. Sem aplicativo.') %}
+<div class="botoes">{{ m.botao('Pedir orçamento', '#orcamento', 'limao') }}</div>
+{% endcall %}
+
+<section class="secao" aria-labelledby="titulo-destinos">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Para onde o toque leva</p>
+    <h2 class="titulo mt-2" id="titulo-destinos">Você escolhe o destino de cada peça.</h2>
+    <ul class="lista-editorial mt-4" role="list">
+      {% for n, nome, desc in [('01', 'WhatsApp', 'A conversa abre com uma mensagem pronta.'), ('02', 'Instagram', 'O perfil abre direto no aplicativo.'), ('03', 'Site ou cardápio', 'A página que você quiser mostrar.'), ('04', 'Avaliação no Google', 'Direto na tela de deixar as estrelas.')] %}
+      <li><a href="#orcamento"><span class="n">{{ n }}</span><span class="nome">{{ nome }}</span><span class="desc">{{ desc }}</span>{{ m.seta() }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-modelos">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>Dois jeitos de usar</p>
+    <div class="cartoes c2 mt-3">
+      <article class="cartao"><h3 id="titulo-modelos">Cartão de visita</h3><p class="resumo">Para entregar na mão. Funciona como o cartão de sempre, com o toque a mais.</p><ul class="itens" role="list"><li>Para quem atende fora do balcão</li><li>Um destino por cartão</li><li>Sob orçamento</li></ul></article>
+      <article class="cartao"><h3>Placa de balcão</h3><p class="resumo">Fica no caixa, na mesa ou na recepção. Enquanto espera, o cliente avalia, segue ou chama no WhatsApp.</p><ul class="itens" role="list"><li>Para quem recebe cliente no local</li><li>Ótima para pedir avaliação no Google</li><li>Sob orçamento</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" id="orcamento" aria-labelledby="titulo-orc">
+  <div class="caixa lado-a-lado">
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Orçamento</p>
+      <h2 class="titulo mt-2" id="titulo-orc">Diga o que precisa. A gente responde no WhatsApp.</h2>
+      <p class="lead mt-2">O valor depende do modelo e da quantidade. A equipe manda os modelos e o preço; depois de combinado, você paga pelo site.</p>
+    </div>
+    <form class="formulario" data-whatsapp="Olá! Quero um orçamento de NFC pelo site da Káiros Dynamis.">
+      <div class="campo"><label for="nfc-modelo">Modelo</label><select id="nfc-modelo" name="modelo" data-rotulo="Modelo" required><option value="">Escolha</option><option>Cartão de visita</option><option>Placa de balcão</option><option>Os dois</option></select></div>
+      <div class="campo"><label for="nfc-destino">Para onde o toque leva</label><select id="nfc-destino" name="destino" data-rotulo="Destino" required><option value="">Escolha</option><option>WhatsApp</option><option>Instagram</option><option>Site ou cardápio</option><option>Avaliação no Google</option></select></div>
+      <div class="campo"><label for="nfc-qtd">Quantidade</label><input id="nfc-qtd" name="quantidade" data-rotulo="Quantidade" inputmode="numeric" pattern="[0-9]*" placeholder="Ex.: 50"></div>
+      <div class="campo"><label for="nfc-negocio">Nome do negócio</label><input id="nfc-negocio" name="negocio" data-rotulo="Negócio" autocomplete="organization" required></div>
+      <button class="botao limao" type="submit"><span>Pedir no WhatsApp</span>{{ m.seta_diag() }}</button>
+      <p class="campo"><span class="dica">O WhatsApp abre com o pedido escrito. É só enviar.</span></p>
+    </form>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-faq-nfc">
+  <div class="caixa grade">
+    <div class="col-1-6"><p class="rotulo"><span class="ponto"></span>Dúvidas sobre NFC</p><h2 class="titulo mt-2" id="titulo-faq-nfc">Como funciona.</h2></div>
+    <div class="col-7-12 faq mt-3">
+      <details><summary>O que é NFC?</summary><div class="resposta"><p>É a mesma tecnologia do pagamento por aproximação. A peça guarda um link, e o celular abre esse link quando encosta nela.</p></div></details>
+      <details><summary>Precisa de aplicativo?</summary><div class="resposta"><p>Não. A maioria dos Android lê com o NFC ligado, e o iPhone XS ou mais novo lê com a tela acesa.</p></div></details>
+      <details><summary>E se o celular do cliente não tiver NFC?</summary><div class="resposta"><p>A peça pode levar também um QR Code com o mesmo destino. É só pedir no orçamento.</p></div></details>
+      <details><summary>Como é o pagamento?</summary><div class="resposta"><p>Depois de combinar o valor, você paga pela página <a href="/pagar/">Pagar uma cobrança</a>, com cartão ou Pix.</p></div></details>
+    </div>
+  </div>
+</section>
+{% endblock %}

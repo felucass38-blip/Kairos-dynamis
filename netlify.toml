@@ -1,0 +1,74 @@
+# Káiros Dynamis · configuração da Netlify
+# O site já vem pronto em public/ (gerado por ferramentas/build.py). A Netlify só publica.
+[build]
+  publish = "public"
+  command = "echo Site ja gerado em public"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Arquivos com hash no nome podem ficar em cache por um ano
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/portfolio/soma/site/media/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Endereços do site antigo que podem estar salvos ou no Google
+[[redirects]]
+  from = "/planos"
+  to = "/sites/"
+  status = 301
+[[redirects]]
+  from = "/planos.html"
+  to = "/sites/"
+  status = 301
+[[redirects]]
+  from = "/midias"
+  to = "/instagram/"
+  status = 301
+[[redirects]]
+  from = "/midias.html"
+  to = "/instagram/"
+  status = 301
+[[redirects]]
+  from = "/criar.html"
+  to = "/criar/"
+  status = 301
+[[redirects]]
+  from = "/contratar.html"
+  to = "/contratar/"
+  status = 301
+[[redirects]]
+  from = "/pagar.html"
+  to = "/pagar/"
+  status = 301
+[[redirects]]
+  from = "/duvidas.html"
+  to = "/duvidas/"
+  status = 301
+[[redirects]]
+  from = "/nfc.html"
+  to = "/nfc/"
+  status = 301
+[[redirects]]
+  from = "/termos.html"
+  to = "/termos/"
+  status = 301
+[[redirects]]
+  from = "/privacidade.html"
+  to = "/privacidade/"
+  status = 301

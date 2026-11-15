@@ -1,0 +1,120 @@
+{
+  "_leia": "Fonte única dos preços do site e do pagamento. Valores em reais. Depois de mudar, rode: python3 ferramentas/build.py",
+  "moeda": "brl",
+  "entrada_percentual": 50,
+
+  "sites": {
+    "vitrine": {
+      "nome": "Vitrine",
+      "preco": 1250,
+      "resumo": "Site de uma página, com botão de WhatsApp e formulário de contato.",
+      "itens": ["Site de uma página", "Botão de WhatsApp e formulário de contato", "Mapa, horários e redes sociais", "Pronto para o Google e para o celular"]
+    },
+    "conexao": {
+      "nome": "Conexão",
+      "preco": 2450,
+      "resumo": "Tudo do Vitrine, mais reservas, agendamentos ou orçamentos pelo site e um painel para a equipe.",
+      "itens": ["Tudo do Vitrine", "Reservas, agendamentos ou orçamentos pelo site", "Painel para a equipe acompanhar os pedidos", "Mais páginas para serviços e produtos"]
+    },
+    "operacao": {
+      "nome": "Operação",
+      "preco": 4250,
+      "resumo": "Tudo do Conexão, mais loja online com carrinho e painel de vendas e pedidos.",
+      "itens": ["Tudo do Conexão", "Loja online com carrinho", "Painel de vendas e pedidos", "Pagamento online no próprio site"]
+    }
+  },
+
+  "instagram": {
+    "minimo_meses": 3,
+    "planos": {
+      "essencial": {
+        "nome": "Essencial",
+        "mensal": 690,
+        "itens": ["8 posts no mês (artes e carrosséis)", "Stories 3 vezes por semana", "Legendas e agendamento", "Relatório mensal simples"]
+      },
+      "presenca": {
+        "nome": "Presença",
+        "mensal": 1190,
+        "itens": ["12 posts e 4 Reels no mês", "Stories frequentes", "Resposta a comentários e direct em horário comercial", "Relatório mensal"]
+      },
+      "crescimento": {
+        "nome": "Crescimento",
+        "mensal": 1890,
+        "itens": ["16 posts e 8 Reels no mês", "Stories frequentes", "Tudo do Presença", "Gestão de anúncios no Meta Ads (a verba é paga à parte)"]
+      }
+    }
+  },
+
+  "sistemas": {
+    "_leia": "Valores iniciais propostos pela Káiros. Revise antes de ativar a Stripe em modo real.",
+    "base": {
+      "nome": "Base do sistema",
+      "preco": 790,
+      "descricao": "Painel no celular e no computador, acesso da equipe com senha, cadastro de produtos ou serviços e resumo do dia."
+    },
+    "ramos": {
+      "mercado": {
+        "nome": "Mercado",
+        "frase": "Caixa, estoque e fiado no mesmo lugar.",
+        "modulos": [
+          {"id": "caixa", "nome": "Caixa (PDV)", "preco": 690, "descricao": "Venda rápida com leitor de código de barras, troco e fechamento do dia."},
+          {"id": "estoque", "nome": "Estoque", "preco": 490, "descricao": "Entrada e saída de mercadoria, com aviso do que está acabando."},
+          {"id": "fiado", "nome": "Fiado", "preco": 390, "descricao": "A caderneta no celular: quem deve, quanto e desde quando."},
+          {"id": "relatorios", "nome": "Relatórios de vendas", "preco": 290, "descricao": "O que mais vende, o que sobra e quanto entrou por dia e por mês."}
+        ]
+      },
+      "barbearia": {
+        "nome": "Barbearia",
+        "frase": "Agenda cheia e cadeira girando.",
+        "modulos": [
+          {"id": "agenda", "nome": "Agenda", "preco": 590, "descricao": "Horários de cada barbeiro, encaixes e faltas num quadro só."},
+          {"id": "clientes", "nome": "Clientes", "preco": 290, "descricao": "Ficha de cada cliente com histórico de cortes e preferências."},
+          {"id": "caixa", "nome": "Caixa e comissões", "preco": 490, "descricao": "Cada atendimento no caixa, com a comissão de cada barbeiro calculada."},
+          {"id": "online", "nome": "Agendamento pelo link", "preco": 390, "descricao": "O cliente escolhe o horário sozinho por um link na bio ou no WhatsApp."}
+        ]
+      },
+      "salao": {
+        "nome": "Salão de beleza",
+        "frase": "Cada profissional com a sua agenda.",
+        "modulos": [
+          {"id": "agenda", "nome": "Agenda", "preco": 590, "descricao": "A agenda de cada profissional, com a duração de cada serviço."},
+          {"id": "clientes", "nome": "Clientes", "preco": 290, "descricao": "Ficha da cliente com histórico de serviços, cores e produtos usados."},
+          {"id": "caixa", "nome": "Caixa e comissões", "preco": 490, "descricao": "Atendimentos, pacotes e a comissão de cada profissional."},
+          {"id": "online", "nome": "Agendamento pelo link", "preco": 390, "descricao": "A cliente marca sozinha pelo link na bio ou no WhatsApp."}
+        ]
+      },
+      "oficina": {
+        "nome": "Oficina mecânica",
+        "frase": "Do orçamento à entrega do carro.",
+        "modulos": [
+          {"id": "os", "nome": "Ordens de serviço", "preco": 590, "descricao": "Cada carro com a sua OS: peças, mão de obra, fotos e situação."},
+          {"id": "revisoes", "nome": "Revisões", "preco": 390, "descricao": "Lista de quem está perto da próxima revisão, pronta para chamar no WhatsApp."},
+          {"id": "caixa", "nome": "Caixa", "preco": 290, "descricao": "Recebimentos do dia e o que está a receber."},
+          {"id": "orcamento", "nome": "Orçamento pelo link", "preco": 490, "descricao": "O cliente recebe o orçamento por um link e aprova pelo celular."}
+        ]
+      },
+      "restaurante": {
+        "nome": "Restaurante",
+        "frase": "Salão, cozinha e caixa conversando.",
+        "modulos": [
+          {"id": "mesas", "nome": "Mesas e comandas", "preco": 590, "descricao": "Abre a mesa, lança os pedidos e fecha a conta, com divisão."},
+          {"id": "cozinha", "nome": "Cozinha", "preco": 490, "descricao": "Os pedidos chegam numa tela na cozinha, na ordem certa."},
+          {"id": "cardapio", "nome": "Cardápio digital", "preco": 390, "descricao": "Cardápio com QR Code na mesa, que você atualiza na hora."},
+          {"id": "caixa", "nome": "Caixa", "preco": 290, "descricao": "Fechamento do dia por forma de pagamento."}
+        ]
+      }
+    }
+  },
+
+  "avulso": {
+    "minimo": 10,
+    "maximo": 20000
+  },
+
+  "pix": {
+    "_leia": "Usado só quando o pagamento automático ainda não foi ligado na Netlify (sem STRIPE_SECRET_KEY).",
+    "chave": "+5511962431350",
+    "nome": "KAIROS DYNAMIS",
+    "cidade": "GUARULHOS"
+  }
+}

@@ -1,0 +1,1435 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SÔMA Collective</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="SÔMA é comunidade, música e roupa. As camisas 001 e 002, as músicas de Victor Lucass e os encontros da comunidade. Somos SÔMA, somos 1.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SÔMA Collective">
+<meta property="og:description" content="Comunidade, música e roupa. Somos SÔMA, somos 1.">
+<meta property="og:image" content="media/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+/* Layout: faixas de noite (preto dos encontros) e algodão (o off-white da camiseta) numa grade de 12 colunas.
+   Abertura: três vídeos verticais lado a lado, unidos por um único logo pintado. Muitos membros, um só corpo. */
+:root{
+  --noite:#000000;
+  --algodao:#E7E2D8;
+  --algodao-escuro:#D8D1C3;
+  --kraft:#B49B81;
+  --um:#9B1424;
+  --bomfilho:#C2111B;
+  --luz:#0B3082;
+  --cinza-n:#A39E95;
+  --cinza-a:#5E594F;
+  --linha-n:rgba(231,226,216,.18);
+  --linha-a:rgba(0,0,0,.16);
+  --f-sans:"Archivo","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --f-serif:"Instrument Serif","Iowan Old Style","Times New Roman",serif;
+  --gutter:clamp(16px,3.6vw,56px);
+  --col-gap:clamp(16px,2vw,32px);
+  --header-h:64px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-io:cubic-bezier(.76,0,.24,1);
+  --muted:var(--cinza-n);
+  --line:var(--linha-n);
+  color-scheme:dark;
+}
+
+/* ---------- base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%}
+html.locked,html.locked body{overflow:hidden}
+body{margin:0;background:var(--noite);color:var(--algodao);font-family:var(--f-sans);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img,video,svg{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;border-radius:0}
+h1,h2,h3,p,figure,blockquote,ul,ol,dl,dd,fieldset{margin:0}
+ul,ol{padding:0;list-style:none}
+:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:16px;top:-80px;z-index:200;background:var(--algodao);color:#000;padding:12px 16px;font-weight:600;text-decoration:none}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+
+.wrap{width:100%;max-width:1680px;margin-inline:auto;padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+.tone-noite{background:var(--noite);color:var(--algodao);--muted:var(--cinza-n);--line:var(--linha-n)}
+.tone-algodao{background:var(--algodao);color:#000;--muted:var(--cinza-a);--line:var(--linha-a);color-scheme:light}
+.grid12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap)}
+
+/* ---------- tipografia ---------- */
+.display{font-family:var(--f-sans);font-stretch:125%;font-weight:800;text-transform:uppercase;letter-spacing:-.012em;line-height:.9;text-wrap:balance}
+.h-xl{font-size:clamp(2.4rem,6vw,6.25rem)}
+.h-m{font-size:clamp(1.6rem,3vw,2.75rem)}
+.h-s{font-size:clamp(1.25rem,2vw,1.625rem)}
+.lead{font-size:clamp(1.125rem,1.5vw,1.375rem);line-height:1.45;max-width:34ch;text-wrap:pretty}
+.meta{font-size:.9375rem;color:var(--muted)}
+.small{font-size:.875rem;color:var(--muted)}
+
+/* ---------- botões e links ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;font-family:var(--f-sans);font-weight:600;font-size:.9375rem;line-height:1.1;text-align:center;text-decoration:none;border:1.5px solid transparent;transition:background-color .2s,color .2s,border-color .2s,transform .2s var(--ease-out)}
+.btn:active{transform:scale(.98)}
+.btn--light{background:var(--algodao);color:#000;border-color:var(--algodao)}
+.btn--light:hover{background:#fff;border-color:#fff}
+.btn--ink{background:#000;color:var(--algodao);border-color:#000}
+.btn--ink:hover{background:#222;border-color:#222}
+.btn--line{border-color:currentColor}
+.btn--line:hover{background:currentColor}
+.tone-algodao .btn--line:hover,.sheet-panel .btn--line:hover{color:var(--algodao);background:#000;border-color:#000}
+.tone-noite .btn--line:hover{color:#000;background:var(--algodao);border-color:var(--algodao)}
+.btn--block{width:100%}
+.btn--s{min-height:42px;padding:0 16px;font-size:.875rem}
+.link{font-weight:600;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+.link:hover{text-decoration-thickness:3px}
+.link-btn{font-weight:500;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.link-btn:hover{text-decoration-thickness:2px}
+.pending{display:inline-block;font-size:.8125rem;font-weight:500;line-height:1.3;border:1px dashed currentColor;padding:3px 8px;white-space:nowrap}
+
+/* ---------- cabeçalho ---------- */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:60;padding-top:env(safe-area-inset-top,0px);color:var(--algodao);border-bottom:1px solid transparent;transition:background-color .35s,color .35s,border-color .35s}
+.site-header[data-tone="algodao"]{color:#000}
+.site-header.is-solid{background:var(--noite);border-bottom-color:var(--linha-n)}
+.site-header.is-solid[data-tone="algodao"]{background:var(--algodao);border-bottom-color:var(--linha-a)}
+html.menu-open .site-header,html.menu-open .site-header[data-tone="algodao"]{color:var(--algodao);background:var(--noite);border-bottom-color:transparent}
+.header-in{display:flex;align-items:center;gap:24px;height:var(--header-h)}
+.brand{display:block;width:84px;color:inherit;flex:none}
+.brand svg{width:100%;height:auto}
+.nav{display:flex;gap:28px;margin-left:auto;font-weight:500;font-size:.9375rem}
+.nav a{position:relative;padding-block:6px;text-decoration:none}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+.header-actions{display:flex;align-items:center;gap:8px}
+.bag-btn,.menu-btn{display:inline-flex;align-items:center;gap:10px;height:40px;font-weight:600;font-size:.9375rem;border:1.5px solid currentColor}
+.bag-btn{padding:0 5px 0 14px}
+.bag-count{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;background:var(--algodao);color:#000;font-variant-numeric:tabular-nums;font-size:.875rem}
+.site-header[data-tone="algodao"] .bag-count{background:#000;color:var(--algodao)}
+html.menu-open .site-header .bag-count{background:var(--algodao);color:#000}
+.bag-count.bump{animation:bump .45s var(--ease-out)}
+@keyframes bump{30%{transform:scale(1.3)}}
+.menu-btn{display:none;padding:0 14px}
+@media (max-width:899px){
+  .nav{display:none}
+  .menu-btn{display:inline-flex}
+  .header-actions{margin-left:auto}
+  .brand{width:76px}
+}
+
+/* ---------- abertura ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:540px;overflow:hidden;background:#000;color:var(--algodao);isolation:isolate}
+.hero-panels{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));z-index:0}
+.panel{position:relative;overflow:hidden;background:#000}
+.panel + .panel::after{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:rgba(231,226,216,.16);z-index:2}
+.panel-in{position:absolute;left:0;right:0;top:-10%;bottom:-10%;will-change:transform}
+.panel video{width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.2) 28%,rgba(0,0,0,.28) 62%,rgba(0,0,0,.82) 100%)}
+.intro-slats{display:none;position:absolute;inset:0;z-index:2;grid-template-columns:repeat(3,minmax(0,1fr));pointer-events:none}
+.intro-slats span{background:#000}
+html.intro .intro-slats{display:grid}
+html.intro .intro-slats span{animation:slat-out .95s var(--ease-io) 2.9s forwards}
+html.intro-go .intro-slats span{transform:translateY(-101%);transition:transform .95s var(--ease-io)}
+html.intro-go .intro-slats span:nth-child(2){transition-delay:.08s}
+html.intro-go .intro-slats span:nth-child(3){transition-delay:.16s}
+@keyframes slat-out{to{transform:translateY(-101%)}}
+.hero-mark{position:absolute;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none}
+.hero-logo{width:min(86vw,1380px);height:auto;color:var(--algodao);transform:translate3d(0,var(--logo-y,0px),0);margin-top:-4vh}
+html.intro .hero-logo:not(.is-painting):not(.is-painted){visibility:hidden;animation:show-now 0s 2.9s forwards}
+@keyframes show-now{to{visibility:visible}}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;z-index:4;padding-bottom:max(28px,calc(env(safe-area-inset-bottom,0px) + 16px))}
+.hero-foot .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:20px 40px;flex-wrap:wrap}
+.hero-line{display:grid;gap:6px}
+.hero-line strong{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(1.125rem,1.7vw,1.5rem);line-height:1}
+.hero-line span{color:var(--cinza-n);font-size:1rem}
+.hero-ctas{display:flex;align-items:center;gap:14px 24px;flex-wrap:wrap}
+html.intro .site-header,html.intro .hero-foot{opacity:0;animation:fade-in .3s 2.9s forwards}
+html.intro-go .site-header,html.intro-go .hero-foot{opacity:1;transition:opacity .7s .45s}
+@keyframes fade-in{to{opacity:1}}
+@media (max-width:899px){
+  .hero-panels{display:block}
+  .panel{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+  .panel:first-child{opacity:1}
+  .hero.seq .panel{opacity:0}
+  .hero.seq .panel.is-on{opacity:1}
+  .panel + .panel::after{display:none}
+  .panel-in{top:0;bottom:0}
+  .hero-logo{width:90vw;margin-top:-8vh}
+}
+
+/* ---------- manifesto ---------- */
+.manifesto .wrap{padding-block:clamp(96px,13vw,200px)}
+.manifesto-film{grid-column:1/span 4;align-self:start;max-width:340px}
+.frame{position:relative;aspect-ratio:9/16;max-width:100%;overflow:hidden;background:#111}
+.frame video,.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+figcaption{margin-top:12px;font-size:.875rem;line-height:1.4;color:var(--muted)}
+.manifesto-text{grid-column:6/span 7;display:grid;gap:clamp(28px,4vw,52px);align-content:start}
+.verse p{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.375rem,2.1vw,1.875rem);line-height:1.22;max-width:32ch;text-wrap:pretty}
+.verse cite{display:block;margin-top:14px;font-style:normal;font-size:.875rem;color:var(--muted)}
+.greek{font-family:var(--f-serif);font-style:italic;font-size:1.12em}
+@media (max-width:899px){
+  .manifesto-film{grid-column:1/-1;width:min(60vw,270px);margin-bottom:56px}
+  .manifesto-text{grid-column:1/-1}
+}
+
+/* ---------- drop 001 ---------- */
+.drop{position:relative;padding-bottom:clamp(96px,12vw,180px)}
+.drop-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap);row-gap:clamp(36px,5vw,64px);padding-top:clamp(24px,4vw,64px)}
+.drop-one{grid-column:1/span 5;grid-row:1/span 2;align-self:start;color:var(--um);position:relative;z-index:0;pointer-events:none}
+.drop-one svg{height:min(114vh,1100px);width:auto;max-width:none;margin-left:-.5vw}
+.js .paint-on-view:not(.is-painting):not(.is-painted){visibility:hidden}
+.drop-head{grid-column:6/-1;grid-row:1;display:grid;gap:18px;align-content:start;position:relative;z-index:1}
+.cards{grid-column:5/-1;grid-row:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px);position:relative;z-index:1}
+.card{display:grid;gap:16px;align-content:start;min-width:0}
+.card-media{position:relative;display:block;width:100%;aspect-ratio:3/4;max-width:100%;overflow:hidden;background:#EFEBE4}
+.card-media--wide{aspect-ratio:16/9}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .8s var(--ease-out)}
+.card-flat{position:absolute;left:8%;top:6%;width:84%;height:88%;opacity:0;transition:opacity .45s ease}
+.card-media:focus-visible{outline-offset:4px}
+@media (hover:hover){
+  .card-media--flat:hover img{opacity:0;transform:scale(1.03)}
+  .card-media--flat:hover .card-flat{opacity:1}
+}
+.card-info{display:grid;gap:12px}
+.card-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.card-title{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:1.25rem;line-height:1}
+.card-variant{color:var(--muted);font-size:.9375rem;line-height:1.3}
+.price{font-weight:600;font-variant-numeric:tabular-nums}
+.sizes{border:0;padding:0;min-width:0}
+.sizes legend{padding:0;margin-bottom:8px;font-size:.8125rem;color:var(--muted)}
+.size-row{display:flex;flex-wrap:wrap;gap:8px}
+.size-row label{position:relative;display:block}
+.size-row input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+.size-row span{display:grid;place-items:center;min-width:48px;height:44px;padding:0 10px;border:1.5px solid rgba(0,0,0,.32);font-weight:600;font-variant-numeric:tabular-nums;transition:background-color .15s,color .15s,border-color .15s}
+.size-row label:hover span{border-color:#000}
+.size-row input:checked + span{background:#000;color:var(--algodao);border-color:#000}
+.size-row input:focus-visible + span{outline:2px solid #000;outline-offset:2px}
+.size-hint{min-height:1.3em;font-size:.875rem;font-weight:600;color:var(--um)}
+.sizes.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.card-actions{display:grid;gap:12px;justify-items:start}
+.how-wrap{padding-top:clamp(64px,8vw,120px)}
+.how{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid var(--line);padding-top:24px}
+.how li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+.how-n{font-stretch:125%;font-weight:800;font-size:1.75rem;line-height:.9}
+.how p{font-size:.9375rem;line-height:1.45;max-width:28ch}
+@media (max-width:899px){
+  .drop-one{grid-column:1/-1;grid-row:1}
+  .drop-one svg{height:min(52vh,440px)}
+  .drop-head,.cards{grid-column:1/-1}
+  .drop-head{grid-row:2}
+  .cards{grid-row:3}
+  .cards{grid-template-columns:1fr;gap:48px}
+  .how{grid-template-columns:1fr}
+}
+@media (min-width:600px) and (max-width:899px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+
+/* ensaio */
+.ensaio{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap);row-gap:28px;padding-top:clamp(88px,11vw,168px);align-items:start}
+.ens{margin:0}
+.ens img{width:100%;height:auto}
+.e1{grid-column:1/span 7;grid-row:1}
+.ens-text{grid-column:9/span 4;grid-row:1;display:grid;gap:10px;align-self:end;padding-bottom:8px}
+@media (max-width:899px){
+  .e1,.ens-text{grid-column:1/-1;grid-row:auto}
+}
+
+/* camisa 002 (faixa preta com o reel) */
+.dois{margin-top:clamp(88px,11vw,168px);padding-bottom:clamp(88px,11vw,168px)}
+.reel{position:relative;margin:0 auto;max-width:1920px;aspect-ratio:16/9;background:#000}
+.reel video{width:100%;height:100%;object-fit:contain}
+.sound{position:absolute;right:max(var(--gutter),env(safe-area-inset-right,0px));bottom:clamp(12px,2vw,24px);min-height:40px;padding:0 14px;border:1.5px solid var(--algodao);background:rgba(0,0,0,.45);color:var(--algodao);font-weight:600;font-size:.875rem;transition:background-color .2s,color .2s}
+.sound:hover,.sound[aria-pressed="true"]{background:var(--algodao);color:#000}
+.dois-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap);row-gap:40px;padding-top:clamp(48px,6vw,88px)}
+.dois-head{grid-column:1/span 5;display:grid;gap:18px;align-content:start}
+.card--dark{grid-column:7/-1}
+.tone-noite .card-media{background:#111}
+.tone-noite .size-row span{border-color:rgba(231,226,216,.35)}
+.tone-noite .size-row label:hover span{border-color:var(--algodao)}
+.tone-noite .size-row input:checked + span{background:var(--algodao);color:#000;border-color:var(--algodao)}
+.tone-noite .size-row input:focus-visible + span{outline-color:var(--algodao)}
+.tone-noite .size-hint{color:#F28B8B}
+@media (max-width:899px){
+  .dois-head,.card--dark{grid-column:1/-1}
+  .sound{bottom:10px;min-height:36px;padding:0 12px}
+}
+
+/* lookbook */
+.lookbook{padding-top:clamp(80px,10vw,150px)}
+.lookbook-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px 32px;flex-wrap:wrap;margin-bottom:28px}
+.lookbook-title{display:grid;gap:10px}
+.strip-nav{display:flex;gap:8px}
+.icon-btn{display:grid;place-items:center;width:48px;height:48px;border:1.5px solid currentColor;border-radius:50%;transition:background-color .2s,color .2s,opacity .2s}
+.icon-btn:hover:not(:disabled){background:#000;color:var(--algodao)}
+.icon-btn:disabled{opacity:.28;cursor:default}
+.icon-btn svg{width:18px;height:18px}
+.strip{display:flex;gap:clamp(10px,1.4vw,18px);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-inline:max(var(--gutter),env(safe-area-inset-left,0px));padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px));padding-bottom:6px;scrollbar-width:none;cursor:grab}
+.strip::-webkit-scrollbar{display:none}
+.strip li{flex:0 0 auto;scroll-snap-align:start}
+.strip .frame{height:clamp(360px,68vh,720px);width:auto;max-width:84vw}
+.strip.is-drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.strip img{pointer-events:none}
+
+/* ---------- música ---------- */
+.musica .wrap{padding-block:clamp(96px,12vw,184px)}
+.fit-title{display:grid;font-stretch:125%;font-weight:800;text-transform:uppercase;line-height:.8;letter-spacing:-.02em;margin-bottom:clamp(36px,5vw,64px)}
+.fit{display:block;width:max-content;max-width:none;white-space:nowrap;font-size:clamp(3rem,14vw,14rem)}
+.musica-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:24px 48px;flex-wrap:wrap;padding-bottom:clamp(40px,5vw,72px);border-bottom:1px solid var(--line)}
+.musica-intro .links{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center}
+.musica-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col-gap);row-gap:56px;margin-top:clamp(40px,5vw,72px)}
+.bomfilho{grid-column:1/span 5;display:flex;flex-direction:column;justify-content:space-between;gap:48px;min-height:clamp(420px,44vw,620px);padding:clamp(24px,3vw,40px);background:var(--bomfilho);color:#F7EBE3;text-decoration:none;overflow:hidden}
+.bf-label{font-size:.9375rem;font-weight:500}
+.bf-title{font-family:var(--f-serif);font-size:clamp(4rem,8.6vw,8.5rem);line-height:.86;letter-spacing:-.01em;transition:transform .6s var(--ease-out)}
+.bomfilho:hover .bf-title{transform:translateX(10px)}
+.bf-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 20px;flex-wrap:wrap}
+.bf-plays{font-variant-numeric:tabular-nums;font-size:1.125rem}
+.bf-cta{font-weight:600;border-bottom:1.5px solid currentColor;padding-bottom:3px}
+.tracks{grid-column:7/-1;min-width:0}
+.list-title{font-size:.9375rem;font-weight:600;color:var(--muted);margin-bottom:12px}
+.track-list{isolation:isolate}
+.track{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:2px;align-items:center;padding:15px 0;border-top:1px solid var(--line);text-decoration:none}
+.track-list li:last-child .track{border-bottom:1px solid var(--line)}
+.track::before{content:"";position:absolute;top:0;bottom:0;left:-14px;right:-14px;background:var(--tint,#1d1d1d);opacity:0;transition:opacity .25s;z-index:-1}
+.track:hover::before,.track:focus-visible::before{opacity:1}
+.track[data-tint="luz"]{--tint:var(--luz)}
+.track-t{font-family:var(--f-serif);font-size:clamp(1.5rem,2.2vw,2.125rem);line-height:1.05}
+.track-r{grid-column:1;font-size:.875rem;color:var(--muted)}
+.track:hover .track-r{color:var(--algodao)}
+.track-p{grid-column:2;grid-row:1/span 2;font-variant-numeric:tabular-nums;font-size:.9375rem}
+.note{margin-top:14px;font-size:.8125rem;color:var(--muted)}
+.clipes{margin-top:clamp(72px,9vw,128px)}
+.clip-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--col-gap)}
+.clip{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:20px;padding:26px 0;border-top:1px solid var(--line);text-decoration:none}
+.play{grid-row:1/span 2;display:grid;place-items:center;width:64px;height:64px;border:1.5px solid currentColor;border-radius:50%;transition:background-color .2s,color .2s}
+.play svg{width:20px;height:20px;margin-left:3px;fill:currentColor}
+.clip:hover .play{background:var(--algodao);color:#000}
+.clip-t{font-family:var(--f-serif);font-size:clamp(2rem,3.6vw,3.25rem);line-height:1}
+.clip-s{font-size:.875rem;color:var(--muted)}
+.more{margin-top:28px}
+@media (max-width:899px){
+  .bomfilho,.tracks{grid-column:1/-1}
+  .clip-list{grid-template-columns:1fr}
+}
+
+/* ---------- comunidade ---------- */
+.palco{position:relative;height:min(56.25vw,88vh);min-height:360px;overflow:hidden;background:#000}
+.palco video{width:100%;height:100%;object-fit:cover}
+.palco::after{content:"";position:absolute;inset:auto 0 0;height:40%;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.7))}
+.palco figcaption{position:absolute;left:0;right:0;bottom:0;z-index:1;margin:0;padding-bottom:22px;color:var(--algodao);font-size:.9375rem}
+.comunidade .wrap.body{padding-block:clamp(96px,12vw,184px)}
+.com-head{row-gap:36px;margin-bottom:clamp(64px,8vw,120px)}
+.com-head h2{grid-column:1/span 4}
+.quote{grid-column:5/-1;margin:0}
+.quote p{font-family:var(--f-serif);font-style:italic;font-size:clamp(2rem,4.3vw,4.25rem);line-height:1.04;max-width:21ch;text-wrap:pretty}
+.quote b{font-style:normal;font-weight:400}
+.quote cite{display:block;margin-top:22px;font-style:normal;font-size:.875rem;color:var(--muted)}
+.mosaic{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(52px,6vw,96px);gap:12px}
+.tile{position:relative;overflow:hidden;background:#111;margin:0}
+.tile img,.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.t1{grid-column:1/span 4;grid-row:1/span 8}
+.t2{grid-column:5/span 4;grid-row:2/span 6}
+.t3{grid-column:9/span 4;grid-row:1/span 6}
+.t4{grid-column:5/span 4;grid-row:8/span 6}
+.t5{grid-column:9/span 4;grid-row:7/span 7}
+.t6{grid-column:1/span 4;grid-row:9/span 5}
+.t7{grid-column:1/span 7;grid-row:14/span 5}
+.evento{grid-column:8/span 5;grid-row:14/span 5;position:relative;overflow:hidden;background:#000;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:clamp(20px,2.4vw,32px)}
+.evento img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0%;opacity:.6}
+.evento > *:not(img){position:relative}
+.evento .btn{align-self:flex-start}
+@media (max-width:899px){
+  .com-head h2,.quote{grid-column:1/-1}
+  .mosaic{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto;gap:8px}
+  .tile{grid-column:auto;grid-row:auto;aspect-ratio:9/16}
+  .t1,.t6{grid-column:1/-1;aspect-ratio:4/5}
+  .t7{grid-column:1/-1;aspect-ratio:3/2}
+  .evento{grid-column:1/-1;grid-row:auto;min-height:420px}
+}
+
+/* ---------- contato ---------- */
+.contato .wrap{padding-block:clamp(96px,12vw,184px);row-gap:40px}
+.contato h2{grid-column:1/span 7}
+.contato-body{grid-column:8/-1;display:grid;gap:28px;align-content:end}
+.contato-body .links{display:flex;flex-wrap:wrap;gap:12px}
+.handles{display:grid;grid-template-columns:auto 1fr;gap:8px 20px;font-size:.9375rem}
+.handles dt{color:var(--muted)}
+.handles dd{font-weight:600;user-select:all;overflow-wrap:anywhere}
+@media (max-width:899px){.contato h2,.contato-body{grid-column:1/-1}}
+
+/* ---------- rodapé ---------- */
+.site-footer{position:relative;overflow:hidden;padding-top:clamp(80px,9vw,128px)}
+.footer-cols{row-gap:40px}
+.footer-slogan{grid-column:1/span 5;font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(1.5rem,2.5vw,2.25rem);line-height:.95;max-width:12ch}
+.footer-col{grid-column:span 2;display:grid;gap:10px;align-content:start;font-size:.9375rem}
+.footer-slogan + .footer-col{grid-column:7/span 2}
+.footer-col h2{font-size:.8125rem;font-weight:500;color:var(--muted);margin-bottom:4px}
+.footer-col a{text-decoration:none}
+.footer-col a:hover{text-decoration:underline;text-underline-offset:4px}
+.footer-base{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-top:64px;font-size:.875rem;color:var(--muted)}
+.footer-logo{margin-top:clamp(24px,4vw,48px);color:var(--algodao);line-height:0}
+.footer-logo svg{width:100%;height:auto;transform:translateY(24%)}
+@media (max-width:899px){
+  .footer-slogan{grid-column:1/-1}
+  .footer-col,.footer-slogan + .footer-col{grid-column:span 6}
+}
+
+/* ---------- barra de compra no celular ---------- */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--noite);color:var(--algodao);border-top:1px solid var(--linha-n);padding:10px max(var(--gutter),env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(var(--gutter),env(safe-area-inset-left,0px));transform:translateY(110%);transition:transform .4s var(--ease-out)}
+.buybar.is-on{transform:none}
+.buybar p{font-size:.9375rem;font-weight:600;line-height:1.2}
+.buybar p span{display:block;font-weight:400;font-size:.8125rem;color:var(--cinza-n)}
+@media (min-width:900px){.buybar{display:none}}
+
+/* ---------- menu (celular) ---------- */
+.menu{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;justify-content:space-between;gap:32px;overflow-y:auto;background:var(--noite);color:var(--algodao);padding:calc(env(safe-area-inset-top,0px) + var(--header-h) + 28px) max(var(--gutter),env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 32px) max(var(--gutter),env(safe-area-inset-left,0px));clip-path:inset(0 0 100% 0);transition:clip-path .6s var(--ease-io)}
+.menu.is-open{clip-path:inset(0 0 0 0)}
+.menu nav{display:grid;gap:2px}
+.menu nav a{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(2.25rem,10.5vw,4rem);line-height:1.02;text-decoration:none;padding-block:6px}
+.menu-foot{display:flex;flex-wrap:wrap;gap:12px 24px;font-size:.9375rem}
+
+/* ---------- painéis laterais (sacola, produto, privacidade) ---------- */
+.sheet{position:fixed;inset:0;z-index:80;display:flex;justify-content:flex-end}
+.sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55);opacity:0;transition:opacity .4s ease}
+.sheet.is-open .sheet-backdrop{opacity:1}
+.sheet-panel{position:relative;width:min(520px,100%);height:100%;overflow-y:auto;overscroll-behavior:contain;background:var(--algodao);color:#000;color-scheme:light;--muted:var(--cinza-a);--line:var(--linha-a);display:flex;flex-direction:column;gap:24px;padding:calc(env(safe-area-inset-top,0px) + 18px) max(24px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 32px) 24px;transform:translateX(102%);transition:transform .55s var(--ease-out)}
+.sheet.is-open .sheet-panel{transform:none}
+.sheet-panel--wide{width:min(1040px,100%)}
+.sheet-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.close{height:40px;padding:0 14px;border:1.5px solid currentColor;font-weight:600;font-size:.9375rem;flex:none}
+.close:hover{background:#000;color:var(--algodao);border-color:#000}
+.sheet--kraft .sheet-panel{background-color:var(--kraft);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='k'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23k)' opacity='.16'/%3E%3C/svg%3E")}
+.bag-stamp{width:min(64%,300px);margin:6px auto 4px;color:#000;transform:rotate(-6deg);opacity:.9}
+.bag-empty{display:grid;gap:14px;justify-items:start;padding-top:8px}
+.bag-empty-t{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:1.375rem;line-height:1}
+.bag-list li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;padding:16px 0;border-top:1px solid rgba(0,0,0,.22)}
+.bag-list img{width:72px;height:90px;object-fit:cover;background:var(--algodao-escuro)}
+.bag-item-t{font-weight:700;line-height:1.2}
+.bag-item-v{font-size:.875rem;line-height:1.35}
+.bag-item-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;flex-wrap:wrap}
+.qty{display:inline-flex;align-items:center;border:1.5px solid #000}
+.qty button{width:36px;height:36px;display:grid;place-items:center;font-weight:700;font-size:1.125rem}
+.qty button:hover{background:#000;color:var(--kraft)}
+.qty output{min-width:28px;text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
+.bag-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:16px;border-top:1.5px solid #000;font-weight:700}
+.bag-total span:last-child{font-variant-numeric:tabular-nums}
+.checkout{display:grid;gap:10px}
+.checkout .btn--line:hover{background:#000;color:var(--kraft);border-color:#000}
+.checkout-note{font-size:.875rem;line-height:1.45}
+.status{min-height:1.4em;font-size:.9375rem;font-weight:700}
+.order summary{cursor:pointer;font-size:.875rem;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.order-text{display:block;width:100%;margin-top:10px;min-height:150px;padding:12px;font:inherit;font-size:.875rem;line-height:1.45;color:#000;background:rgba(255,255,255,.28);border:1px solid rgba(0,0,0,.3);border-radius:0;resize:vertical}
+.bag-clear{justify-self:start;font-size:.875rem}
+
+/* produto */
+.pd{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.pd-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pd-g{position:relative;margin:0;background:#EFEBE4;aspect-ratio:4/5;overflow:hidden}
+.pd-g svg{position:absolute;left:7%;top:6%;width:86%;height:84%}
+.pd-g figcaption{position:absolute;left:12px;bottom:10px;margin:0;font-size:.8125rem;color:var(--cinza-a)}
+.pd-g--photo{grid-column:1/-1;aspect-ratio:auto;background:none}
+.pd-g--photo img{width:100%;height:auto}
+.pd-variant{font-weight:600}
+.pd-info{display:grid;gap:18px;align-content:start}
+.pd-title{font-stretch:125%;font-weight:800;text-transform:uppercase;font-size:clamp(1.75rem,3vw,2.5rem);line-height:.92}
+.variants{display:flex;flex-wrap:wrap;gap:8px}
+.variant{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px 0 10px;border:1.5px solid rgba(0,0,0,.32);font-weight:600;font-size:.9375rem}
+.variant[aria-checked="true"]{border-color:#000;box-shadow:inset 0 0 0 1px #000}
+.sw{width:20px;height:20px;border-radius:50%;background:var(--algodao);border:1px solid rgba(0,0,0,.35);position:relative;flex:none}
+.sw::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--c)}
+.pd-list{display:grid;gap:6px;font-size:.9375rem}
+.pd-list li{display:flex;gap:10px}
+.pd-list li::before{content:"";width:6px;height:6px;margin-top:.6em;background:#000;flex:none}
+@media (max-width:760px){.pd{grid-template-columns:1fr}}
+
+/* privacidade */
+.legal{display:grid;gap:18px;font-size:.9375rem;line-height:1.6;max-width:62ch}
+.legal h3{font-size:1rem;font-weight:700;margin-top:6px}
+
+/* ---------- grão de filme ---------- */
+.grain{position:fixed;top:-10%;left:-10%;width:120%;height:120%;z-index:95;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");animation:grain 1s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}17%{transform:translate(-4%,3%)}33%{transform:translate(3%,-5%)}50%{transform:translate(-6%,-2%)}67%{transform:translate(5%,4%)}83%{transform:translate(-2%,6%)}100%{transform:translate(0,0)}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .grain{animation:none}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-delay:0s!important}
+}
+</style>
+
+<script>
+/* Abertura: só na primeira visita da sessão, sem hash e sem "reduzir movimento". Sem JavaScript, a página aparece completa. */
+(function(){try{var d=document.documentElement;d.classList.add('js');d.lang='pt-BR';var seen=false;try{seen=sessionStorage.getItem('soma-intro')==='1'}catch(e){}var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;if(!seen&&!rm&&!location.hash){d.classList.add('intro')}}catch(e){}})();
+</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="logo" viewBox="0 0 207.0 100"><path fill="currentColor" fill-rule="evenodd" d="M153.3 85.9 152.9 86.2 152.3 86.4 152.3 86.9 152.7 87.3 152.9 87.2 153.2 86.7ZM16.3 82.2 15.9 82.2 15.6 82.4 15.3 83.1 15.3 84.1 16.1 83.9 16.5 83.4 16.2 82.8ZM21.4 81.8 20.9 81.8 19.7 82.4 19.6 82.6 20.1 82.8 20.6 82.4 21.2 82.4 21.4 82.2ZM19.5 81 19 80.9 18.9 81.6ZM107.1 78.2 106.4 79.9 106.8 79.9 106.9 79.2 107.1 79ZM30.8 75 30.3 74.9 30 75.4 30.4 75.5 30.8 75.3ZM34.1 74.6 33.5 74.7 33.2 75 33.2 75.3 33.5 75.5 34.1 75.3 34.4 74.9ZM93.3 74 93 74.4 93.8 74.8 93.9 74.3 93.6 74ZM100 71.9 100 72.2 100.8 72.8 101.4 72.7 101.4 72.2 101.2 71.9ZM36.5 70.5 36.3 70.5 35.7 71.1 36 71.7 36.3 71.7 36.9 71.2ZM70.2 69.8 69.7 70.2 69.7 70.5 70.2 70.6ZM108.3 69.3 108.2 69.2 107.5 69.3 107.1 69.7 107.1 70 108.2 69.8ZM39.6 69.2 39.7 69.4 40.1 69.4 40.9 69 40.3 69.1 39.7 68.8ZM69.6 68.1 69.1 68.4 68.6 69.3 69.1 69.2 69.4 68.8ZM76.3 65.5 75.6 65.6 75.4 66.3ZM86.3 65 86.1 65.2 84.4 68 84.3 69.7 84.5 70.2 84.9 70 84.9 69.7 85.3 69.3 86.2 67.4 86 66.6 86.2 66.5 86.6 66.7 87.2 66.2 87 65.8 86.7 65.9 86.4 65.6ZM75.9 62.4 75.6 62.4 74.8 63.5 74.8 63.9 75.1 64.3 75 65 75.1 65.4 75.4 65.3 75.5 63.7 76 63.1ZM120.1 60.9 120 61.4 120.5 61.4 120.6 61.1 120.5 60.9ZM19.3 57.8 18.4 57.7 17.2 58.1 17.1 58.4 18.8 58.3ZM82.3 56 81.3 56.4 80.9 57 81 57.7 81.8 57.7 82 57.4 82.4 56.4ZM32.5 54.8 33.3 54.9 34 54.3 36.1 54.5 37.1 53.7 37.9 53.4 38 53.2 36.7 53.2 35.6 53.4 34.8 54.1 33.9 54.1 32.8 53.2 32.9 53.6 32.5 54.3ZM81.6 52.7 81.3 52.8 81.2 53.3 81.8 54.3 82.2 54.5 82.5 54 82.8 53 82.3 52.7ZM42.6 50.3 42.7 50.4 43.9 50.4 44 50.2 43.8 50.3 42.7 50.2ZM150.5 49.3 150.2 49.6 150.2 49.9 150.4 49.9ZM116.9 48.4 116.4 48.6 116.4 49.1 116.6 49.2 117.1 49 117.1 48.6ZM201.7 46.8 201.3 47.1 201.1 47.6 201.1 50.8 201.3 52.1 201.9 53.3 202 54 202.5 55.1 203.2 56 204.2 56.1 205.5 55.9 205.9 55.6 206.1 55.4 205.9 53 204.8 49.7 203.9 48.5 203.7 47.4 203 46.6ZM86.6 44.9 86.3 44.9 86 45.3 85.9 45.9 85.4 46.4 85.6 47 85.5 48 86.3 48.3 86.7 47.9 86.9 47.3 86.9 46.7 86.6 46.1 86.7 45.5ZM173.4 42 173 41.7 172.5 42.6 173.4 42.3ZM87.8 41.7 87.2 42.4 87.2 42.7 87.5 42.9 87.9 42.9 88.1 43.2 88.1 43.8 88.6 43.4 88.7 42.4 88 41.7ZM129.7 36.3 129.5 36.3 129.3 36.7 129.5 36.7ZM90.2 36.1 90 36.4 90 36.9 90.6 37 90.6 36.5ZM130.7 35.4 130.2 35.7 130.3 36 130.7 35.9ZM100.4 28.1 99 26.6 97.7 25.7 96.8 23.4 93.9 20.9 92.5 20.2 90.5 20.2 87.3 22.5 86 23.8 85.7 24.4 81.2 29 79.9 30.9 79.7 32.2 78.8 32.8 77.8 33.2 77.2 34.2 76 34.8 74.9 37.3 74.9 37.8 75.7 37 76.1 37.1 76.2 37.5 76 38 73.4 40.7 72.8 40.5 73.2 40 73.1 39.4 72.9 39.2 72.4 39.8 72.5 40.5 71.7 41.3 71.2 41.4 70.9 41.9 70.7 42.6 71.2 42.9 71.1 43.5 70.3 44.5 69.9 44.6 69.7 44.4 69.7 43.8 69 44 68.3 44.7 67.7 46 68 46.1 68.5 46.6 68.4 47.4 65.8 49.9 64.8 49.9 64.2 50.3 63.9 51.2 65 50.9 65.2 51.1 63.9 53.4 63.4 53.2 63.1 52.6 62.7 52.3 59.8 49.2 59 48.8 57.8 48.4 56.7 48.6 55.8 48.6 54.5 48.3 53.9 48.3 54.1 48.9 53.6 49.3 52.4 49.3 52.2 49.1 52.3 48.9 52.2 48.5 50.4 48.5 48.9 49 48.4 49.8 47.9 49.7 48 49.2 46.7 49.1 46.5 49.2 46.4 49.6 47.3 49.8 46.8 50.2 46.3 50.3 45.7 50.8 44.2 50.8 43.4 51.4 39.6 52.3 38.9 53 39.7 53.5 39.8 53.7 39.4 54.2 38.9 54.3 38.3 54.8 38.4 55.5 37.8 56 37.1 56.2 36.3 56.2 34.6 56.8 33.5 56.7 32.9 57 32.2 56.8 31.9 57.4 31.5 57.6 31.4 57.1 30.8 56.6 30.8 56.1 31.5 55.4 31.4 55.2 31.2 55.2 30.1 56 30.2 56.6 30.1 57.3 28.9 58.6 28.1 58.7 27.5 59.2 26.6 59.3 26.3 59.6 25.6 59.6 25.2 59.1 24.7 59 22.7 59.8 22 59.8 21.5 60 20.3 59.9 21.3 59.6 22.1 58.7 22.8 58.7 24.4 58.3 25 57.8 26.3 57.6 27.2 57.1 27.5 56.6 26.5 56.7 26 56.5 25.6 56.5 24.3 57.4 22.7 57.7 21.4 58.9 20.2 58.9 19.9 59.1 19.1 59.2 18.5 59.7 17.6 59.8 16.8 60.4 17.4 61 17.4 61.2 16.8 61.7 16.1 61.7 15.3 61 14.4 60.8 12.6 61 11.9 60.9 12 60.6 13.8 59.8 14 59.5 13 59.5 10 60.5 9.5 60.2 9.6 59.6 11.7 57.4 13.6 55.1 14.5 54.1 15.8 53.5 17.1 52.2 17.6 52.1 18.1 51.4 20.5 49.2 24 47 25.2 45.9 28.3 43.8 32.2 41.5 35.3 39.5 37.1 38.6 40 36.9 42.3 35.7 43.3 35 48.4 32.5 50.5 31.2 51.6 30.9 53.7 30 56.2 29.5 56.7 29 58.6 28.2 60.8 27.9 61.8 28.8 62.3 28.7 62.5 28.3 62.5 27.2 61 24.3 59.6 22.4 58.6 21.6 57.4 21 54.9 21.2 53.9 21.6 53.3 21.6 52.6 22 51.6 22.1 46.1 24.1 45.5 24.6 44 25.1 42.9 26.3 41.5 27 40.5 27.9 38.9 28.7 36.3 30.4 34.6 31.3 33.3 31.6 32.5 32.3 31.2 32.8 29.8 33.8 28.8 34 27.3 35.6 26.3 36.1 25.6 37 24.7 37.1 24.1 37.7 22.5 38.8 22 39.4 21 39.8 19.9 40.8 19 41 18.2 41.7 17.2 42.2 16.5 43 15.3 44 12.8 45.2 11.3 46.6 10.3 47.1 8.9 48.9 8 49.7 7.7 50.2 7.8 50.4 8.2 50.3 8.9 49.5 9.3 49.3 10 49.5 10.2 49.9 7.5 52.7 6.8 52.9 6.3 53.4 5.9 53.2 6.4 52.6 7.1 51 5.8 51.1 3.4 53.9 3 54.8 1.9 56.2 1.3 57.6 1 59 1.4 60.8 2 62 3.2 63.9 4.3 64.9 4.6 65.8 6.5 67.3 8.8 68 10.6 68.1 11.9 67.9 13.7 67.3 14.5 66.8 14.9 66.8 15.7 66.3 17.4 66.1 18.8 65.4 19.6 65.3 21.4 64.4 22.7 64.2 25.9 62.9 26.9 62.8 27.6 62.3 29.3 61.7 30 61.7 31.2 61.4 32 61.5 32.8 61.4 33.9 60.2 35 59.9 36.4 59.2 37.8 59.1 38.8 58.6 41 58.1 42.1 57.7 42.7 57.7 43.3 57.3 46.5 56.7 47.3 56.2 47.9 56.1 49.5 56.2 51.5 55.5 52.9 55.4 54.8 54.8 57.1 55.3 57.3 55.8 55.8 57.3 54.3 58.3 52.9 59.6 52.2 59.9 50.9 61.2 50.1 61.8 49.5 62.7 48.5 63 47.4 64.1 47.4 64.4 47.2 64.7 46.8 64.3 46.6 64.3 46.5 64.6 46.8 64.9 46.7 65.3 45.8 64.9 45.1 65.4 45.3 65.6 45.2 66.1 44.9 66.1 44.7 65.6 44.4 65.6 43 66.7 42.6 66.8 42.3 67.1 42.9 67.7 43.9 67.8 43.4 68.5 42.7 68.8 42.1 69.4 41.6 69.6 40.9 70.4 40.2 70.4 39.7 70.7 39.2 70.5 39.5 69.7 39 69.8 38.5 70.3 39 71.1 38.9 71.3 37.6 72.5 36.3 72.7 34.6 74.3 34.6 74.7 35.1 74.8 36 74.3 36.6 73.5 37.1 73.2 37.7 73.2 38.4 72.7 39.1 72.5 39.5 72.1 40.2 71.7 40.7 71.9 40.7 72.3 39.6 73.5 39 73.6 38.5 74.1 37.9 74.1 37.8 74.3 37.9 74.4 37.6 75 36.6 75.9 35.6 76.3 35.1 76.3 34.7 76 34.2 76 33.4 76.7 32.9 76.6 32.5 76.9 32.1 76.9 31.4 76.3 30.8 76.3 29.5 76.7 28.8 77.3 28.9 78 28.2 78.5 27.9 79.3 27.2 80.6 26.4 80.6 25.9 81.1 25.4 81 25.3 80.3 25.7 79.5 25.2 79.4 24 80.4 23.9 80.9 23.5 81.2 23.5 82 22.1 83.5 21.5 83.5 21 83.9 20.7 84.1 20 85.3 19 85.3 18 86.2 17.6 85.6 17.6 84.9 17.8 84.7 17.8 84.1 17.6 83.6 17.1 83.6 16.5 84.2 15.8 84.5 15.5 85 15.6 85.6 15.1 86.1 14.6 86.2 14.3 85.9 14.4 86.2 14.3 86.7 13.8 86.6 13.6 84.7 13.8 84.5 14.6 85.4 15 84.2 14.7 84.2 14.4 83.8 14.4 83.5 14.1 83.2 12.6 84.1 12.1 84.2 11.2 84.1 9.6 84.8 9 84.8 8.9 85.4 9.5 86.9 10.2 87.6 10.6 88.6 11.3 89.4 12 90.7 13 91.8 14.1 92.2 14.6 92.5 15 92.5 15.6 92 16.9 91.6 20.6 89.2 21.3 88.9 23.2 87.8 23.9 87.6 26.4 85.9 28.1 85 29.5 83.8 31.2 83.4 32.3 82.5 33.8 81.8 34.7 81 36 80.3 36.7 79.5 38.4 79 40 77.8 42.9 76.3 44.2 75.3 46 74.3 48.8 72.4 50.2 71.7 51 71.6 52 70.9 52.6 70.7 53.9 69.7 54 70 53.2 71.7 52.9 73.1 52.1 74 51.8 74.7 51.7 74.6 51.8 73.4 52.3 72.3 52.2 71.9 51.8 71.7 51.2 72.5 51.2 73.1 50.4 74.7 49.3 75.6 49.1 76.1 48.9 78.2 49.1 80 48.8 80.5 48.4 82.2 48.5 83.9 48.9 84.7 49 85.4 49.2 85.9 51.6 88.2 52.9 88.7 54.6 89.8 56.4 90.5 58.7 91 59.8 91 60.9 90.6 62.9 89.4 64.4 87.9 66.2 84.7 67.3 83.8 68.3 82.4 69.1 81.6 69.3 80.7 70.3 79.7 71.5 77.6 72.9 76.3 73.6 74.3 74 74 74.7 73.8 75.5 72.8 76.5 71.9 76.8 71 78.7 68.4 80 67.2 80.6 66.1 81.6 65 82 64.2 83 63.3 83.4 62.4 84.8 60.9 85.1 60 85 59.2 86 58.4 86.1 57.6 86.8 57 87.2 57.1 87.6 56.7 88.7 54.7 88.8 54 89.8 52.7 91.6 51.1 93.1 47.9 93.1 47.2 93.6 47 94.4 45.9 94.6 45.3 94.6 44.5 95.2 44.1 95.8 43.2 96.8 40.7 97.6 39 98.2 36.9 98.6 36.3 98.7 35.6 99.2 34.5 99.2 33.9 99.6 32.9 99.6 32.5 101 29.7ZM43.9 70.2 43.9 70.6 43.4 71.1 41.7 71.2 41.4 71 41.5 70.5 42.3 70.5 43.3 69.9 43.6 69.9ZM79.1 67.3 79.2 67.5 79 67.8 78.8 67.5ZM46.4 66.2 45.3 67.3 44.7 67.2 44.7 66.9 45.4 66.2 46 66.1ZM48.4 64.9 48.4 65.2 47.4 66.1 46.6 66 46.8 65.3 47.6 65.2 47.9 64.8ZM83.1 62.1 83.2 62.3 82.9 62.5 82.8 62.3ZM85.1 54 85.4 54.2 85.4 54.6 84.9 54.9 84.8 54.2ZM43.6 53.7 43 54.5 42.7 54.6 42.1 54.2 42.1 53.9 42.4 53.6 43.4 53.5ZM45.5 52.2 45.1 52.8 43.2 53 41.5 53.6 41.1 53.3 41.3 52.6 42.4 52.2 43 52.2 43.8 51.7 44.1 51.7 44.5 52 45.3 52ZM47 51.6 47.7 50.9 49.1 51 49.3 51.2 48.9 51.8 48.2 51.7 47.2 51.8ZM50.1 50.9 50.4 50.4 50.8 50.3 52.8 50.7 52.6 51 51.4 51.5 50.7 51.4ZM12.5 50.2 12.8 49.7 13.2 49.8 13 50.2 12.7 50.3ZM15 48.5 14.9 49.2 14.6 49.5 13.9 49.7 13.3 49.6 13.6 49 14.4 48.3 14.7 48.3ZM17.7 43.9 17.4 44.5 16.6 45.1 16.4 45.1 15.8 45.7 15.3 45.4 15.3 45.1 16.9 43.9 17.2 43.8ZM18 43.5 18 42.4 18.2 42.2 18.5 42.2 19.4 42.7 19.1 43 18.3 43.6ZM92.2 40.5 92 41.1 91.3 42 91.1 42 90.8 41.7 91 40.8 91.3 40.4 91.7 40.3ZM93.2 38.3 93.5 38 93.8 38.2 93.6 38.6ZM90.7 37.9 91 37.9 91.2 38.3 91.1 39 90.8 39.2 90.5 39.1 90.5 38.5ZM79 33.7 79.2 33.3 79.4 33.4 79.2 33.8ZM93.9 30.1 94.1 30.9 93.7 31.4 93.5 31 93.5 30.2ZM92.3 29.4 92.5 29.6 92.5 30.1 91.9 32.1 91.3 33.2 91.2 34.1 90.8 34.7 90.8 35.4 91.3 35.9 92.4 34.1 92.4 33.5 92.9 32.7 93 31.9 93.6 31.4 93.7 32.3 93.3 33.3 93.3 33.8 92.7 34.7 92.6 35.7 92.3 36 92.2 36.7 91.8 37.3 91.2 37.8 90.8 37.2 90.6 37.9 90.2 37.8 90 37.5 89.5 37.7 89.1 38.9 89.7 39.5 89.8 39.8 88.9 40.7 88.6 40.7 88.3 40.9 88.9 41.6 89.3 41.3 89.8 41.4 89.8 42 89.2 43.4 89.3 43.5 90.5 43 90.8 43.5 91.3 43.5 91.6 43.8 91.6 44.2 90.8 45.1 90.5 44.6 90.2 44.7 90.1 45.4 90.6 45.3 90.8 45.7 90.7 46.5 90.4 47 89.9 47.1 89.7 46.8 89.7 46.1 89.3 46.1 89.1 45.8 88.6 45.7 88.7 46 89.1 46 89.3 46.3 89.2 47.2 89.5 47.4 89.4 47.9 89.5 49.1 89.2 49.9 88.8 50.3 87.8 50.5 87.5 50.1 88.1 48.9 88 48.8 87 49.1 86.9 49.8 87.2 50.7 86.7 51.1 86.7 51.5 86.9 51.7 86.7 52.6 86.1 53 85.9 52.8 86 52.1 85.7 52.1 84.8 53 84.5 54 84.1 54.5 83.6 55.4 82.8 56.5 83.2 56.6 84.1 55.6 84.3 55.6 84.4 56 83.4 57.6 83.1 58.3 82.6 58.7 82.3 58.9 82.2 59.3 80.7 61.2 80.4 61.2 80 61 79.7 59.9 79.5 59.9 79.5 60.3 79.2 60.4 78.5 59.8 78.2 59.2 78.6 58.6 79.1 58.5 79.4 59.1 79.7 59 79.7 58.5 79.3 58.3 79.3 57.6 78.8 57.6 78.5 57.9 78.4 58.5 77.3 60 77.2 61 78.1 61.8 79.1 61.1 79.7 61.8 79.7 62.2 79.4 62.7 78.6 63.5 78.4 63.4 78.2 62.7 77.4 63 76.9 63.9 76.9 64.3 77.4 64.2 77.6 64.4 77.5 65 76.7 65.8 76.5 66.5 76.1 66.8 75.6 66.9 75.3 68 74.2 69.1 74 69.7 73.4 70.2 72.9 69.9 73.2 69.1 74 68.4 74.2 67.9 74.2 67.3 74.8 66.3 74.1 65.6 74.1 64.8 73.8 64.4 73.5 64.3 73.6 63.4 73.4 63.4 72.5 64.3 73.1 64.4 73.2 64.9 72.9 65.4 72.7 66.3 71.7 67.4 71.7 68.3 71.3 68.6 70.5 69 70.3 69.4 70.9 69.1 71.2 69.2 71.6 69.1 72.8 67.8 73.2 67.8 73.6 68.1 73.5 68.5 71.9 70 71.2 71.3 71.2 71.7 71 71.9 70.6 71.8 70.2 71.9 69.6 73.2 69.1 73.7 69 74.1 68.6 74.4 68.3 74.4 68 74.2 68 73.8 68.5 73.4 68.4 72.8 68 72.9 67.2 73.8 66.8 73.7 66.7 73.2 66.5 73.4 66.2 73.2 66.3 72.7 67.3 71.6 67.7 70.9 67.7 70.4 67.4 70.5 65.6 72.4 64.9 73.6 64 74.6 63.6 75.3 63.6 75.9 63.9 75.9 64.1 76.2 63.6 77.2 63.4 77.4 63 77.3 63.3 76.3 62.4 76.7 61.7 77.5 61.4 78.4 59.9 79.5 59.5 80.4 57.9 82 57.4 82.2 57.2 81.9 57.4 79.8 58.1 77.8 58.3 76.9 58.5 76.6 58.7 75.3 59.2 74.4 59.3 73.8 62.2 68.7 63.3 66.3 65.4 63.3 66.2 61.7 66.7 60.4 67.4 59.5 67.7 58.9 69.4 56.2 71 54.6 71.6 53.4 72.9 52 74 50.1 75.9 47.8 76.3 47 76.3 46.4 77.1 45.9 78.1 44.8 78.8 43.6 83.2 39 83.6 38 85.3 36.5 86 35.2 86.9 34.5 88.2 33.2 88.5 32.7 91.2 30.1ZM94.3 28.9 94.5 29.5 94.1 30 93.8 29.4ZM196 6.1 194.2 4.2 193.2 3.7 192.2 2.6 191.2 2.1 190.7 2.4 190.5 3 188.5 5.5 188.1 6.7 187.5 7.3 187.8 7.7 187.8 8.4 186.9 9.6 186.1 11.9 184.7 13.2 184.7 13.9 184.3 14.4 183.1 15.3 182.8 16.1 182.6 16.8 181.8 17.2 181.3 17.8 181.3 18.2 181.9 18.5 181.8 19.3 180.7 19.9 180.5 19.5 180.1 19.5 179.9 19.7 179.9 20.6 178.8 21.6 177.8 21.5 177.4 22 177.4 22.5 177.6 22.9 177.5 23.5 177.1 24.3 175.9 25.4 174.2 26.4 174 26.4 173.6 25.8 173.1 26.2 173 26.9 172.4 27.6 172.9 28.1 172.8 28.4 171.5 30 169.8 30.3 169.4 30 169.2 29.3 168.7 29.3 168.3 29.6 167.1 31 167.1 31.5 167.3 31.9 166.7 33.1 166.5 33.3 166.1 33.3 165.8 32.8 165.5 32.8 165.3 33.2 165.3 33.4 166 33.5 166.2 33.8 166.1 34.4 165.4 35.1 165.3 35.9 164 37.1 163.1 37.2 162.7 38.4 162.1 39 161.1 39.2 159.9 40.2 159.6 40.9 158.4 41.6 158 42 158.1 43 157.7 43.5 157.3 43.5 157 43.2 156.7 43.2 156.6 44.7 155.3 46 154.8 45.7 154.3 45.9 153.5 45.7 153 46.3 153.7 46.6 153.9 47.1 153.5 47.7 152.9 47.6 152.8 47.7 152.9 48.2 152.3 48.8 152 49.5 151.6 49.8 150.8 50.1 150.4 50.8 149.9 51.2 148.9 51.4 148.3 51.7 148.2 53.3 147.6 54.6 147.1 55.1 147 56.1 146.5 56.7 146.1 56.8 145.8 56.6 146.1 56.1 146.3 54.7 146.1 54.7 144 57.4 143 58.4 142.6 59.5 141.5 60.6 141 60.8 140.9 60 141.5 59.6 141.7 59 141.6 58.7 141.1 59 140.7 60.3 140.3 60.8 138.3 61.5 137.1 61.5 136.1 61.8 134.1 62.2 134 63.1 133.8 63.4 132.3 63.6 131.7 64.2 130.1 64.3 129.5 63.9 129.5 63.6 129.8 63.3 128.8 63.5 128.8 63.7 129.5 64.7 129.5 65.2 129.3 65.5 127.7 65.6 126.9 66.3 126.3 66.6 125.7 66.6 125.1 66.9 123.8 66.7 123.7 67.2 123.2 67.7 122.2 67.7 122.1 67.1 123.5 64.2 124.5 63 125.1 61.6 126.4 59.9 127.5 57.7 129.6 54.8 130.3 53.4 133.9 48.8 135.9 45.7 137.7 43.6 138 42.9 142 37.5 144 33.7 144.1 32 143.8 30.9 141.1 28.7 140.5 28.3 140.1 28.3 139.6 28.1 138.9 27.3 137.7 26.8 137.2 26.8 136.7 27.5 136.1 29.3 133.5 32.2 133.3 32.8 133.7 33.1 133.7 33.4 133.2 33.7 133.1 33.2 132.8 33.1 131.7 33.9 131.6 34.5 132.1 34.8 132.1 35.3 131.3 36.3 130.8 36.3 130.3 36.9 130.2 37.5 130.4 37.9 130.2 38.4 128.4 40.2 126.8 41.5 126.4 41.5 126.2 41.3 126.3 40.5 125.9 40.4 124.7 41.7 123.2 42.9 123.2 43.2 123.7 43.4 123.5 43.9 123.1 44.4 123.1 44.6 123.7 45.3 123.3 46.5 122.8 46.8 122.2 46.5 122.2 45.9 122.5 45.5 122.2 45.1 121.4 44.6 120.8 44.9 120.7 45.3 121 45.5 120.9 46.4 121.6 46.3 121.9 46.5 120.9 47.6 120 48 120 48.8 120.2 49.1 120.2 49.6 119.6 50.5 119.5 50.4 119.6 49.9 119 49.3 119.3 48.9 119.1 48.6 119.6 47.9 119.5 47.7 119 47.4 119.1 46.6 118.4 47.1 118.3 47.4 118.5 47.7 118.5 48.2 117.8 49.2 117.8 49.5 118.2 49.8 118.2 50.3 117.8 50.7 117.1 50.7 116.8 50.1 115.3 51.4 114 51.6 113.6 51.8 112.8 52.6 111.4 53.3 111.1 53.3 110.9 53.2 111.1 52 110.7 51.5 111.1 49.8 113 45.8 113.2 44.6 114.1 43.3 115.8 39.7 116.8 38.2 117.8 35.2 118.5 34.2 119.4 32.5 120.1 31.5 120 30.2 118.9 28.5 117.8 26.4 116.1 24.6 115.2 24 113.1 22.9 112.6 22.9 112.2 23.3 111.1 25.8 109.4 28.5 108.6 30.4 107.7 31.6 107.1 33.2 106.5 33.9 105.4 36.3 104.6 37.2 104.5 37.7 103.4 39.4 103.1 40.3 102.6 40.7 102.1 41.6 101.1 42.7 100.8 43.4 100.8 44.1 99.8 45.1 100 45.7 99.8 46.4 100.2 46.5 100.4 47 99.9 47.4 98.9 49.2 98.3 49.7 97.9 50.9 96.1 53.2 95.6 53.3 95.4 53 95.4 52 95.2 51.8 95 52.1 95.1 53.2 94.8 53.7 94.8 54.2 95 54.1 95.1 54.2 95 54.8 93.8 56.6 93.8 56.8 93.5 57.2 93.1 57.2 92.9 57.4 92.7 58.3 92.2 58.9 91.9 58.7 91.7 57.1 91.4 57.1 91.1 57.4 90.4 58.7 90.4 59.3 90.7 59.5 91.8 59 91.9 59.7 91.3 60.8 91.1 61.7 90.4 62.2 89.5 63.3 88.8 65.5 88.5 65.9 88.1 65.9 87.5 66.3 87.4 68.5 87 68.7 86.9 68.6 86.6 68.7 86.7 69.6 87.3 69.9 87.3 71.2 86.9 71.9 86.6 73.4 86.2 73.7 85.9 73.7 85.6 73.2 85.6 72.4 86.3 71.2 86.4 70.6 86.3 70.4 85.9 70.5 85 71.2 84.7 71.2 84.3 70.6 84.2 70.7 84.2 71.1 84.5 71.5 84.5 72.3 84.2 72.7 83.8 74.4 83 75 82.6 74.8 82.9 73.6 82.4 73 83 72.4 82.8 72.1 82.5 72.1 82 73.1 82.5 74.1 82.2 74.2 81.7 73.8 81.5 74.1 81.3 74.9 80.6 75.5 80.1 77.6 79.5 79 79.5 79.4 81.1 80.9 82 82.4 82.3 83.2 83.4 84.7 83.9 85.1 84.5 85.1 86.2 84.3 87.8 83.8 90.5 82.4 91.2 82.4 91.9 82 92.6 81.9 93.1 81.7 93.8 81 94.4 81 95.2 80.5 97.5 80 98.3 79.5 99 78.7 100.1 78.1 100.5 78.1 101.2 77.8 102.3 77.9 102.9 77.5 104.3 77.5 105.1 77.2 105.6 77.2 107 76.6 107.5 76.7 110 75 110.7 75 111.2 75.3 112.6 75.3 112.7 75.7 112.4 76.1 112.1 77.6 111.7 78.1 111.2 77.3 110.7 77.1 110.5 77.2 110.5 77.5 110.1 78 110.2 78.8 110.6 79.1 110.9 78.5 111.2 78.6 111.2 78.8 110.3 79.9 109 79.5 108.6 78.7 108.3 79 108.1 79.7 108.2 81.1 108.8 81.7 108.3 82.2 108.1 82 107.8 81.2 107.4 80.9 107 80.9 106.7 81.2 106.2 80.6 104.4 84.9 104.4 85.6 104.6 86.1 105.2 86.6 106.1 86.8 107.1 88 108.6 88.6 109.2 89.2 109.9 89.5 112 89.8 112.6 89.3 112.8 88.8 113.1 86.4 113.3 86.1 113.4 85.1 113.9 84.1 113.9 83.6 114.3 82.9 114.4 82 115 80.4 115.8 78.7 115.9 77.9 116.6 76.9 118.2 73.5 118.7 73 119.4 72.7 121 72.4 122.5 71.8 122.7 71.2 123.1 71 123.4 71 124.1 70.6 125 70.6 125.7 71 126.5 71 127.9 70.5 128.5 70.5 130 69.3 130.4 69.1 131.2 69.1 132.1 69.4 132.5 69.8 132.1 71 131.3 71.9 131 72.9 129.3 75 128.4 76.5 127.5 77.4 127.3 77.9 126.2 79.2 125.2 80.6 124.7 81.7 123.7 83.1 121.5 86.6 121.5 87 122.4 88.3 124.1 90 125.6 90.8 127.1 91 127.8 90.7 128.3 90.2 129.3 88.7 130.6 87 133.8 82 134.2 81 135.2 79.8 137.2 76.2 137.8 75.6 138.6 74.3 138.9 73.6 140.4 71.9 141.9 69.4 143.5 67.3 144 67.2 145.1 66.3 146.1 66.5 150.2 65.8 151 65.4 153.2 65.3 153.7 65 154.3 65 155.2 64.7 156.4 64.7 157.4 64.2 159.8 64.2 160.8 63.9 163.5 63.7 164 63.5 165.2 63.9 165.5 63.3 166 63.3 166.1 63.9 165.5 64.3 165 64.4 164.9 64.9 164.2 65.6 163.7 66.5 163.7 67.2 163.1 67.7 163 68.3 162.5 68.5 162.2 67.9 161.8 67.9 162.1 70 162 71.1 162.4 71.6 162.3 72.7 161.7 73.1 161.5 73.1 161.2 72.8 161.2 71.8 160.8 70.3 161.2 69.7 160.9 69.3 160.5 69.6 160.4 70 159.8 70.4 159.5 71.2 159.3 72.1 158.6 72.5 158.4 74.6 157.9 75.1 157.9 75.5 158.4 75.6 158.6 75.9 158.6 76.2 157.9 77.4 157.8 78.7 157.2 79.2 157.1 79.9 156.7 80.6 157 80.7 157.6 80.1 159.3 77.5 159.7 78 158.7 79.7 158.6 80.6 158 81.6 157.7 82.8 156.8 83.8 156.4 83.1 156 82.9 155.3 83.1 154.9 83.7 154.1 83.5 153.7 82.9 153.4 83.1 153.5 83.7 153.9 83.8 154.1 84.2 154.6 84.2 154.8 84.4 154.7 86.1 154.2 86.6 154 87.8 153.5 88.5 153.4 89.8 151.7 91.2 150.4 91.3 150.3 91.4 150.4 92 150.2 92.3 149.7 92 148.9 92.9 147.6 93.6 147.6 94.1 148.2 94.9 149.8 96.6 151.2 96.7 152.3 98.1 153.6 98.8 156 99 156.2 98.8 156.4 97 156.6 96.7 157.3 94.2 158.1 92.4 158.3 91.6 159.1 90.1 159.7 88.2 160.5 87 160.6 86.4 161.6 84.7 162 83.2 163.9 79 164.6 76.8 165.8 74.7 166.7 72.3 167.7 70.5 168.6 68 169.6 66.3 171.1 62.3 171.9 61.7 173.1 61.5 174.8 61.5 175.9 61 181.1 60.8 182 60.4 182.8 60.4 184.3 59.9 184.9 59.5 185.9 59.2 187.8 59.1 189.3 58.6 190.2 58.6 191.3 58.1 192.3 58.1 193.5 57.7 194.3 56.8 194.5 56 194.5 54.7 194.3 53.6 194.4 52.9 192.9 50.3 192.5 50.1 191.9 50.1 190.8 50.5 188.9 50.8 188 51.1 186.7 51.2 185.9 51.6 183.2 51.8 181.5 52.6 180.4 52.4 179 53 176.8 53.2 175.9 53.6 175.3 53.4 175.3 52.7 175.6 51.8 175.7 50.8 176.6 49.6 177.2 48.4 177.3 47.8 179.5 43.4 179.9 42.3 180.9 40.9 181.3 39.8 181.5 39.1 182.3 37.5 182.4 36 183.5 34.8 184.8 31.9 184.9 31 185.6 30.1 186.3 28.3 187.5 26.2 188.2 24.1 188.9 23.1 189.7 21.4 190.8 19.4 194.2 14.6 196.6 10.3 196.7 9.8 197 9.2 197 8.7ZM156.1 85 156.4 85.3 156.4 85.9 155.8 86.7 154.7 89.4 154.3 89.8 154.1 89.8 154 89.1 154.2 88.2 154.9 86.9 154.8 86.2 155.6 85.3ZM106.8 81.9 107 81.8 107.3 82.2 107 82.3ZM161.2 73.2 161.6 73.8 161.1 74.4 161 75 160.4 75.6 160.2 75.6 159.9 75.1 159.9 74.6ZM133.5 69.7 133.7 70.2 133.1 70.6 132.8 70.4 132.9 70ZM89.1 67.9 89.2 68.4 88.8 68.7 88.6 68.5 88.6 68.1ZM118.5 64.6 118.8 64.9 118.2 65.4 118.1 65.2ZM91.4 62.7 91.8 62.9 91.7 63.4 91.3 63.3ZM96.8 57.1 96.9 57.4 96.7 57.9 95.7 58.9 95 59.3 94.6 59.3 94.5 58.9 95.1 58.4 95.1 58.1 96.4 57ZM122.2 56.2 122.4 56.4 122.2 56.7 121.4 57.7 121.3 57.4 121.8 56.5ZM122.9 52.8 122.8 54.2 121.4 55.6 121 56.4 120.9 57.2 119.5 59.1 119.3 59.9 119.5 60 119.9 59.8 120.8 58.4 121 58.5 121 58.9 120.8 59.1 120.8 59.8 121 59.9 121.9 58.6 123.1 57.4 123.2 57 123.5 56.6 124 56.7 124.1 57.1 124 57.3 123.1 57.8 123.1 58.1 122.1 60 121.8 60.4 121.9 60.8 121.8 61 121 61.5 120.9 62.8 120.5 63.1 119.9 62.2 119.1 62.1 118.9 61.8 118.8 60.5 118.3 60 118.2 59.7 117.8 59.6 117.6 59.8 117.5 60.5 117.1 61.2 116.1 62.2 115.7 62.9 115.6 63.6 115.3 64 115.3 64.6 114.9 65 115 66.3 114.6 66.8 114 67.2 113.9 68.5 113.2 69 113 69.3 112.6 67.4 112.2 67.1 112.1 67.5 111.3 68.3 111.2 69.2 110.8 69.6 110.5 69.6 110.1 69.9 109.5 70 108.2 70.9 107.4 71 106.7 71.8 105.9 72.2 105.4 72.2 104.5 71.3 104.3 71.3 103.7 72.3 102.9 72.5 103.1 73.4 102.6 74 100 74.1 99.2 74.6 97.7 74.3 97 74.8 96 75 95.2 76.1 94.6 75.6 93.5 75.6 92.7 76.6 91.6 76.6 91.1 76.9 90.6 76.8 90.6 76.2 91.1 75.1 91 74.1 92.2 71.3 92.7 70.6 93.2 69.6 96 64.9 99.9 58.9 100.2 58.6 100.7 58.9 100.6 59.9 100.8 60.5 101.8 61.7 103.4 63.3 104.4 63.6 105.4 64.4 107 65.3 107.8 65.3 108.7 65.5 110.1 64.2 111.4 62.3 112.8 61.2 113.7 59.7 114.3 59.8 115 59.5 115.8 58.4 117.4 57.6 121.6 52.9 122.2 52.9 122.7 52.7ZM171.2 50.7 171.6 51.1 171.5 51.8 170.6 53.2 170.3 53.4 168.8 52.2 169.1 52 169.7 52.1 170.2 52 170.9 50.9ZM153.5 47.7 153.6 48 153.2 48.3 153 48ZM157.6 47.3 157.7 47.6 157.2 48.5 156 49.7 155.6 49.7 155.3 49.1ZM126 43.6 126.2 43.9 125.9 44.6 125.6 44.9 125.2 44.6 125.2 44.4 125.8 43.6ZM160.5 43.9 160.6 43.3 161 43.3 161.2 43.5 160.8 44ZM159.5 42.2 159.7 42.3 159.6 42.8 159.2 42.7ZM103.3 42 103.4 42.2 103 42.7 102.9 42.3ZM161.5 41.9 162 41.6 162.3 42.2 162.1 42.4ZM127.7 41.6 127.8 42.1 127.3 42.9 126.9 43.4 126.2 43.8 126 43.5 126.3 42.6 126.8 42.1ZM161.2 40.1 161.6 40.2 161.6 40.5 161.4 40.8 161 40.7ZM163.6 39.4 164.1 39.6 164.1 40.4 163.7 40.8 163.3 40.5 163 40.2 163.1 39.8ZM168 30.9 168.4 31.3 168.3 31.7 167.8 31.6 167.8 31.3ZM180.4 30.7 180.5 31.5 180 31.9 179.9 31.7 180 30.9ZM178.5 28.8 178.8 29.3 178.4 30.2 178.4 31.6 178.6 32.1 178.4 32.3 177.9 32.2 177.2 32.3 177.1 32.7 177.5 33.7 178.2 33.8 178.8 33.7 179 33.9 178.5 34 178 34.8 177.5 35.3 176.5 35.8 176.2 36.3 176.2 37 176.5 37.3 176.9 37 177.3 37 177.6 37.3 177.8 38.4 176.8 40.1 176.5 41.3 175.7 41.7 175.9 42.3 175.7 42.8 174.9 43.5 174.8 44 173.5 45.1 173.4 45.8 172.9 46 172.8 46.3 173 47 172.9 47.9 171.8 48.9 170.9 49.1 170.2 49.8 169.3 50.1 168.8 50.5 168.5 51.2 168.6 52.3 168.3 52.8 168.3 53.2 167.8 53.7 167.9 54.5 167.5 54.9 166.6 54.8 164.8 54.9 164.1 55.4 163.1 55.6 162.9 55.9 163.6 56.4 163.5 56.7 163 56.8 162.1 56.7 161.7 57.1 161 57.3 160.2 57.3 159.5 57.6 158.4 57.4 158 57.7 157.3 57.8 156.6 58.3 156.7 58.5 157.3 58.6 157.9 58.4 158 58.6 157 59.1 154.9 59.2 154.6 59 154.7 58.6 154 58.6 151.7 59.1 151.6 59.6 151.1 59.7 150.9 59.5 151 59.2 150.7 58.6 150.8 58 152.1 56.8 152.6 55.8 153.7 54.7 154.3 53.5 155.3 52.3 157.9 49.8 158.1 49.2 159.1 48.2 159.5 47.3 160.6 46.3 161.2 45.2 162.1 44.6 162.5 44.5 163.3 43.8 163.9 42.8 164.7 42.2 165.6 41 165.9 40.4 165.8 40.2 166.7 38.5 166.2 38 166.3 37.3 167.2 35.7 168 34.7 168.4 32.9 169.6 32 170.2 31.9 170.9 32 170.7 32.5 170.2 33.3 170.2 33.5 170.6 33.8 170.6 34.1 169.9 35 169.7 35.8 168.7 36.5 168.3 37.1 168.7 37.7 169.9 36.5 170.9 36.1 177.2 29.4ZM179.3 27.5 180.5 27.7 180.7 27.9 180.9 28.7 181.6 27.9 181.9 28.1 181.7 28.9 181.2 29.5 181 29.6 180.7 29.1 180.5 29.3 180.5 29.5 180.9 29.5 181.1 29.7 180.7 30.4 180.3 30.2 179.7 30.2 179.4 30 179.8 28.7 179.2 28.1ZM181.9 25.3 182.2 25.6 181.7 25.9 181.6 25.7ZM106.2 11.8 105.9 10.9 104.6 8.3 104.4 7.4 103.6 5.8 103.6 5.4 102.9 4.2 102.4 3.7 102.3 3.1 101.8 2.5 101.3 1.3 101 1 100.4 1.5 99.8 1.7 99 2.1 98.3 2.1 97.4 2.6 96.7 2.6 95.6 3.1 94.8 3.1 93.6 3.6 90.7 4 89.9 4.5 88.9 4.6 88.1 5 87 5 86.3 5.4 85 5.5 84.4 5.8 83.1 5.8 82.5 5.6 81.5 5.6 81.2 5.8 81.1 6.5 81.2 8.8 81.6 9.4 81.8 10.5 82.9 12.7 84.7 14.5 85.7 14.5 86.6 14.1 89.3 13.6 90.7 12.8 93.7 12.4 94.2 12.1 97.6 11.4 101 10.2 102.1 10.1 102.9 10.2 104.3 12.2 105.4 13 105.9 13.1 106.2 12.8 106.1 12.2Z"/></symbol>
+    <symbol id="um" viewBox="0 0 42.9 100"><path fill="currentColor" d="M27.3 0.6 27.1 0.6 26.9 0.8 26.7 1.2 26 2 25.5 3 25 3.5 24.2 4.7 23.7 5.7 22.7 7.1 21.9 8.7 21.5 9.2 21.3 9.9 19.6 11.6 19.2 12.3 18.5 13.1 18.3 13.5 17.2 14.6 16.8 15.3 16 15.9 15.9 16.2 15.1 17 14.8 17.5 12.7 19.7 12.1 20.5 11.6 20.8 9.3 23.1 8.9 23.3 7.8 24.3 7.1 24.7 5.5 26.2 4.8 26.7 3.8 27.2 3.1 27.7 2.5 29 1.9 29.7 1.9 31.4 1.2 32.1 1 32.2 0.6 32.7 0.6 33 1.1 33.5 1.9 33.9 2.8 33.9 3.4 34.2 7 34.2 7.6 33.9 10.2 33.9 10.6 34.2 11 34.7 11.8 34.8 14.4 33.3 15.5 32.2 16.2 31.8 17.3 30.7 18 30.3 19.8 28.5 20.3 28.2 20.4 28.3 20.4 28.7 20.2 29.1 20.2 29.5 20.5 30 20.5 31.3 20.2 31.8 20.2 34.6 19.9 35.1 19.9 35.8 19.7 36 19.7 36.6 19.6 36.9 19.6 37.8 19.8 38.2 19.8 38.6 19.6 39 19.6 39.3 19.3 39.9 19.3 41.7 19 42.3 19 44.4 18.7 45 18.7 46.8 18.4 47.3 18.4 49.5 18.1 50 18.1 52.8 17.8 53.3 17.8 56.4 17.5 56.9 17.5 60.6 17.2 61.1 17.2 68.4 16.9 68.9 16.9 76.4 16.6 77 16.6 79.1 16.2 79.9 15.9 80.3 15.1 80.6 11.4 80.6 10.9 80.9 6.7 80.9 6.3 81.2 5.5 81.1 5.2 81.2 4.4 81.3 3.8 81.9 3.4 82.9 2.8 83.5 2.8 83.9 3.1 84.4 3.1 84.8 3.4 85.2 3.4 85.5 3.1 85.7 2.3 85.8 1.7 86.5 1.3 86.6 1.2 86.8 1.2 87.3 1.9 87.7 2.8 87.7 4 88.3 10 88.3 10.5 88.2 11.1 88.4 11.7 88.9 15.5 89 15.7 89.3 15.7 90.2 15.4 90.7 15.4 93.8 15.1 94.3 15.1 95.3 15.4 95.8 15.5 96.9 15.8 97.2 16.5 97.6 16.9 97.6 17.4 97.9 19.9 97.9 21 98.5 23.2 98.5 23.7 98.4 24.7 98.8 25.2 99.4 25.6 99.4 26.1 98.6 26.1 98.2 25.8 97.7 25.8 97.3 26.9 95.7 27.3 95 27.3 94 27.6 93.5 27.6 90.1 28 89.6 28.4 89.6 28.8 89.8 29.5 89.8 30.6 90.4 31.4 90.5 31.9 91 32.6 91.4 34.3 93.1 35.5 93.9 36.1 94 36.7 94.5 37.5 94.9 37.8 94.9 39.3 95.5 40.5 95.5 40.8 95.3 40.8 93.4 41.9 91.8 42 91.3 42.3 90.8 42.3 88.4 42 88.1 41.3 87.6 40.8 87.5 40.2 87.2 39.3 87.2 38.7 86.9 38.4 86.9 35.2 85.3 33.8 83.9 33.1 83.5 32.3 82.8 31.8 82.7 29.5 81.5 29.1 81.5 28.5 80.9 28.5 80.3 28.3 80 28.5 79.4 28.5 78.2 28.2 77.6 28.2 76.4 28.5 75.8 28.5 74.6 28.8 74 28.8 68.6 29.1 68.1 29.1 63.2 29.4 62.7 29.4 56 29.5 55.8 29.5 55.4 29.4 55.2 29.4 52.4 29.7 51.9 29.7 47.9 29.8 47.7 29.8 46.9 30 46.5 30 43.2 30.3 42.6 30.3 39 30.6 38.4 30.6 35.4 30.9 34.9 30.9 32.4 31.1 32 31 31 31.2 30.7 31.2 27.9 31.5 27.4 31.5 22.8 31.8 22.3 31.8 18.9 32.1 18.4 32.1 15.9 32.4 15.4 32.4 13.8 32.7 13.3 32.7 12.6 33 12.1 33 10.8 33.3 10.3 33.3 9.6 33.6 9.1 33.6 8.5 33.9 7.9 33.9 7.6 34.5 6.4 34.5 6.1 35.1 4.9 35.1 4.6 35.7 3.1 35.7 1.6 35.4 1.2 35.2 1.2 34.6 1.6 34.2 1.6 33.7 1.9 33 1.9 32.5 1.6 30.9 1.6 30.4 1.3 28.2 1.3Z"/></symbol>
+    <!-- Ilustração técnica da camisa (posição da estampa). A cor da estampa vem do "color" de quem usa o símbolo. -->
+    <symbol id="tee-front" viewBox="0 0 400 460">
+      <path d="M156 34C170 60 230 60 244 34L314 58L382 142L338 176L304 150L304 432L96 432L96 150L62 176L18 142L86 58Z" fill="#D9CCB6" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M156 34C176 44 224 44 244 34C230 60 170 60 156 34Z" fill="#B9AC95" stroke="#000" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="M146 38C162 78 238 78 254 38" fill="none" stroke="#000" stroke-width="1.2"/>
+      <path d="M86 58Q92 104 96 150M314 58Q308 104 304 150" fill="none" stroke="#000" stroke-width="1.2"/>
+      <path d="M100 421H300M23.5 134.9L67.5 168.9M376.5 134.9L332.5 168.9" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4 4"/>
+      <use href="#logo" x="171" y="84" width="58" height="28"/>
+      <text x="200" y="117" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="4.6" letter-spacing="2" fill="currentColor">COLLECTIVE</text>
+      <use href="#um" x="167" y="126" width="66" height="154"/>
+    </symbol>
+    <symbol id="tee-back" viewBox="0 0 400 460">
+      <path d="M156 34C176 45 224 45 244 34L314 58L382 142L338 176L304 150L304 432L96 432L96 150L62 176L18 142L86 58Z" fill="#D9CCB6" stroke="#000" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M146 38C166 54 234 54 254 38" fill="none" stroke="#000" stroke-width="1.2"/>
+      <path d="M86 58Q92 104 96 150M314 58Q308 104 304 150" fill="none" stroke="#000" stroke-width="1.2"/>
+      <path d="M100 421H300M23.5 134.9L67.5 168.9M376.5 134.9L332.5 168.9" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="4 4"/>
+      <use href="#logo" x="138" y="70" width="124" height="60"/>
+      <text x="200" y="140" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="8" letter-spacing="3.2" fill="currentColor">COLLECTIVE</text>
+      <use href="#um" x="157" y="154" width="86" height="200"/>
+    </symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15L19.5 12z"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header" data-tone="noite">
+  <div class="wrap header-in">
+    <a class="brand" href="#topo" aria-label="SÔMA, voltar ao início"><svg viewBox="0 0 207.0 100" aria-hidden="true"><use href="#logo"/></svg></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#loja">Loja</a>
+      <a href="#musica">Música</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="header-actions">
+      <button class="bag-btn" type="button" data-open="sacola" aria-label="Abrir sacola, 0 itens"><span>Sacola</span><span class="bag-count" data-bag-count>0</span></button>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ABERTURA -->
+  <section class="hero" id="topo" data-tone="noite">
+    <h1 class="sr-only">SÔMA Collective: comunidade, música e roupa</h1>
+    <div class="hero-panels" aria-hidden="true">
+      <div class="panel"><div class="panel-in"><video src="media/hero-victor.mp4" poster="media/hero-victor-poster.jpg" muted playsinline loop preload="auto" tabindex="-1" disablepictureinpicture></video></div></div>
+      <div class="panel"><div class="panel-in"><video data-src="media/hero-telao.mp4" poster="media/hero-telao-poster.jpg" muted playsinline loop preload="none" tabindex="-1" disablepictureinpicture></video></div></div>
+      <div class="panel"><div class="panel-in"><video data-src="media/hero-louvor.mp4" poster="media/hero-louvor-poster.jpg" muted playsinline loop preload="none" tabindex="-1" disablepictureinpicture></video></div></div>
+    </div>
+    <div class="hero-shade"></div>
+    <div class="intro-slats" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="hero-mark">
+      <svg class="hero-logo paint" viewBox="0 0 207.0 100" aria-hidden="true">
+        <defs>
+          <mask id="m-hero" maskUnits="userSpaceOnUse" x="-30" y="-30" width="270" height="160">
+            <path class="brush" d="M-8 92L20 40L46 4L40 100L74 -2L78 100L110 -2L114 100L146 -2L150 100L184 -2L196 100L214 50" fill="none" stroke="#fff" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"/>
+          </mask>
+        </defs>
+        <g data-paint><use href="#logo"/></g>
+      </svg>
+    </div>
+    <div class="hero-foot">
+      <div class="wrap">
+        <p class="hero-line"><strong>Somos SÔMA, somos 1.</strong><span>Comunidade, música e roupa.</span></p>
+        <div class="hero-ctas">
+          <a class="btn btn--light" href="#loja">Ver a loja</a>
+          <a class="link" href="#musica">Ouvir Victor Lucass</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto tone-algodao" data-tone="algodao" aria-labelledby="t-manifesto">
+    <div class="wrap grid12">
+      <figure class="manifesto-film">
+        <div class="frame"><video data-src="media/assinatura.mp4" poster="media/assinatura-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></div>
+        <figcaption>O nome, escrito à mão.</figcaption>
+      </figure>
+      <div class="manifesto-text">
+        <h2 class="display h-xl" id="t-manifesto">Muitos membros, um só corpo.</h2>
+        <p class="lead">SÔMA vem do grego <span class="greek" lang="grc">σῶμα</span>, que significa corpo. É uma comunidade de fé que se reúne para louvar, fazer música e vestir a mesma camisa.</p>
+        <blockquote class="verse">
+          <p>Porque, assim como o corpo é um e tem muitos membros, e todos os membros, sendo muitos, são um só corpo, assim é Cristo também.</p>
+          <cite>1 Coríntios 12.12</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- DROP 001 -->
+  <section class="drop tone-algodao" id="loja" data-tone="algodao" aria-labelledby="t-loja">
+    <h2 class="sr-only" id="t-loja">Loja</h2>
+    <div class="wrap drop-grid">
+      <div class="drop-one" aria-hidden="true">
+        <svg class="paint paint-on-view" viewBox="0 0 42.9 100">
+          <defs>
+            <mask id="m-um" maskUnits="userSpaceOnUse" x="-20" y="-20" width="83" height="140">
+              <path class="brush" d="M0 30L26 2L22 92M-4 84L48 96" fill="none" stroke="#fff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+            </mask>
+          </defs>
+          <g data-paint><use href="#um"/></g>
+        </svg>
+      </div>
+
+      <header class="drop-head">
+        <h3 class="display h-xl" id="t-001">Camisa 001</h3>
+        <p class="meta">Apresentada no Lançamento 1, em 18 de abril.</p>
+        <p class="lead">Camisa bege com o SÔMA collective e o 1 em traço de pincel. Duas versões: estampa preta e estampa vermelha.</p>
+      </header>
+
+      <div class="cards">
+        <!-- Para colocar o preço: data-price="149.90" (ponto como separador decimal). Vazio = "Preço a definir". -->
+        <article class="card" data-product data-model="001" data-flats data-id="camisa-001-preta" data-name="Camisa 001" data-variant="Estampa preta" data-price="" data-img="media/prod-001-preta.webp" data-alt="Bastidores do ensaio: modelo com a Camisa 001 de estampa preta e outra ajoelhada com uma bola de basquete" data-info="Camisa bege|SÔMA collective e o 1 em traço de pincel, na frente e nas costas" data-print="#000000">
+          <button class="card-media card-media--flat" type="button" data-details aria-label="Ver detalhes da Camisa 001, estampa preta">
+            <img src="media/prod-001-preta.webp" alt="Bastidores do ensaio: modelo com a Camisa 001 de estampa preta e outra ajoelhada com uma bola de basquete" width="720" height="960" loading="lazy" decoding="async">
+            <svg class="card-flat" viewBox="0 0 400 460" aria-hidden="true" style="color:#000"><use href="#tee-front"/></svg>
+          </button>
+          <div class="card-info">
+            <div class="card-row"><h4 class="card-title">Camisa 001</h4><p class="price" data-price-label><span class="pending">Preço a definir</span></p></div>
+            <p class="card-variant">Estampa preta</p>
+            <fieldset class="sizes">
+              <legend>Tamanho</legend>
+              <div class="size-row">
+                <label><input type="radio" name="tam-camiseta-1-preto" id="tam-preto-p" value="P"><span>P</span></label>
+                <label><input type="radio" name="tam-camiseta-1-preto" id="tam-preto-m" value="M"><span>M</span></label>
+                <label><input type="radio" name="tam-camiseta-1-preto" id="tam-preto-g" value="G"><span>G</span></label>
+                <label><input type="radio" name="tam-camiseta-1-preto" id="tam-preto-gg" value="GG"><span>GG</span></label>
+              </div>
+            </fieldset>
+            <p class="size-hint" role="status" aria-live="polite"></p>
+            <div class="card-actions">
+              <button class="btn btn--ink btn--block" type="button" data-add>Adicionar à sacola</button>
+              <button class="link-btn" type="button" data-details>Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" data-product data-model="001" data-flats data-id="camisa-001-vermelha" data-name="Camisa 001" data-variant="Estampa vermelha" data-price="" data-img="media/prod-001-vermelha.webp" data-alt="Dois rapazes de blazer preto e Camisa 001 de estampa preta segurando aberta a Camisa 001 de estampa vermelha" data-info="Camisa bege|SÔMA collective e o 1 em traço de pincel, na frente e nas costas" data-print="#9B1424">
+          <button class="card-media card-media--flat" type="button" data-details aria-label="Ver detalhes da Camisa 001, estampa vermelha">
+            <img src="media/prod-001-vermelha.webp" alt="Dois rapazes de blazer preto e Camisa 001 de estampa preta segurando aberta a Camisa 001 de estampa vermelha" width="1200" height="1600" loading="lazy" decoding="async">
+            <svg class="card-flat" viewBox="0 0 400 460" aria-hidden="true" style="color:#9B1424"><use href="#tee-front"/></svg>
+          </button>
+          <div class="card-info">
+            <div class="card-row"><h4 class="card-title">Camisa 001</h4><p class="price" data-price-label><span class="pending">Preço a definir</span></p></div>
+            <p class="card-variant">Estampa vermelha</p>
+            <fieldset class="sizes">
+              <legend>Tamanho</legend>
+              <div class="size-row">
+                <label><input type="radio" name="tam-camiseta-1-vermelho" id="tam-vermelho-p" value="P"><span>P</span></label>
+                <label><input type="radio" name="tam-camiseta-1-vermelho" id="tam-vermelho-m" value="M"><span>M</span></label>
+                <label><input type="radio" name="tam-camiseta-1-vermelho" id="tam-vermelho-g" value="G"><span>G</span></label>
+                <label><input type="radio" name="tam-camiseta-1-vermelho" id="tam-vermelho-gg" value="GG"><span>GG</span></label>
+              </div>
+            </fieldset>
+            <p class="size-hint" role="status" aria-live="polite"></p>
+            <div class="card-actions">
+              <button class="btn btn--ink btn--block" type="button" data-add>Adicionar à sacola</button>
+              <button class="link-btn" type="button" data-details>Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <div class="wrap ensaio">
+      <figure class="ens e1"><img src="media/ensaio-1.webp" alt="Dois rapazes de blazer preto e Camisa 001 no estúdio; um deles com a camisa de estampa vermelha puxada sobre a cabeça, ao lado de uma bola de basquete" width="1200" height="1600" loading="lazy" decoding="async"></figure>
+      <div class="ens-text">
+        <h4 class="display h-m">Ensaio</h4>
+        <p class="meta">A Camisa 001 nas duas versões, no estúdio.</p>
+      </div>
+    </div>
+
+    <!-- CAMISA 002 -->
+    <div class="dois tone-noite" id="camisa-002" data-tone="noite">
+      <figure class="reel">
+        <video data-src="media/reel-002.mp4" poster="media/reel-002-poster.jpg" muted playsinline loop preload="none" disablepictureinpicture aria-label="Reel da Camisa 002: atleta treinando à noite numa pista de atletismo"></video>
+        <button class="sound" type="button" aria-pressed="false" data-sound>Ativar som</button>
+      </figure>
+      <div class="wrap dois-grid">
+        <header class="dois-head">
+          <h3 class="display h-xl">Camisa 002</h3>
+          <p class="lead">Preta, com o SÔMA collective e o 1 em branco.</p>
+        </header>
+        <!-- Para colocar o preço: data-price="149.90" (ponto como separador decimal). Vazio = "Preço a definir". -->
+        <article class="card card--dark" data-product data-model="002" data-id="camisa-002-preta" data-name="Camisa 002" data-variant="Preta" data-price="" data-img="media/prod-002.webp" data-alt="Atleta com a Camisa 002 preta na pista, com o SÔMA collective em branco no peito" data-img2="media/prod-002-b.webp" data-alt2="Atleta de Camisa 002 bebendo água no campo, à noite" data-info="Camisa preta|SÔMA collective e o 1 em branco" data-print="#E7E2D8">
+          <button class="card-media card-media--wide" type="button" data-details aria-label="Ver detalhes da Camisa 002 preta">
+            <img src="media/prod-002.webp" alt="Atleta com a Camisa 002 preta na pista, com o SÔMA collective em branco no peito" width="1276" height="718" loading="lazy" decoding="async">
+          </button>
+          <div class="card-info">
+            <div class="card-row"><h4 class="card-title">Camisa 002</h4><p class="price" data-price-label><span class="pending">Preço a definir</span></p></div>
+            <p class="card-variant">Preta</p>
+            <fieldset class="sizes">
+              <legend>Tamanho</legend>
+              <div class="size-row">
+                <label><input type="radio" name="tam-camisa-002-preta" id="tam-002-p" value="P"><span>P</span></label>
+                <label><input type="radio" name="tam-camisa-002-preta" id="tam-002-m" value="M"><span>M</span></label>
+                <label><input type="radio" name="tam-camisa-002-preta" id="tam-002-g" value="G"><span>G</span></label>
+                <label><input type="radio" name="tam-camisa-002-preta" id="tam-002-gg" value="GG"><span>GG</span></label>
+              </div>
+            </fieldset>
+            <p class="size-hint" role="status" aria-live="polite"></p>
+            <div class="card-actions">
+              <button class="btn btn--light btn--block" type="button" data-add>Adicionar à sacola</button>
+              <button class="link-btn" type="button" data-details>Ver detalhes</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="wrap how-wrap">
+      <ol class="how" aria-label="Como comprar">
+        <li><span class="how-n" aria-hidden="true">1</span><p>Escolha a camisa, a versão e o tamanho.</p></li>
+        <li><span class="how-n" aria-hidden="true">2</span><p>Coloque na sacola.</p></li>
+        <li><span class="how-n" aria-hidden="true">3</span><p>Finalize pelo WhatsApp ou pelo Direct. Pagamento e entrega são combinados na conversa.</p></li>
+      </ol>
+    </div>
+
+    <div class="lookbook">
+      <div class="wrap lookbook-head">
+        <div class="lookbook-title">
+          <h3 class="display h-m">Lançamento 1</h3>
+          <p class="meta">18 de abril. Pop-up, embalagem e a Camisa 001 na rua.</p>
+        </div>
+        <div class="strip-nav">
+          <button class="icon-btn" type="button" data-strip="-1" aria-controls="strip-drop" aria-label="Voltar"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+          <button class="icon-btn" type="button" data-strip="1" aria-controls="strip-drop" aria-label="Avançar"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+        </div>
+      </div>
+      <ul class="strip" id="strip-drop" aria-label="Fotos e vídeos do Lançamento 1">
+        <li><figure><div class="frame"><video data-src="media/popup.mp4" poster="media/popup-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></div><figcaption>Pop-up do lançamento</figcaption></figure></li>
+        <li><figure><div class="frame"><video data-src="media/pacote.mp4" poster="media/pacote-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></div><figcaption>Embalagem SÔMA</figcaption></figure></li>
+        <li><figure><div class="frame"><img src="media/costas.webp" alt="Costas da Camisa 001, com SÔMA collective e o 1, durante a passagem de som da banda" width="900" height="1600" loading="lazy" decoding="async" draggable="false"></div><figcaption>Costas da Camisa 001</figcaption></figure></li>
+        <li><figure><div class="frame"><video data-src="media/rua.mp4" poster="media/rua-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></div><figcaption>Na rua com a 001</figcaption></figure></li>
+        <li><figure><div class="frame"><img src="media/victor-palco.webp" alt="Victor Lucass cantando com a Camisa 001" width="900" height="1600" loading="lazy" decoding="async" draggable="false"></div><figcaption>Victor Lucass com a 001</figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MÚSICA -->
+  <section class="musica tone-noite" id="musica" data-tone="noite" aria-labelledby="t-musica">
+    <div class="wrap">
+      <h2 class="fit-title" id="t-musica"><span class="fit">Victor</span><span class="fit">Lucass</span></h2>
+      <div class="musica-intro">
+        <p class="lead">Cantor e criador da SÔMA. Mais de 100 mil plays no Spotify.</p>
+        <div class="links">
+          <a class="btn btn--light" href="https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6" target="_blank" rel="noopener">Ouvir no Spotify</a>
+          <a class="link" href="https://www.instagram.com/ovictorlucass/" target="_blank" rel="noopener">Instagram do Victor</a>
+        </div>
+      </div>
+
+      <div class="musica-grid">
+        <a class="bomfilho" href="https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6" target="_blank" rel="noopener" aria-label="Bom Filho, a mais ouvida, 68.067 plays. Ouvir no Spotify">
+          <span class="bf-label">A mais ouvida</span>
+          <span class="bf-title">Bom Filho</span>
+          <span class="bf-foot"><span class="bf-plays">68.067 plays</span><span class="bf-cta">Ouvir no Spotify</span></span>
+        </a>
+
+        <div class="tracks">
+          <h3 class="list-title">Mais ouvidas</h3>
+          <ul class="track-list">
+            <li><a class="track" href="https://open.spotify.com/album/4ssy6MJPXIefgacYPn8cma" target="_blank" rel="noopener"><span class="track-t">Farol</span><span class="track-r">Single</span><span class="track-p">14.863</span></a></li>
+            <li><a class="track" href="https://open.spotify.com/album/4ssy6MJPXIefgacYPn8cma" target="_blank" rel="noopener"><span class="track-t">Farol, versão alternativa</span><span class="track-r">Com BIG THE KIID</span><span class="track-p">3.766</span></a></li>
+            <li><a class="track" data-tint="luz" href="https://open.spotify.com/album/1pavCuk75ULkuTH71c7O1W" target="_blank" rel="noopener"><span class="track-t">Comigo Vai</span><span class="track-r">EP Canções a Luz</span><span class="track-p">3.730</span></a></li>
+            <li><a class="track" href="https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6" target="_blank" rel="noopener"><span class="track-t">Eu Confio em Ti</span><span class="track-r">Single</span><span class="track-p">3.344</span></a></li>
+            <li><a class="track" data-tint="luz" href="https://open.spotify.com/album/1pavCuk75ULkuTH71c7O1W" target="_blank" rel="noopener"><span class="track-t">Dança</span><span class="track-r">EP Canções a Luz</span><span class="track-p">2.589</span></a></li>
+            <li><a class="track" data-tint="luz" href="https://open.spotify.com/album/1pavCuk75ULkuTH71c7O1W" target="_blank" rel="noopener"><span class="track-t">Canções a Luz</span><span class="track-r">EP Canções a Luz</span><span class="track-p">2.465</span></a></li>
+            <li><a class="track" data-tint="luz" href="https://open.spotify.com/album/1pavCuk75ULkuTH71c7O1W" target="_blank" rel="noopener"><span class="track-t">Recomeçar</span><span class="track-r">EP Canções a Luz</span><span class="track-p">1.781</span></a></li>
+            <li><a class="track" data-tint="luz" href="https://open.spotify.com/album/1pavCuk75ULkuTH71c7O1W" target="_blank" rel="noopener"><span class="track-t">A Cada Passo</span><span class="track-r">EP Canções a Luz</span><span class="track-p">1.777</span></a></li>
+          </ul>
+          <p class="note">Plays no Spotify em novembro de 2026.</p>
+        </div>
+      </div>
+
+      <div class="clipes">
+        <h3 class="list-title">Clipes</h3>
+        <ul class="clip-list">
+          <li><a class="clip" href="https://www.youtube.com/watch?v=sycpmgjoVbs" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><span class="clip-t">Lírios</span><span class="clip-s">Assistir no YouTube</span></a></li>
+          <li><a class="clip" href="https://www.youtube.com/watch?v=oSY0qmO1n3g" target="_blank" rel="noopener"><span class="play" aria-hidden="true"><svg><use href="#i-play"/></svg></span><span class="clip-t">Eu Confio em Ti</span><span class="clip-s">Com CHF. Assistir no YouTube</span></a></li>
+        </ul>
+        <p class="more"><a class="link" href="https://linktr.ee/Victorlucass1_" target="_blank" rel="noopener">Todas as plataformas</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMUNIDADE -->
+  <section class="comunidade tone-noite" id="comunidade" data-tone="noite" aria-labelledby="t-comunidade">
+    <figure class="palco">
+      <video data-src="media/palco.mp4" poster="media/palco-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video>
+      <figcaption class="wrap">Lançamento 1, 18 de abril.</figcaption>
+    </figure>
+    <div class="wrap body">
+      <div class="grid12 com-head">
+        <h2 class="display h-xl" id="t-comunidade">Somos 1</h2>
+        <blockquote class="quote">
+          <p>o corpo de Cristo se complementa. a noiva de Cristo carrega muitas diferenças em si mesma, ela é <b>uma só</b>, à espera do nosso Amado.</p>
+          <cite>Lançamento 1</cite>
+        </blockquote>
+      </div>
+
+      <div class="mosaic">
+        <figure class="tile t1"><img src="media/louvor-2.webp" alt="Victor Lucass de braços levantados durante o louvor" width="900" height="1600" loading="lazy" decoding="async"></figure>
+        <figure class="tile t2"><video data-src="media/voz-1.mp4" poster="media/voz-1-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></figure>
+        <figure class="tile t3"><img src="media/louvor-1.webp" alt="Homem de olhos fechados e braços levantados no louvor" width="1109" height="1340" loading="lazy" decoding="async"></figure>
+        <figure class="tile t4"><video data-src="media/telao-escuro.mp4" poster="media/telao-escuro-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></figure>
+        <figure class="tile t5"><img src="media/plateia.webp" alt="Pessoas na plateia durante o encontro" width="900" height="1600" loading="lazy" decoding="async"></figure>
+        <figure class="tile t6"><video data-src="media/voz-2.mp4" poster="media/voz-2-poster.jpg" muted playsinline loop preload="none" tabindex="-1" aria-hidden="true" disablepictureinpicture></video></figure>
+        <figure class="tile t7"><img src="media/dupla.webp" alt="Dois homens com camisetas da SÔMA conversando no palco" width="1125" height="760" loading="lazy" decoding="async"></figure>
+        <div class="evento">
+          <img src="media/neon.webp" alt="" width="900" height="1600" loading="lazy" decoding="async">
+          <h3 class="display h-m">Lançamento 1</h3>
+          <p class="meta">18 de abril</p>
+          <p>Pop-up da Camisa 001, louvor ao vivo e muita gente vestindo a mesma camisa.</p>
+          <a class="btn btn--light" href="https://www.instagram.com/soma____collective/" target="_blank" rel="noopener">Seguir a SÔMA no Instagram</a>
+          <p class="small">Acompanhe os próximos encontros por lá.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contato tone-algodao" id="contato" data-tone="algodao" aria-labelledby="t-contato">
+    <div class="wrap grid12">
+      <h2 class="display h-xl" id="t-contato">Shows e parcerias</h2>
+      <div class="contato-body">
+        <p class="lead">Para convidar o Victor Lucass para o seu evento ou propor uma parceria com a SÔMA, mande uma mensagem.</p>
+        <div class="links">
+          <a class="btn btn--ink" href="https://ig.me/m/soma____collective" target="_blank" rel="noopener">Mandar Direct para a SÔMA</a>
+          <a class="btn btn--line" href="https://www.instagram.com/ovictorlucass/" target="_blank" rel="noopener">Instagram do Victor</a>
+          <a class="btn btn--line" data-whatsapp hidden target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        </div>
+        <dl class="handles">
+          <dt>SÔMA</dt><dd>@soma____collective</dd>
+          <dt>Victor Lucass</dt><dd>@ovictorlucass</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer tone-noite" data-tone="noite">
+  <div class="wrap grid12 footer-cols">
+    <p class="footer-slogan">Somos SÔMA, somos 1.</p>
+    <nav class="footer-col" aria-label="Seções do site">
+      <h2>Site</h2>
+      <a href="#loja">Loja</a>
+      <a href="#musica">Música</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <nav class="footer-col" aria-label="Redes">
+      <h2>Redes</h2>
+      <a href="https://www.instagram.com/soma____collective/" target="_blank" rel="noopener">Instagram da SÔMA</a>
+      <a href="https://www.instagram.com/ovictorlucass/" target="_blank" rel="noopener">Instagram do Victor</a>
+      <a href="https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6" target="_blank" rel="noopener">Spotify</a>
+    </nav>
+    <div class="footer-col">
+      <h2>Legal</h2>
+      <a href="#privacidade">Política de privacidade</a>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>© 2026 SÔMA Collective</p>
+    <p>Site por Káiros</p>
+  </div>
+  <div class="wrap footer-logo" aria-hidden="true"><svg viewBox="0 0 207.0 100"><use href="#logo"/></svg></div>
+</footer>
+
+<div class="buybar" data-buybar>
+  <p data-buybar-text>Loja SÔMA<span>Camisas 001 e 002</span></p>
+  <a class="btn btn--light btn--s" href="#loja" data-buybar-cta>Ver a loja</a>
+</div>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Menu">
+    <a href="#loja">Loja</a>
+    <a href="#musica">Música</a>
+    <a href="#comunidade">Comunidade</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="link" href="https://www.instagram.com/soma____collective/" target="_blank" rel="noopener">Instagram da SÔMA</a>
+    <a class="link" href="https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6" target="_blank" rel="noopener">Spotify</a>
+  </div>
+</div>
+
+<!-- SACOLA -->
+<div class="sheet sheet--kraft" id="sheet-sacola" role="dialog" aria-modal="true" aria-labelledby="t-sacola" hidden>
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet-panel">
+    <div class="sheet-top">
+      <h2 class="display h-s" id="t-sacola">Sua sacola</h2>
+      <button class="close" type="button" data-close>Fechar</button>
+    </div>
+    <svg class="bag-stamp" viewBox="0 0 207.0 100" aria-hidden="true"><use href="#logo"/></svg>
+    <div data-bag-body></div>
+  </div>
+</div>
+
+<!-- PRODUTO -->
+<div class="sheet" id="sheet-produto" role="dialog" aria-modal="true" aria-labelledby="t-produto" hidden>
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet-panel sheet-panel--wide">
+    <div class="sheet-top">
+      <p class="small">Loja SÔMA</p>
+      <button class="close" type="button" data-close>Fechar</button>
+    </div>
+    <div class="pd" data-pd></div>
+  </div>
+</div>
+
+<!-- PRIVACIDADE -->
+<div class="sheet" id="sheet-privacidade" role="dialog" aria-modal="true" aria-labelledby="t-privacidade" hidden>
+  <div class="sheet-backdrop" data-close></div>
+  <div class="sheet-panel">
+    <div class="sheet-top">
+      <h2 class="display h-s" id="t-privacidade">Privacidade</h2>
+      <button class="close" type="button" data-close>Fechar</button>
+    </div>
+    <div class="legal">
+      <p class="small">Atualizada em novembro de 2026.</p>
+      <p>Este site não tem cadastro, formulário nem cookies de rastreamento.</p>
+      <h3>O que fica no seu aparelho</h3>
+      <p>Os itens da sacola ficam salvos só no seu navegador, para você não perder o pedido ao recarregar a página. Para apagar, é só esvaziar a sacola.</p>
+      <h3>Pedidos e contato</h3>
+      <p>Ao finalizar um pedido, você vai para o WhatsApp ou para o Instagram com a mensagem pronta. O que você mandar por lá, como nome, telefone e endereço, é usado só para combinar pagamento e entrega. Essas plataformas também seguem as políticas de privacidade delas.</p>
+      <h3>Serviços de terceiros</h3>
+      <p>As fontes do site são carregadas do Google Fonts. Os links para Spotify, YouTube e Instagram levam para sites com políticas próprias.</p>
+      <h3>Seus direitos</h3>
+      <p>Pela LGPD, você pode pedir acesso, correção ou exclusão dos seus dados. Fale com a SÔMA pelo Direct do Instagram.</p>
+    </div>
+  </div>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ===== CONFIGURAÇÃO =====
+     whatsapp: número da SÔMA só com dígitos, com 55 e DDD (ex.: '5511999999999').
+     Enquanto estiver vazio, o pedido sai pelo Direct do Instagram. */
+  const CONFIG = {
+    whatsapp: '',
+    instagram: 'soma____collective'
+  };
+
+  const root = document.documentElement;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const mqMobile = matchMedia('(max-width: 899px)');
+  const reduce = () => mqReduce.matches;
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const brl = n => n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+  /* ===== pintura do logo e do 1 (máscara de pincel) ===== */
+  function paint(svg, dur) {
+    return new Promise(resolve => {
+      const g = svg.querySelector('[data-paint]');
+      const mask = svg.querySelector('mask');
+      const brush = mask ? mask.querySelector('.brush') : null;
+      let finished = false;
+      const done = () => {
+        if (finished) return; finished = true;
+        if (g) g.removeAttribute('mask');
+        svg.classList.remove('is-painting');
+        svg.classList.add('is-painted');
+        resolve();
+      };
+      if (!g || !brush || reduce() || !brush.animate) { done(); return; }
+      let L = 0;
+      try { L = Math.ceil(brush.getTotalLength()) + 4; } catch (e) { done(); return; }
+      brush.style.strokeDasharray = L + ' ' + L;
+      brush.style.strokeDashoffset = L;
+      g.setAttribute('mask', 'url(#' + mask.id + ')');
+      svg.classList.add('is-painting');
+      const anim = brush.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: dur, easing: 'cubic-bezier(.55,.08,.3,1)', fill: 'forwards' });
+      anim.onfinish = done; anim.oncancel = done;
+      setTimeout(done, dur + 800);
+    });
+  }
+
+  /* ===== abertura ===== */
+  function intro() {
+    if (!root.classList.contains('intro')) return;
+    try { sessionStorage.setItem('soma-intro', '1'); } catch (e) {}
+    let gone = false;
+    const lift = () => {
+      if (gone) return; gone = true;
+      root.classList.add('intro-go');
+      setTimeout(() => root.classList.remove('intro', 'intro-go'), 1400);
+    };
+    paint($('.hero-logo'), 1150).then(() => setTimeout(lift, 60));
+    addEventListener('pointerdown', lift, { once: true });
+    addEventListener('keydown', lift, { once: true });
+    setTimeout(lift, 2500);
+  }
+
+  /* ===== vídeos ===== */
+  const loadV = v => { if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src; };
+  const playV = v => { if (reduce()) return; const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+
+  const hero = $('.hero');
+  const panels = $$('.panel', hero);
+  const heroVids = panels.map(p => $('video', p));
+  let heroMode = null, heroVisible = true;
+
+  function setHeroMode() {
+    const m = mqMobile.matches ? 'seq' : 'tri';
+    if (m === heroMode) return;
+    heroMode = m;
+    heroVids.forEach(v => { v.pause(); v.onended = null; });
+    if (m === 'tri') {
+      hero.classList.remove('seq');
+      panels.forEach(p => p.classList.remove('is-on'));
+      heroVids.forEach(v => { v.loop = true; v.preload = 'auto'; loadV(v); if (heroVisible) playV(v); });
+    } else {
+      hero.classList.add('seq');
+      heroVids.forEach(v => { v.loop = false; });
+      showSeq(0);
+    }
+  }
+  function showSeq(i) {
+    panels.forEach((p, k) => p.classList.toggle('is-on', k === i));
+    const v = heroVids[i];
+    loadV(v);
+    try { v.currentTime = 0; } catch (e) {}
+    if (heroVisible) playV(v);
+    v.onended = () => { if (heroMode === 'seq') showSeq((i + 1) % heroVids.length); };
+    const next = heroVids[(i + 1) % heroVids.length];
+    setTimeout(() => { next.preload = 'auto'; loadV(next); }, 1500);
+  }
+
+  const lazyIO = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { loadV(v); if (!saveData) playV(v); }
+      else if (!v.paused) v.pause();
+    });
+  }, { rootMargin: '160px 0px' }) : null;
+  $$('video[data-src]').filter(v => !v.closest('.hero')).forEach(v => { if (lazyIO) lazyIO.observe(v); else loadV(v); });
+
+  /* som do reel: só liga com o clique de quem está vendo */
+  $$('[data-sound]').forEach(btn => {
+    const v = $('video', btn.closest('figure'));
+    if (!v) return;
+    btn.addEventListener('click', () => {
+      loadV(v);
+      v.muted = !v.muted;
+      btn.setAttribute('aria-pressed', String(!v.muted));
+      btn.textContent = v.muted ? 'Ativar som' : 'Desativar som';
+      if (!v.muted) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+    });
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      heroVisible = e.isIntersecting;
+      if (heroMode === 'tri') heroVids.forEach(v => heroVisible ? playV(v) : v.pause());
+      else if (heroMode === 'seq') { const v = heroVids.find((x, k) => panels[k].classList.contains('is-on')); if (v) heroVisible ? playV(v) : v.pause(); }
+      syncBuybar();
+    }, { threshold: 0.02 }).observe(hero);
+  }
+
+  /* ===== o 1 se pinta quando aparece ===== */
+  $$('.paint-on-view').forEach(svg => {
+    if (!('IntersectionObserver' in window)) { paint(svg, 0); return; }
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); paint(svg, 1000); } }, { threshold: 0.3 });
+    io.observe(svg);
+  });
+
+  /* ===== cabeçalho, parallax e navegação ativa (um único loop de rolagem) ===== */
+  const header = $('.site-header');
+  const heroLogo = $('.hero-logo');
+  const panelIns = $$('.panel-in', hero);
+  const rates = [0.06, 0.02, 0.1];
+  const toneEls = $$('main [data-tone], footer[data-tone]');
+  const navLinks = $$('.nav a');
+  const navTargets = navLinks.map(a => $(a.getAttribute('href')));
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const y = window.scrollY;
+    const vh = window.innerHeight;
+    const hh = header.offsetHeight;
+    header.classList.toggle('is-solid', y > hero.offsetHeight - hh - 4);
+    for (let i = toneEls.length - 1; i >= 0; i--) {
+      const r = toneEls[i].getBoundingClientRect();
+      if (r.top <= hh / 2 && r.bottom > hh / 2) { header.dataset.tone = toneEls[i].dataset.tone; break; }
+    }
+    if (!reduce() && heroMode === 'tri' && y < vh * 1.2) {
+      const max = hero.offsetHeight * 0.1;
+      panelIns.forEach((p, i) => { p.style.transform = 'translate3d(0,' + Math.min(max, y * rates[i]).toFixed(1) + 'px,0)'; });
+      heroLogo.style.setProperty('--logo-y', (y * 0.32).toFixed(1) + 'px');
+    }
+    const probe = vh * 0.4;
+    navTargets.forEach((t, i) => {
+      if (!t) return;
+      const r = t.getBoundingClientRect();
+      const cur = r.top <= probe && r.bottom > probe ? 'true' : 'false';
+      if (navLinks[i].getAttribute('aria-current') !== cur) navLinks[i].setAttribute('aria-current', cur);
+    });
+  }
+  const requestScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
+  addEventListener('scroll', requestScroll, { passive: true });
+  addEventListener('resize', requestScroll);
+
+  /* ===== menu (celular) ===== */
+  const menu = $('#menu');
+  const menuBtn = $('.menu-btn');
+  let menuOpen = false;
+  function toggleMenu(force) {
+    menuOpen = typeof force === 'boolean' ? force : !menuOpen;
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+    menuBtn.textContent = menuOpen ? 'Fechar' : 'Menu';
+    const others = [$('main'), $('.site-footer'), $('.buybar')];
+    if (menuOpen) {
+      menu.hidden = false;
+      requestAnimationFrame(() => requestAnimationFrame(() => menu.classList.add('is-open')));
+      root.classList.add('locked', 'menu-open');
+      others.forEach(el => el && (el.inert = true));
+    } else {
+      menu.classList.remove('is-open');
+      root.classList.remove('locked', 'menu-open');
+      others.forEach(el => el && (el.inert = false));
+      setTimeout(() => { if (!menuOpen) menu.hidden = true; }, reduce() ? 0 : 620);
+    }
+    syncBuybar();
+  }
+  menuBtn.addEventListener('click', () => toggleMenu());
+  $$('a', menu).forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+
+  /* ===== painéis (sacola, produto, privacidade) ===== */
+  let sheetEl = null, lastFocus = null;
+  const pageParts = () => [$('main'), header, $('.site-footer'), $('.buybar')].filter(Boolean);
+  function openSheet(name, opener) {
+    const s = $('#sheet-' + name);
+    if (!s) return;
+    if (menuOpen) toggleMenu(false);
+    if (sheetEl && sheetEl !== s) closeSheet(true, true);
+    if (sheetEl === s) return;
+    lastFocus = opener || document.activeElement;
+    s.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => s.classList.add('is-open')));
+    pageParts().forEach(el => { el.inert = true; });
+    root.classList.add('locked');
+    sheetEl = s;
+    syncBuybar();
+    setTimeout(() => { const f = $('[data-autofocus]', s) || $('.close', s); if (f) f.focus({ preventScroll: true }); }, 80);
+  }
+  function closeSheet(immediate, keepFocus) {
+    const s = sheetEl;
+    if (!s) return;
+    sheetEl = null;
+    s.classList.remove('is-open');
+    pageParts().forEach(el => { el.inert = false; });
+    root.classList.remove('locked');
+    if (immediate || reduce()) s.hidden = true;
+    else setTimeout(() => { if (sheetEl !== s) s.hidden = true; }, 560);
+    if (s.id === 'sheet-privacidade' && location.hash === '#privacidade') {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    }
+    if (!keepFocus && lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll: true });
+    syncBuybar();
+  }
+  document.addEventListener('click', e => {
+    const o = e.target.closest('[data-open]');
+    if (o) { e.preventDefault(); openSheet(o.dataset.open, o); return; }
+    const c = e.target.closest('[data-close]');
+    if (c && sheetEl && sheetEl.contains(c)) { if (c.tagName !== 'A') e.preventDefault(); closeSheet(c.tagName === 'A', c.tagName === 'A'); }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { if (sheetEl) closeSheet(); else if (menuOpen) { toggleMenu(false); menuBtn.focus(); } return; }
+    if (e.key === 'Tab' && sheetEl) {
+      const f = $$('a[href],button:not([disabled]),input:not([disabled]),textarea,summary,[tabindex]:not([tabindex="-1"])', sheetEl).filter(el => el.offsetParent !== null || el === document.activeElement);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  function onHash() { if (location.hash === '#privacidade') openSheet('privacidade'); }
+  addEventListener('hashchange', onHash);
+
+  /* ===== produtos ===== */
+  const products = {};
+  $$('[data-product]').forEach(card => {
+    const p = {
+      id: card.dataset.id, name: card.dataset.name, variant: card.dataset.variant,
+      model: card.dataset.model || card.dataset.id,
+      price: card.dataset.price ? Number(card.dataset.price) : null,
+      img: card.dataset.img, alt: card.dataset.alt, img2: card.dataset.img2 || '', alt2: card.dataset.alt2 || '',
+      flats: card.hasAttribute('data-flats'), info: (card.dataset.info || '').split('|').filter(Boolean),
+      print: card.dataset.print,
+      sizes: $$('input[type=radio]', card).map(i => i.value)
+    };
+    products[p.id] = p;
+    if (p.price != null && !Number.isNaN(p.price)) $('[data-price-label]', card).textContent = brl(p.price);
+    else p.price = null;
+    const sizes = $('.sizes', card);
+    const hint = $('.size-hint', card);
+    $$('input[type=radio]', card).forEach(r => r.addEventListener('change', () => { hint.textContent = ''; }));
+    $('[data-add]', card).addEventListener('click', ev => {
+      const sel = $('input[type=radio]:checked', card);
+      if (!sel) {
+        hint.textContent = 'Escolha um tamanho.';
+        sizes.classList.remove('shake'); void sizes.offsetWidth; sizes.classList.add('shake');
+        return;
+      }
+      addToBag(p.id, sel.value, ev.currentTarget);
+    });
+    $$('[data-details]', card).forEach(b => b.addEventListener('click', ev => openProduct(p.id, ev.currentTarget)));
+  });
+  const priceHTML = p => p.price != null ? esc(brl(p.price)) : '<span class="pending">Preço a definir</span>';
+
+  function openProduct(id, opener) { renderProduct(id); openSheet('produto', opener); }
+  function renderProduct(id) {
+    const p = products[id];
+    const box = $('[data-pd]');
+    const all = Object.values(products).filter(v => v.model === p.model);
+    const sizeName = 'pd-tam-' + p.id;
+    const flats = p.flats ?
+      '<figure class="pd-g"><svg viewBox="0 0 400 460" role="img" aria-label="Ilustração da frente" style="color:' + esc(p.print) + '"><use href="#tee-front"/></svg><figcaption>Frente</figcaption></figure>' +
+      '<figure class="pd-g"><svg viewBox="0 0 400 460" role="img" aria-label="Ilustração das costas" style="color:' + esc(p.print) + '"><use href="#tee-back"/></svg><figcaption>Costas</figcaption></figure>' : '';
+    const photos = [[p.img, p.alt], [p.img2, p.alt2]].filter(x => x[0]).map(x =>
+      '<figure class="pd-g pd-g--photo"><img src="' + esc(x[0]) + '" alt="' + esc(x[1]) + '"></figure>').join('');
+    box.innerHTML =
+      '<div class="pd-gallery">' + flats + photos + '</div>' +
+      '<div class="pd-info">' +
+        '<h2 class="pd-title" id="t-produto">' + esc(p.name) + '</h2>' +
+        '<p class="price">' + priceHTML(p) + '</p>' +
+        (all.length > 1 ? '<div class="variants" role="radiogroup" aria-label="Versão">' + all.map(v =>
+          '<button type="button" class="variant" role="radio" aria-checked="' + (v.id === p.id) + '" data-variant="' + esc(v.id) + '"><span class="sw" style="--c:' + esc(v.print) + '"></span>' + esc(v.variant) + '</button>').join('') +
+        '</div>' : '<p class="pd-variant">' + esc(p.variant) + '</p>') +
+        '<fieldset class="sizes"><legend>Tamanho</legend><div class="size-row">' + p.sizes.map(s =>
+          '<label><input type="radio" name="' + sizeName + '" id="' + sizeName + '-' + esc(s.toLowerCase()) + '" value="' + esc(s) + '"><span>' + esc(s) + '</span></label>').join('') +
+        '</div></fieldset>' +
+        '<p class="size-hint" role="status" aria-live="polite"></p>' +
+        '<button class="btn btn--ink btn--block" type="button" data-pd-add>Adicionar à sacola</button>' +
+        '<ul class="pd-list">' + p.info.concat(['Pedido finalizado pelo WhatsApp ou pelo Direct']).map(t => '<li>' + esc(t) + '</li>').join('') + '</ul>' +
+        (p.flats ? '<p class="small">As ilustrações mostram a posição da estampa.</p>' : '') +
+      '</div>';
+    $$('[data-variant]', box).forEach(b => b.addEventListener('click', () => { renderProduct(b.dataset.variant); const nb = $('[data-variant="' + b.dataset.variant + '"]', box); if (nb) nb.focus(); }));
+    const hint = $('.size-hint', box);
+    const sizes = $('.sizes', box);
+    $$('input[type=radio]', box).forEach(r => r.addEventListener('change', () => { hint.textContent = ''; }));
+    $('[data-pd-add]', box).addEventListener('click', ev => {
+      const sel = $('input[type=radio]:checked', box);
+      if (!sel) { hint.textContent = 'Escolha um tamanho.'; sizes.classList.remove('shake'); void sizes.offsetWidth; sizes.classList.add('shake'); return; }
+      addToBag(p.id, sel.value, ev.currentTarget);
+    });
+  }
+
+  /* ===== sacola ===== */
+  let bag = (() => {
+    const raw = store.get('soma-sacola', []);
+    return Array.isArray(raw) ? raw.filter(i => i && products[i.id] && typeof i.size === 'string' && products[i.id].sizes.includes(i.size) && i.qty > 0)
+      .map(i => ({ id: i.id, size: i.size, qty: Math.min(20, Math.floor(i.qty)) })) : [];
+  })();
+  const count = () => bag.reduce((n, i) => n + i.qty, 0);
+  const saveBag = () => store.set('soma-sacola', bag);
+
+  function addToBag(id, size, opener) {
+    const it = bag.find(i => i.id === id && i.size === size);
+    if (it) it.qty = Math.min(20, it.qty + 1); else bag.push({ id, size, qty: 1 });
+    saveBag(); renderBag(true);
+    openSheet('sacola', opener);
+  }
+  function orderText() {
+    const lines = bag.map(i => {
+      const p = products[i.id];
+      return '- ' + i.qty + 'x ' + p.name + ' (' + p.variant.toLowerCase() + '), tamanho ' + i.size + (p.price != null ? ', ' + brl(p.price * i.qty) : '');
+    });
+    const priced = bag.every(i => products[i.id].price != null);
+    const total = priced ? brl(bag.reduce((s, i) => s + products[i.id].price * i.qty, 0)) : 'a combinar';
+    return 'Olá! Quero fazer um pedido pelo site da SÔMA:\n' + lines.join('\n') + '\nTotal: ' + total + '\n\nMeu nome:\nCidade e CEP:';
+  }
+  function renderBag(bump) {
+    const n = count();
+    $$('[data-bag-count]').forEach(el => {
+      el.textContent = n;
+      if (bump && !reduce()) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+    });
+    $('.bag-btn').setAttribute('aria-label', 'Abrir sacola, ' + n + (n === 1 ? ' item' : ' itens'));
+    syncBuybar();
+    const body = $('[data-bag-body]');
+    if (!n) {
+      body.innerHTML = '<div class="bag-empty"><p class="bag-empty-t">A sacola está vazia</p><p>As camisas 001 e 002 estão na loja.</p><a class="btn btn--ink" href="#loja" data-close>Ver a loja</a></div>';
+      return;
+    }
+    const text = orderText();
+    const priced = bag.every(i => products[i.id].price != null);
+    const total = priced ? brl(bag.reduce((s, i) => s + products[i.id].price * i.qty, 0)) : 'A combinar';
+    const wa = CONFIG.whatsapp ? 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text) : '';
+    const dm = 'https://ig.me/m/' + CONFIG.instagram;
+    body.innerHTML =
+      '<ul class="bag-list">' + bag.map(i => {
+        const p = products[i.id];
+        const key = esc(i.id + '|' + i.size);
+        return '<li><img src="' + esc(p.img) + '" alt=""><div>' +
+          '<p class="bag-item-t">' + esc(p.name) + '</p>' +
+          '<p class="bag-item-v">' + esc(p.variant) + ', tamanho ' + esc(i.size) + '</p>' +
+          '<p class="bag-item-v">' + priceHTML(p) + '</p>' +
+          '<div class="bag-item-row"><div class="qty"><button type="button" data-dec="' + key + '" aria-label="Tirar uma">−</button><output aria-label="Quantidade">' + i.qty + '</output><button type="button" data-inc="' + key + '" aria-label="Pôr mais uma">+</button></div>' +
+          '<button class="link-btn" type="button" data-remove="' + key + '">Remover</button></div>' +
+          '</div></li>';
+      }).join('') + '</ul>' +
+      '<div class="bag-total"><span>Total</span><span>' + esc(total) + '</span></div>' +
+      '<div class="checkout">' +
+        (wa ? '<a class="btn btn--ink btn--block" href="' + esc(wa) + '" target="_blank" rel="noopener" data-wa>Pedir pelo WhatsApp</a>' : '') +
+        '<a class="btn ' + (wa ? 'btn--line' : 'btn--ink') + ' btn--block" href="' + esc(dm) + '" target="_blank" rel="noopener" data-dm>Pedir pelo Direct da SÔMA</a>' +
+        '<p class="status" role="status" aria-live="polite"></p>' +
+        '<p class="checkout-note">' + (wa ? 'O WhatsApp abre com o pedido escrito.' : 'O pedido é copiado; é só colar na conversa do Direct.') + ' Pagamento e entrega são combinados por lá.</p>' +
+        '<details class="order"><summary>Ver o texto do pedido</summary><textarea class="order-text" id="texto-pedido" readonly rows="7">' + esc(text) + '</textarea></details>' +
+        '<button class="link-btn bag-clear" type="button" data-clear>Esvaziar sacola</button>' +
+      '</div>';
+  }
+  $('[data-bag-body]').addEventListener('click', e => {
+    const t = e.target.closest('button,a');
+    if (!t) return;
+    const find = k => { const [id, size] = k.split('|'); return bag.find(i => i.id === id && i.size === size); };
+    if (t.dataset.inc) { const it = find(t.dataset.inc); if (it) it.qty = Math.min(20, it.qty + 1); }
+    else if (t.dataset.dec) { const it = find(t.dataset.dec); if (it) { it.qty -= 1; if (it.qty < 1) bag.splice(bag.indexOf(it), 1); } }
+    else if (t.dataset.remove) { const it = find(t.dataset.remove); if (it) bag.splice(bag.indexOf(it), 1); }
+    else if (t.hasAttribute('data-clear')) { bag = []; }
+    else if (t.hasAttribute('data-dm')) { copyOrder(); return; }
+    else if (t.hasAttribute('data-wa')) { const st = $('.status', t.parentElement); if (st) st.textContent = 'Se o WhatsApp não abrir, copie o texto do pedido abaixo.'; return; }
+    else return;
+    saveBag(); renderBag(false);
+    const again = $('[data-bag-body] [data-' + (t.dataset.inc ? 'inc' : t.dataset.dec ? 'dec' : 'x') + '="' + (t.dataset.inc || t.dataset.dec || '') + '"]');
+    if (again) again.focus(); else { const c = $('#sheet-sacola .close'); if (c) c.focus(); }
+  });
+  function copyOrder() {
+    const text = orderText();
+    const box = $('[data-bag-body]');
+    const st = $('.status', box);
+    const fail = () => {
+      const d = $('details.order', box); if (d) d.open = true;
+      const ta = $('.order-text', box); if (ta) { ta.focus(); ta.select(); }
+      if (st) st.textContent = 'Copie o texto do pedido abaixo e cole no Direct.';
+    };
+    try {
+      navigator.clipboard.writeText(text).then(() => { if (st) st.textContent = 'Pedido copiado. Cole na conversa do Direct e envie.'; }, fail);
+    } catch (e) { fail(); }
+  }
+
+  /* ===== barra de compra no celular ===== */
+  const buybar = $('[data-buybar]');
+  let pastHero = false, footerIn = false;
+  function syncBuybar() {
+    if (!buybar) return;
+    const n = count();
+    const txt = $('[data-buybar-text]', buybar);
+    const cta = $('[data-buybar-cta]', buybar);
+    if (n) {
+      txt.innerHTML = n + (n === 1 ? ' item' : ' itens') + ' na sacola<span>Loja SÔMA</span>';
+      cta.textContent = 'Finalizar pedido'; cta.setAttribute('href', '#sacola'); cta.dataset.open = 'sacola';
+    } else {
+      txt.innerHTML = 'Loja SÔMA<span>Camisas 001 e 002</span>';
+      cta.textContent = 'Ver a loja'; cta.setAttribute('href', '#loja'); delete cta.dataset.open;
+    }
+    buybar.classList.toggle('is-on', pastHero && !footerIn && !sheetEl && !menuOpen);
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.top < 0; syncBuybar(); }).observe(hero);
+    new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; syncBuybar(); }).observe($('.site-footer'));
+  }
+
+  /* ===== faixa do lookbook: arrastar no mouse e setas ===== */
+  $$('.strip').forEach(strip => {
+    let down = false, sx = 0, sl = 0, moved = false;
+    strip.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; sx = e.clientX; sl = strip.scrollLeft; });
+    strip.addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - sx;
+      if (!moved && Math.abs(dx) > 5) { moved = true; strip.classList.add('is-drag'); try { strip.setPointerCapture(e.pointerId); } catch (_) {} }
+      if (moved) strip.scrollLeft = sl - dx;
+    });
+    const up = () => { if (!down) return; down = false; strip.classList.remove('is-drag'); };
+    strip.addEventListener('pointerup', up);
+    strip.addEventListener('pointercancel', up);
+    strip.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    const btns = $$('[aria-controls="' + strip.id + '"]');
+    const sync = () => {
+      const max = strip.scrollWidth - strip.clientWidth - 2;
+      btns.forEach(b => { b.disabled = Number(b.dataset.strip) < 0 ? strip.scrollLeft <= 2 : strip.scrollLeft >= max; });
+    };
+    strip.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    addEventListener('resize', sync);
+    btns.forEach(b => b.addEventListener('click', () => {
+      const li = $('li', strip);
+      const step = li ? li.getBoundingClientRect().width + 16 : strip.clientWidth * 0.8;
+      strip.scrollBy({ left: step * Number(b.dataset.strip), behavior: reduce() ? 'auto' : 'smooth' });
+    }));
+    sync();
+  });
+
+  /* ===== título que ocupa a largura toda ===== */
+  function fitAll() {
+    $$('.fit').forEach(el => {
+      const w0 = el.parentElement.clientWidth;
+      el.style.fontSize = '100px';
+      const w = el.getBoundingClientRect().width;
+      if (w > 0 && w0 > 0) el.style.fontSize = Math.min(300, Math.floor(100 * w0 / w * 0.995)) + 'px';
+    });
+  }
+  let rT;
+  addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(fitAll, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+
+  /* ===== WhatsApp no contato (aparece quando o número for preenchido) ===== */
+  const waContact = $('[data-whatsapp]');
+  if (waContact && CONFIG.whatsapp) {
+    waContact.href = 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent('Olá! Vim pelo site da SÔMA.');
+    waContact.hidden = false;
+  }
+
+  /* ===== início ===== */
+  fitAll();
+  renderBag(false);
+  setHeroMode();
+  if (mqMobile.addEventListener) mqMobile.addEventListener('change', () => { setHeroMode(); requestScroll(); });
+  onScroll();
+  intro();
+  onHash();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "SÔMA Collective",
+      "slogan": "Somos SÔMA, somos 1.",
+      "sameAs": ["https://www.instagram.com/soma____collective/"]
+    },
+    {
+      "@type": "Person",
+      "name": "Victor Lucass",
+      "jobTitle": "Cantor",
+      "sameAs": [
+        "https://open.spotify.com/artist/62fvNS9LwWUINTSzvJO5a6",
+        "https://www.instagram.com/ovictorlucass/",
+        "https://linktr.ee/Victorlucass1_"
+      ]
+    }
+  ]
+}
+</script>
+
+</body></html>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<section class="topo-pagina" style="border-bottom:0">
+  <div class="caixa">
+    <p class="numero-grande cursor-limao" aria-hidden="true" style="font-size:clamp(120px,24vw,320px)">404</p>
+    <h1 class="titulo mt-3">Esta página não existe.</h1>
+    <p class="lead mt-2">O endereço pode ter mudado ou estar digitado errado. Volte para o início ou monte agora a prévia do seu site.</p>
+    <div class="botoes mt-3">
+      {{ m.botao('Voltar para o início', '/', 'limao') }}
+      {{ m.botao('Ver o meu site grátis', '/criar/', 'contorno') }}
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}{% endblock %}

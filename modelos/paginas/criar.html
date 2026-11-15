@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ pagina.titulo }}</title>
+<meta name="description" content="{{ pagina.descricao }}">
+<link rel="canonical" href="{{ pagina.canonica }}">
+<meta name="theme-color" content="#0B0B0C">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Káiros Dynamis">
+<meta property="og:title" content="{{ pagina.titulo }}">
+<meta property="og:description" content="{{ pagina.descricao }}">
+<meta property="og:url" content="{{ pagina.canonica }}">
+<meta property="og:image" content="{{ site.url }}/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="{{ asset('assets/studio/site-antigo.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/studio/studio.css') }}">
+<style>
+  /* marca Káiros Dynamis no painel do Studio; a prévia do site (#host) mantém as letras de cada estilo */
+  .app .abar, .app .painel, .app .mtabs, .app .pbar { --f: 'Space Grotesk', system-ui, sans-serif; --fd: 'Space Grotesk', system-ui, sans-serif; }
+  .kd-logo { display: inline-flex; align-items: center; gap: 10px; color: inherit; text-decoration: none; }
+  .kd-logo svg { height: 18px; width: auto; }
+  .kd-logo span { font: 700 15px/1 'Space Grotesk', sans-serif; letter-spacing: -.02em; }
+  .kd-logo small { font: 500 9px 'JetBrains Mono', monospace; letter-spacing: .3em; color: inherit; opacity: .6; margin-left: 4px; }
+</style>
+</head>
+<body class="studio">
+{{ studio_app|safe }}
+<script src="{{ asset('assets/studio/kc.js') }}"></script>
+<script src="{{ asset('assets/studio/ke.js') }}"></script>
+<script src="{{ asset('assets/studio/studio.js') }}"></script>
+</body>
+</html>

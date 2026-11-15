@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+{% call m.topo('Gestão de Instagram', 'O Instagram do seu negócio em dia, todo mês.', 'Posts, Reels, stories e anúncios com as cores e o jeito do seu negócio. Você aprova tudo antes de publicar e assina pelo site.') %}
+<div class="botoes">
+  {{ m.botao('Ver os planos', '#planos', 'limao') }}
+  {{ m.botao('Fazer o diagnóstico grátis', '#diagnostico', 'contorno') }}
+</div>
+{% endcall %}
+
+<section class="secao curta" id="planos" aria-labelledby="titulo-planos-ig">
+  <div class="caixa">
+    <p class="aviso" data-aviso-cancelado hidden>A assinatura foi cancelada antes de começar e nada foi cobrado.</p>
+    <h2 class="titulo mt-2" id="titulo-planos-ig">Três planos. Um perfil que vende.</h2>
+    <label class="aceite mt-3" for="aceite-instagram">
+      <input type="checkbox" id="aceite-instagram">
+      <span>Li os <a href="/termos/#instagram">termos da gestão de Instagram</a> e sei que o contrato mínimo é de {{ C.instagram.minimo_meses }} meses.</span>
+    </label>
+    <div class="cartoes c3 mt-3">
+      {% for id, p in C.instagram.planos.items() %}
+      <article class="cartao{% if id == 'presenca' %} destaque{% endif %}" data-revelar style="--atraso:{{ loop.index0 * 80 }}ms">
+        {% if id == 'presenca' %}<span class="selo">Mais escolhido</span>{% endif %}
+        <p class="rotulo">Plano {{ loop.index }}</p>
+        <h3>{{ p.nome }}</h3>
+        <div class="preco">
+          <span class="valor"><strong>{{ p.mensal|reais }}</strong> por mês</span>
+          <span class="nota">Cobrança mensal no cartão</span>
+        </div>
+        <ul class="itens" role="list">{% for i in p.itens %}<li>{{ i }}</li>{% endfor %}</ul>
+        <button class="botao {{ 'limao' if id == 'presenca' else 'papel' }} largo" type="button" data-pagar="instagram:{{ id }}"><span>Assinar o {{ p.nome }}</span>{{ m.seta() }}</button>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="texto mt-3">A mensalidade é cobrada no cartão, sempre antes do mês começar, e você recebe o recibo por e-mail. Contrato mínimo de {{ C.instagram.minimo_meses }} meses. A verba dos anúncios é paga direto ao Meta e não está incluída.</p>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-entra">
+  <div class="caixa">
+    <p class="rotulo"><span class="ponto"></span>O que entra</p>
+    <h2 class="titulo mt-2" id="titulo-entra">O perfil inteiro com a mesma cara.</h2>
+    <ol class="passos mt-5" role="list">
+      <li><h3>Posts e Reels</h3><p>Criados com as cores e o jeito do seu negócio, prontos para publicar.</p></li>
+      <li><h3>Capas dos destaques</h3><p>Todas no mesmo estilo, para o perfil parecer organizado logo de cara.</p></li>
+      <li><h3>Bio e fixados</h3><p>Uma bio que diz o que você faz e onde, e posts fixados que apresentam o negócio.</p></li>
+      <li><h3>Junto com o site</h3><p>Quem tem site com a gente usa as mesmas cores e fontes no Instagram.</p></li>
+    </ol>
+    <p class="mt-3"><a class="link-seta" href="/portfolio/#reels">Ver Reels que já fizemos{{ m.seta() }}</a></p>
+  </div>
+</section>
+
+<section class="secao com-linha" id="diagnostico" aria-labelledby="titulo-diag">
+  <div class="caixa lado-a-lado" data-diagnostico>
+    <div>
+      <p class="rotulo"><span class="ponto"></span>Diagnóstico grátis</p>
+      <h2 class="titulo mt-2" id="titulo-diag">O seu perfil está pronto para vender?</h2>
+      <p class="lead mt-2">Marque o que o seu Instagram já tem. A nota sai na hora e você pode mandar o resultado para a gente.</p>
+      <div class="mt-4">
+        <p class="numero-grande" data-nota aria-live="polite">0 de 8</p>
+        <div class="medidor mt-2" aria-hidden="true"><span></span></div>
+        <p class="texto mt-2" data-frase aria-live="polite"></p>
+      </div>
+    </div>
+    <div>
+      <ul class="check-lista" role="list">
+        {% for item in ['Foto de perfil com o logo nítido', 'Bio que diz o que você faz e onde', 'Link na bio para o site ou o WhatsApp', 'Destaques com capas no mesmo estilo', 'Posts fixados que apresentam o negócio', 'Posta pelo menos 3 vezes por semana', 'Usa Reels', 'Responde comentários e directs no mesmo dia'] %}
+        <li><label><input type="checkbox" value="{{ item }}"><span>{{ item }}</span></label></li>
+        {% endfor %}
+      </ul>
+      <div class="campo mt-3"><label for="diag-arroba">Seu @ no Instagram (opcional)</label><input id="diag-arroba" name="arroba" autocomplete="off" placeholder="@seunegocio"></div>
+      <a class="botao limao mt-3" data-enviar href="{{ 'Olá! Fiz o diagnóstico do Instagram no site da Káiros Dynamis.'|wa }}" target="_blank" rel="noopener"><span>Mandar o diagnóstico no WhatsApp</span>{{ m.seta_diag() }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="secao com-linha" aria-labelledby="titulo-faq-ig">
+  <div class="caixa grade">
+    <div class="col-1-6"><p class="rotulo"><span class="ponto"></span>Dúvidas sobre a gestão</p><h2 class="titulo mt-2" id="titulo-faq-ig">Antes de assinar.</h2></div>
+    <div class="col-7-12 faq mt-3">
+      <details><summary>Preciso ter site para contratar a gestão?</summary><div class="resposta"><p>Não. Dá para contratar só a gestão do Instagram ou junto com o site.</p></div></details>
+      <details><summary>Quem aprova os posts?</summary><div class="resposta"><p>Você. A gente manda tudo antes pelo WhatsApp e nada é publicado sem o seu ok.</p></div></details>
+      <details><summary>Como funciona o contrato mínimo?</summary><div class="resposta"><p>São {{ C.instagram.minimo_meses }} meses, porque Instagram não dá resultado em 30 dias. Depois disso, você cancela quando quiser e a gestão vai até o fim do mês já pago.</p></div></details>
+      <details><summary>A verba dos anúncios está incluída?</summary><div class="resposta"><p>Não. No plano Crescimento a gente cria e acompanha os anúncios; a verba é paga por você direto ao Meta, no valor que escolher.</p></div></details>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block barra %}
+<div class="barra-celular"><a class="botao limao" href="#planos"><span>Ver os planos</span>{{ m.seta() }}</a></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ asset('assets/js/catalogo.js') }}" defer></script>
+<script src="{{ asset('assets/js/pix.js') }}" defer></script>
+<script src="{{ asset('assets/js/pagamento.js') }}" defer></script>
+{% endblock %}
