@@ -3,6 +3,8 @@
 [build]
   publish = "public"
   command = "echo Site ja gerado em public"
+  # Só o projeto kairos-dynamis publica. Cópias ligadas ao mesmo repositório não gastam créditos.
+  ignore = "test \"$SITE_NAME\" != \"kairos-dynamis\""
 
 [functions]
   directory = "netlify/functions"
