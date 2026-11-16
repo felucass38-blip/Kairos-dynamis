@@ -118,14 +118,15 @@
         <li><a href="mailto:kairosoficialcontato@gmail.com?subject=Contato%20pelo%20site"><span class="rotulo">E-mail</span><span class="valor">kairosoficialcontato@gmail.com</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M4 12l8-8M5 4h7v7"/></svg></a></li>
       </ul>
     </div>
-    <form class="formulario" name="contato" method="POST" data-netlify="true" netlify-honeypot="empresa-site" data-ajax data-ok="Recebemos sua mensagem. A equipe responde pelo WhatsApp ou pelo e-mail que você deixou.">
+    <form class="formulario" name="contato" method="POST" data-netlify="true" netlify-honeypot="empresa-site" data-whatsapp="Olá! Vim pelo site da Káiros Dynamis.">
       <input type="hidden" name="form-name" value="contato">
       <p class="isca"><label>Não preencha: <input name="empresa-site" tabindex="-1" autocomplete="off"></label></p>
-      <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" autocomplete="name" maxlength="80" required></div>
-      <div class="campo"><label for="c-contato">WhatsApp ou e-mail</label><input id="c-contato" name="contato" autocomplete="email" maxlength="120" required><span class="dica">É por aqui que a gente responde.</span></div>
-      <div class="campo"><label for="c-interesse">Interesse</label><select id="c-interesse" name="interesse"><option>Ainda não sei</option><option>Site</option><option>Sistema</option><option>Gestão de Instagram</option><option>Cartões e placas NFC</option><option>Outro</option></select></div>
-      <div class="campo"><label for="c-msg">Conte sobre o seu negócio</label><textarea id="c-msg" name="mensagem" maxlength="3000"></textarea></div>
-      <div class="botoes"><button class="botao limao" type="submit"><span>Enviar mensagem</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+      <div class="campo"><label for="c-nome">Seu nome</label><input id="c-nome" name="nome" data-rotulo="Nome" autocomplete="name" maxlength="80" required></div>
+      <div class="campo"><label for="c-contato">WhatsApp ou e-mail</label><input id="c-contato" name="contato" data-rotulo="Contato" autocomplete="email" maxlength="120" required><span class="dica">É por aqui que a gente responde.</span></div>
+      <div class="campo"><label for="c-interesse">Interesse</label><select id="c-interesse" name="interesse" data-rotulo="Interesse"><option>Ainda não sei</option><option>Site</option><option>Sistema</option><option>Gestão de Instagram</option><option>Cartões e placas NFC</option><option>Outro</option></select></div>
+      <div class="campo"><label for="c-msg">Conte sobre o seu negócio</label><textarea id="c-msg" name="mensagem" data-rotulo="Sobre o negócio" maxlength="3000"></textarea></div>
+      <div class="botoes"><button class="botao limao" type="submit"><span>Enviar pelo WhatsApp</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+      <p class="dica" style="font-size:13.5px;color:var(--nevoa);margin:0">Abre o WhatsApp com a sua mensagem pronta para enviar.</p>
       <p class="mensagem-form" role="status" aria-live="polite"></p>
       <p class="dica" style="font-size:13.5px;color:var(--nevoa)">Seus dados servem só para a Káiros Dynamis responder você. <a href="/privacidade/">Privacidade</a>.</p>
     </form>
@@ -184,6 +185,6 @@
   <a class="botao limao" href="/criar/"><span>Ver o meu site grátis</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" aria-hidden="true" focusable="false"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
 </div>
 
-<script src="/assets/js/site.48e0be4e22.js" defer></script>
+<script src="/assets/js/site.ec90923540.js" defer></script>
 </body>
 </html>

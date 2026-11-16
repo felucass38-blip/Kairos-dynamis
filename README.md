@@ -68,7 +68,7 @@ No painel da Stripe, em Pagamentos e em Assinaturas. Cada pagamento tem o tipo, 
 
 ## Formulário de contato
 
-Usa o Netlify Forms (formulário `contato`). Para receber por e-mail: **Project configuration → Notifications → Emails and webhooks → Form submission notifications**.
+O formulário da aba Contratar abre o WhatsApp do cliente com a mensagem pronta para o número da Káiros. Uma cópia de cada envio fica guardada no Netlify Forms (formulário `contato`), em **Forms** no painel da Netlify.
 
 ## Google
 

@@ -152,25 +152,33 @@
     });
   });
 
-  /* formulários que montam a mensagem e abrem o WhatsApp */
+  /* formulários que montam a mensagem e abrem o WhatsApp.
+     O de contato também guarda uma cópia nos formulários da Netlify. */
   $$('form[data-whatsapp]').forEach(function (f) {
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!f.checkValidity()) { f.reportValidity(); return; }
+      var isca = $('.isca input', f);
+      if (isca && isca.value) return; /* robô */
       var linhas = [f.getAttribute('data-whatsapp')];
       $$('[name]', f).forEach(function (c) {
-        if (c.type === 'hidden' || c.classList.contains('isca') || !c.value) return;
+        if (c.type === 'hidden' || c.closest('.isca') || !c.value) return;
         if ((c.type === 'checkbox' || c.type === 'radio') && !c.checked) return;
-        var r = c.getAttribute('data-rotulo') || c.name;
-        linhas.push('• ' + r + ': ' + c.value);
+        linhas.push('• ' + (c.getAttribute('data-rotulo') || c.name) + ': ' + c.value);
       });
+      if (f.hasAttribute('data-netlify')) {
+        try {
+          fetch('/', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(f)).toString() }).catch(function () {});
+        } catch (erro) {}
+      }
       var url = linkWhats(linhas.join('\n')), nova = null;
       try { nova = w.open(url, '_blank'); } catch (erro) {}
-      if (nova) { try { nova.opener = null; } catch (erro) {} return; }
-      /* o navegador bloqueou a janela: mostra o link para tocar */
+      if (nova) { try { nova.opener = null; } catch (erro) {} }
       var aviso = $('.mensagem-form', f);
-      if (!aviso) { aviso = d.createElement('p'); aviso.className = 'mensagem-form ok'; aviso.setAttribute('role', 'status'); f.appendChild(aviso); }
-      aviso.innerHTML = 'Mensagem pronta. <a href="' + url.replace(/"/g, '&quot;') + '" target="_blank" rel="noopener">Toque aqui para abrir no WhatsApp</a>.';
+      if (!aviso) { aviso = d.createElement('p'); aviso.setAttribute('role', 'status'); f.appendChild(aviso); }
+      aviso.className = 'mensagem-form ok';
+      aviso.innerHTML = (nova ? 'Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar. ' : 'Mensagem pronta. ') +
+        '<a href="' + url.replace(/"/g, '&quot;') + '" target="_blank" rel="noopener">' + (nova ? 'Se não abriu, toque aqui' : 'Toque aqui para abrir no WhatsApp') + '</a>.';
     });
   });
 
