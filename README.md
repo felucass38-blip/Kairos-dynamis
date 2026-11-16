@@ -72,10 +72,9 @@ Usa o Netlify Forms (formulário `contato`). Para receber por e-mail: **Project 
 
 ## Google
 
-1. Entre no [Google Search Console](https://search.google.com/search-console) e adicione uma propriedade do tipo **Prefixo do URL** com o endereço do site.
-2. Escolha verificar pela **tag HTML**. Copie só o código do `content="…"`.
-3. Cole o código em `ferramentas/build.py`, no campo `google_verificacao`, gere o site e publique. Depois clique em Verificar.
-4. Em **Sitemaps**, envie `sitemap.xml`.
+O site está verificado no Google Search Console pelo arquivo `estaticos/raiz/google248a065ab12ece3a.html`. Não apague esse arquivo: sem ele o Google perde a verificação.
+
+No Search Console, em **Sitemaps**, o endereço enviado é `sitemap.xml`. O build atualiza esse arquivo sozinho a cada página ou artigo novo.
 
 O site já tem título e descrição por página, dados estruturados (empresa, perguntas frequentes e artigos), sitemap, robots.txt, imagem de compartilhamento e redirecionamento dos endereços do site antigo.
 

@@ -275,6 +275,13 @@ def main():
     preparar_paginas_extras(env, ctx)
     mapa.append(('/criar/', 0.8))
 
+    # arquivos que ficam na raiz do site, do jeito que estão (ex.: verificação do Google)
+    raiz = EST / 'raiz'
+    if raiz.exists():
+        for f in sorted(raiz.iterdir()):
+            if f.is_file():
+                shutil.copyfile(f, SAIDA / f.name)
+
     # sitemap, robots e manifesto
     itens = '\n'.join(f'  <url><loc>{SITE["url"]}{r}</loc><lastmod>{HOJE}</lastmod><priority>{p:.1f}</priority></url>' for r, p in mapa)
     (SAIDA / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{itens}\n</urlset>\n', 'utf-8')
