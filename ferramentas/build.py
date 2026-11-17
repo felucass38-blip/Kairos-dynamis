@@ -168,7 +168,7 @@ def gerar_icones():
 </svg>'''
     (img / 'og.svg').write_text(og, 'utf-8')
     if shutil.which('rsvg-convert'):
-        for nome, tam, svg in (('apple-touch-icon.png', 180, favicon), ('icone-192.png', 192, favicon), ('icone-512.png', 512, favicon), ('favicon-32.png', 32, favicon)):
+        for nome, tam, svg in (('apple-touch-icon.png', 180, favicon), ('icone-192.png', 192, favicon), ('icone-512.png', 512, favicon), ('favicon-96.png', 96, favicon)):
             tmp = img / f'_{nome}.svg'
             tmp.write_text(svg, 'utf-8')
             subprocess.run(['rsvg-convert', '-w', str(tam), '-h', str(tam), str(tmp), '-o', str(img / nome)], check=True)
